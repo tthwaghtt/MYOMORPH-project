@@ -1,0 +1,199 @@
+<title>MYOMORPH-MK. 1 Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Saira+Condensed:wght@500;700&display=swap">
+<style>
+/* Layout: one narrow reading column, engineering-drawing labels, a vertical phase track as the spine */
+:root {
+  --bg: #f3f2ef;
+  --surface: #fbfaf8;
+  --fg: #1b1c1e;
+  --muted: #5d5f63;
+  --line: #d6d3cc;
+  --ti: #9a958c;
+  --gold: #a87a1c;
+  --gold-soft: #f1e6cc;
+  --ok: #2f7a4a;
+  --ok-soft: #dcefe2;
+  --now: #b4561a;
+  --now-soft: #f6e2d3;
+  --f-display: "Saira Condensed", "Arial Narrow", sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121314; --surface: #1a1b1d; --fg: #e9e7e3; --muted: #a3a29e; --line: #2e3033;
+    --ti: #8d897f; --gold: #d9ad52; --gold-soft: #2c2415; --ok: #6cc28a; --ok-soft: #17291e;
+    --now: #f09a5a; --now-soft: #2e1e12; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121314; --surface: #1a1b1d; --fg: #e9e7e3; --muted: #a3a29e; --line: #2e3033;
+  --ti: #8d897f; --gold: #d9ad52; --gold-soft: #2c2415; --ok: #6cc28a; --ok-soft: #17291e;
+  --now: #f09a5a; --now-soft: #2e1e12; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.7; }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 48px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+header { display: grid; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(38px, 8vw, 60px); line-height: 1; letter-spacing: .01em; }
+.tag { font-family: var(--f-display); font-weight: 500; font-size: 20px; letter-spacing: .12em; color: var(--gold); }
+.lede { color: var(--muted); max-width: 62ch; }
+section { display: grid; gap: 16px; }
+h2 { font-size: 21px; font-weight: 600; }
+.status { background: var(--now-soft); border-left: 4px solid var(--now); padding: 18px 20px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; }
+.status strong { color: var(--now); }
+/* phase track */
+.track { list-style: none; margin: 0; padding: 0; display: grid; }
+.track li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; position: relative; padding-bottom: 22px; }
+.track li::before { content: ""; position: absolute; left: 13px; top: 24px; bottom: 0; width: 2px; background: var(--line); }
+.track li:last-child::before { display: none; }
+.dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); display: grid; place-items: center; font-family: var(--f-mono); font-size: 11px; color: var(--muted); z-index: 1; }
+.done .dot { border-color: var(--ok); background: var(--ok-soft); color: var(--ok); }
+.now .dot { border-color: var(--now); background: var(--now); color: var(--bg); }
+.step { display: grid; gap: 4px; min-width: 0; }
+.step h3 { font-size: 16px; font-weight: 600; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.pill { font-family: var(--f-mono); font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.done .pill { border-color: var(--ok); color: var(--ok); }
+.now .pill { border-color: var(--now); color: var(--now); }
+.step p { color: var(--muted); font-size: 14px; }
+.you { font-size: 13.5px; color: var(--fg); }
+.you b { color: var(--gold); font-weight: 600; }
+.group { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); padding: 6px 0 14px 42px; }
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.facts div { background: var(--surface); padding: 14px 16px; display: grid; gap: 2px; }
+.facts b { font-family: var(--f-display); font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 13px; color: var(--muted); }
+.chapters { font-size: 14px; color: var(--muted); margin: 0; padding-left: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4px 20px; }
+.chapters li { display: flex; gap: 10px; }
+.chapters code { font-family: var(--f-mono); font-size: 12px; color: var(--fg); min-width: 2.2em; }
+/* materials */
+.mats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.mat { display: grid; gap: 8px; min-width: 0; }
+.sw { height: 64px; border-radius: 4px; border: 1px solid var(--line); }
+.sw.ti { background: linear-gradient(115deg, #77736c 0%, #b9b4ab 38%, #8a857d 55%, #c9c4ba 70%, #7e7a73 100%); }
+.sw.tin { background: linear-gradient(115deg, #7a5410 0%, #f1cf6e 35%, #a87a1c 55%, #ffe7a3 68%, #8c6214 100%); }
+.sw.hair { background: repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, rgba(0,0,0,.05) 1px 2px), linear-gradient(115deg, #8b7a4f 0%, #cdbb8a 40%, #a8956a 60%, #d8c899 75%, #8e7d52 100%); }
+.sw.heat { background: linear-gradient(90deg, #c9c4ba 0%, #d8b25a 22%, #a86a2c 40%, #7b3f8f 58%, #3b5fb0 76%, #8f9aa6 100%); }
+.mat b { font-size: 14px; font-weight: 600; }
+.mat span { font-size: 13px; color: var(--muted); }
+/* decisions */
+.dec { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.dec ul { margin: 0; padding-left: 18px; font-size: 14px; display: grid; gap: 4px; }
+.dec h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.next { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: grid; gap: 8px; }
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; font-family: var(--f-mono); }
+@media (prefers-reduced-motion: no-preference) { .now .dot { animation: pulse 2.4s ease-in-out infinite; } }
+@keyframes pulse { 50% { box-shadow: 0 0 0 6px var(--now-soft); } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label">Project plan · v1.1 · 2026-10-02</span>
+    <h1>MYOMORPH-MK. 1</h1>
+    <span class="tag">NOT ARMOR. ANATOMY.</span>
+    <p class="lede">근육 해부도를 티타늄 패널로 입체화한, 실제로 작동 가능한 근골격 슈트. 이 슈트를 주인공으로 마우스와 스크롤에 반응하는 3D 웹 경험을 만든다. 이 페이지는 전체 계획과 지금 위치를 한눈에 보기 위한 요약이다.</p>
+  </header>
+
+  <section>
+    <div class="status">
+      <span class="label">현재 위치</span>
+      <p><strong>계획 단계입니다.</strong> 마스터 플랜과 블렌더 조사(G0)를 마치고 도하의 승인을 기다리고 있습니다. 도하가 "실행"이라고 말하기 전에는 본격적인 제작을 시작하지 않습니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>전체 단계</h2>
+    <p class="lede">각 단계가 끝나면 도하가 결과를 보고 승인하는 게이트(G0~G7)가 있다. 승인이 나야 다음 단계로 넘어간다.</p>
+    <div class="group">계획 · 설계</div>
+    <ol class="track">
+      <li class="done"><span class="dot">✓</span><div class="step"><h3>브리프 해석과 마스터 플랜 <span class="pill">완료</span></h3><p>스토리, 슈트 설계, 실사화 전략, 기술 구조, 일정, 리스크. 드로잉 실측 분석 포함.</p></div></li>
+      <li class="now"><span class="dot">G0</span><div class="step"><h3>블렌더 방법론 조사 <span class="pill">제출됨 · 승인 대기</span></h3><p>Blender 5.2.1 실행 확인, 업계 작업 방식 조사, 색과 재질 수치 실측, 작업 규약(MBS) 작성.</p><p class="you"><b>도하가 할 일</b> 조사 보고서를 보고 승인하거나 수정 요청</p></div></li>
+      <li><span class="dot">P0</span><div class="step"><h3>환경 시험 <span class="pill">다음</span></h3><p>작은 테스트 페이지로 웹 환경을 점검한다. 3D 렌더러(WebGPU), 소리, 진동, 파일 용량 한도. 실제 슈트는 아직 만들지 않는다.</p></div></li>
+      <li><span class="dot">P1</span><div class="step"><h3>프리프로덕션 <span class="pill">G1</span></h3><p>스토리보드 확정, 분위기를 보여주는 스타일프레임 6~8장, 재질 비교 렌더, 무게·토크·배터리 계산서.</p><p class="you"><b>도하가 할 일</b> 그림체와 분위기, 남은 결정 사항 확정</p></div></li>
+    </ol>
+    <div class="group">제작</div>
+    <ol class="track">
+      <li><span class="dot">P2</span><div class="step"><h3>몸과 비율 잡기 <span class="pill">G2</span></h3><p>착용자 몸, 근육 형태, 슈트 외형 덩어리. 도하의 드로잉과 겹쳐서 비율을 숫자로 검증한다.</p><p class="you"><b>도하가 할 일</b> 실루엣과 비율 승인</p></div></li>
+      <li><span class="dot">P3</span><div class="step"><h3>오른팔 한 개를 최종 품질로 <span class="pill">G3 · 가장 중요</span></h3><p>어깨부터 손까지, 툴 베이와 보조 손 포함. 웹에서 조립 애니메이션, 소리, 손맛까지 실제로 동작하게 만든다.</p><p class="you"><b>도하가 할 일</b> 직접 보고 듣고 만져본 뒤 품질 기준 확정. 이 수준을 전신에 복제한다</p></div></li>
+      <li><span class="dot">P4</span><div class="step"><h3>전신 제작 <span class="pill">G4</span></h3><p>다리, 골반, 몸통, 목, PERSONA 마스크, 왼팔, 내부 기계. 부품 4,000개 이상.</p></div></li>
+      <li><span class="dot">P5</span><div class="step"><h3>웹 경험 전체 구현 <span class="pill">G5</span></h3><p>13개 챕터, 카메라 연출, 관찰 모드, 모든 버튼과 입력란의 모션.</p></div></li>
+      <li><span class="dot">P6</span><div class="step"><h3>사운드와 손맛 <span class="pill">G6</span></h3><p>체결음 전체, 믹싱, 진동 패턴, 스크롤 감각 튜닝.</p><p class="you"><b>도하가 할 일</b> 실제 기기로 듣고 느낀 피드백 (저는 소리를 들을 수 없습니다)</p></div></li>
+    </ol>
+    <div class="group">출시</div>
+    <ol class="track">
+      <li><span class="dot">P7</span><div class="step"><h3>다듬기와 발행 <span class="pill">G7</span></h3><p>성능 최적화, 여러 브라우저와 모바일 확인, 최종 웹페이지 발행.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>무엇을 만드나</h2>
+    <div class="facts">
+      <div><b>3분 46초</b><span>스크롤 감상 분량 (요청 100초)</span></div>
+      <div><b>13</b><span>챕터 + 자유 탐색</span></div>
+      <div><b>4,000+</b><span>부품 수 (체결부품 포함)</span></div>
+      <div><b>60 MB</b><span>전체 용량 상한</span></div>
+    </div>
+    <p class="lede">완성된 슈트로 시작해 도하의 스케치로 되감은 뒤, 사람의 몸에서 뼈, 힘줄, 근육, 심장, 근육 패널, 신경 순서로 안에서 밖으로 조립한다.</p>
+    <ul class="chapters">
+      <li><code>00</code>완성체와 커서 놀이</li>
+      <li><code>01</code>도하의 스케치</li>
+      <li><code>02</code>착용자 178 cm · 65 kg</li>
+      <li><code>03</code>라이너</li>
+      <li><code>04</code>프레임 = 뼈</li>
+      <li><code>05</code>구동계 = 힘줄과 근육</li>
+      <li><code>06</code>유압 심장과 배터리</li>
+      <li><code>07</code>근육 패널 조립 (본편 60초)</li>
+      <li><code>08</code>상태광 부팅</li>
+      <li><code>09</code>관절 가동과 근육 팽창</li>
+      <li><code>10</code>툴 베이, 보조 손, 냉각 루버</li>
+      <li><code>11</code>사양과 데이터</li>
+      <li><code>12</code>자유 탐색과 크레딧</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>재질 방향</h2>
+    <p class="lede">도하가 보내준 사진 다섯 장을 반영했다. 열변색은 실제로 열이 나는 곳에만 넣어서 자연스럽게 녹아들게 한다.</p>
+    <div class="mats">
+      <div class="mat"><div class="sw ti"></div><b>티타늄 (기본)</b><span>비드블라스트 무광. 슈트 대부분의 근육 패널.</span></div>
+      <div class="mat"><div class="sw tin"></div><b>유광 골드 (TiN)</b><span>체결부품, 관절 링, 피스톤 로드 같은 작은 기계 부품.</span></div>
+      <div class="mat"><div class="sw hair"></div><b>헤어라인 골드</b><span>근육 패널의 골드 포인트. 결 방향 = 근섬유 방향.</span></div>
+      <div class="mat"><div class="sw heat"></div><b>열변색</b><span>프레임 용접부, 유압 펌프 배기구, 엉덩이 냉각 루버 안쪽. 보는 각도에 따라 색이 변하게 렌더한다.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>결정 사항</h2>
+    <div class="dec">
+      <div><h3>확정</h3><ul>
+        <li>마스크: 드로잉 실루엣 + 안면근 기반 오리지널 PERSONA</li>
+        <li>Blender 5.2.1 LTS (이 환경에서 실행 확인)</li>
+        <li>색 일치: Blender AgX를 LUT로 웹에 적용</li>
+        <li>재질: 티타늄 기본 + 골드 포인트 + 열변색 디테일</li>
+      </ul></div>
+      <div><h3>P1까지 정하면 되는 것</h3><ul>
+        <li>도하의 원본 드로잉을 사이트에 크레딧과 함께 넣을지</li>
+        <li>사이트 언어 (영문 라벨 + 한글 본문 추천)</li>
+        <li>크레딧 표기 방식</li>
+        <li>상태광 색 (구동 중 = 시안 가안)</li>
+        <li>배경 음악 넣을지</li>
+        <li>최종 페이지 공개 범위</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="next">
+      <span class="label">다음 행동</span>
+      <p>G0 보고서를 승인하고 "실행"이라고 말해주면 P0 환경 시험부터 시작한다. 그 전까지는 계획 문서만 다듬는다.</p>
+    </div>
+  </section>
+
+  <footer>상세 문서: docs/PLAN.md · docs/research/blender-methodology.md · docs/research/MBS.md (브랜치 claude/dazzling-newton-19zxf5)</footer>
+</div>
