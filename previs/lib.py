@@ -1,7 +1,7 @@
 """MYOMORPH previs library (P1 storyboard styleframes).
 
 Throwaway blockout tooling for mood frames — not the production pipeline (that is MYOFORGE, P2+).
-Wearer body: MakeHuman/MPFB2 base mesh + macro targets (CC0 assets, see vendor/mpfb/LICENSE.ASSETS.md).
+Wearer body: body.py (MakeHuman/MPFB2 CC0 base mesh + targets) fitted to Doha's CORPUS profile (fit_corpus.py).
 """
 import gzip, math, os, json
 import numpy as np
@@ -12,135 +12,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 VENDOR = os.path.join(HERE, 'vendor', 'mpfb')
 
 # ---------------------------------------------------------------- wearer body
-def _read_obj():
-    v, groups, faces, cur = [], {}, [], None
-    for line in open(os.path.join(VENDOR, 'base.obj')):
-        if line.startswith('v '):
-            v.append([float(x) for x in line.split()[1:4]])
-        elif line.startswith('g '):
-            cur = line.split()[1]
-        elif line.startswith('f '):
-            idx = [int(x.split('/')[0]) - 1 for x in line.split()[1:]]
-            groups.setdefault(cur, set()).update(idx)
-            if cur == 'body':
-                faces.append(idx)
-    return np.array(v), groups, faces
-
-
-def _target(name):
-    d = {}
-    with gzip.open(os.path.join(VENDOR, name + '.target.gz'), 'rt') as f:
-        for line in f:
-            p = line.split()
-            if len(p) == 4:
-                d[int(p[0])] = [float(x) for x in p[1:]]
-    return d
-
-
-# heroic V-taper on a slim 178 cm / 65 kg build (Doha's silhouette intent): weights per MakeHuman target
-SHAPE = {
-    'torso-vshape-incr': 0.9, 'torso-muscle-pectoral-incr': 0.7, 'torso-muscle-dorsi-incr': 0.7,
-    # 2026-10-02 Doha: waist girth +5 cm, shoulder width -4 cm (fit by measure(): waist 54.8->59.8 cm, bideltoid 57.1->53.2 cm)
-    # 2026-10-02 Doha (2): waist girth 65 cm -> measure-waist-circ-incr 0.442 (waist 65.0 cm, bideltoid 53.2 cm)
-    'measure-shoulder-dist-decr': 0.52, 'measure-waist-circ-incr': 0.442, 'hip-scale-horiz-decr': 0.35,
-    'breast-point-decr': 1.0, 'breast-volume-vert-up': 0.6, 'stomach-tone-incr': 0.8,
-    'l-upperarm-shoulder-muscle-incr': 0.7, 'r-upperarm-shoulder-muscle-incr': 0.7,
-    'l-lowerarm-muscle-incr': 0.5, 'r-lowerarm-muscle-incr': 0.5,
-    'l-lowerleg-muscle-incr': 0.5, 'r-lowerleg-muscle-incr': 0.5, 'measure-neck-height-incr': 0.6,
-}
-
-
 LAST = {}
 
 
-def _hull_perimeter(P):
-    P = np.unique(np.round(P, 5), axis=0)
-    if len(P) < 3:
-        return 0.0
-    P = P[np.lexsort((P[:, 1], P[:, 0]))]
-    cross = lambda o, a, b: (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
-    lo, up = [], []
-    for p in P:
-        while len(lo) >= 2 and cross(lo[-2], lo[-1], p) <= 0: lo.pop()
-        lo.append(p)
-    for p in P[::-1]:
-        while len(up) >= 2 and cross(up[-2], up[-1], p) <= 0: up.pop()
-        up.append(p)
-    H = np.array(lo[:-1] + up[:-1])
-    return float(np.linalg.norm(H - np.roll(H, -1, 0), axis=1).sum())
-
-
-def measure(v, joints):
-    """Tape-style waist circumference (min convex-hull girth of the torso between 0.95 and 1.25 m),
-    bideltoid breadth (max width of the shoulder girdle band) and biacromial-like joint distance."""
-    arm = LAST.get('arm_w', np.zeros(len(v)))
-    torso = arm < 0.25
-    best = (1e9, None)
-    for z in np.arange(0.95, 1.25, 0.005):
-        sl = torso & (np.abs(v[:, 2] - z) < 0.004)
-        if sl.sum() > 20:
-            g = _hull_perimeter(v[sl][:, :2])
-            if g < best[0]:
-                best = (g, z)
-    zs = joints['joint-l-shoulder'][2]
-    band = (v[:, 2] > zs - 0.10) & (v[:, 2] < zs + 0.06)
-    bideltoid = float(v[band, 0].max() - v[band, 0].min())
-    joint_w = float(np.linalg.norm(joints['joint-l-shoulder'] - joints['joint-r-shoulder']))
-    return {'waist_circ_cm': round(best[0] * 100, 1), 'waist_z_m': round(best[1], 3), 'bideltoid_cm': round(bideltoid * 100, 1),
-            'shoulder_joint_dist_cm': round(joint_w * 100, 1)}
-
-
-def load_wearer(muscle=0.7, weight=0.3, height_m=1.78, arm_deg=17.0):
-    """muscle/weight in [0,1] between average(0) and max/min(1). Returns verts (Blender Z-up, m), faces, joints."""
-    v, groups, faces = _read_obj()
-    w = {('averagemuscle', 'averageweight'): (1 - muscle) * (1 - weight), ('averagemuscle', 'minweight'): (1 - muscle) * weight,
-         ('maxmuscle', 'averageweight'): muscle * (1 - weight), ('maxmuscle', 'minweight'): muscle * weight}
-    for (m, wt), k in w.items():
-        if k <= 0:
-            continue
-        name = f'universal-male-young-{m}-{wt}'
-        if not os.path.exists(os.path.join(VENDOR, name + '.target.gz')):
-            continue
-        for i, d in _target(name).items():
-            v[i] += k * np.array(d)
-    for name, k in SHAPE.items():
-        if os.path.exists(os.path.join(VENDOR, name + '.target.gz')):
-            for i, d in _target(name).items():
-                v[i] += k * np.array(d)
-    joints = {g: v[sorted(ix)].mean(0) for g, ix in groups.items() if g.startswith('joint-')}
-    v = _pose_arms(v, joints, arm_deg)
-    joints = {g: v[sorted(ix)].mean(0) for g, ix in groups.items() if g.startswith('joint-')}
-    body = sorted(groups['body'])
-    # OBJ (Y up, +Z front) -> Blender (Z up, -Y front), feet on floor, scaled to height
-    conv = lambda a: np.stack([a[..., 0], -a[..., 2], a[..., 1]], -1)
-    vb = conv(v)
-    zmin, zmax = vb[body, 2].min(), vb[body, 2].max()
-    s = height_m / (zmax - zmin)
-    vb = (vb - [0, 0, zmin]) * s
-    joints = {k: (conv(j) - [0, 0, zmin]) * s for k, j in joints.items()}
-    # compact to body vertices
-    remap = {old: new for new, old in enumerate(body)}
-    W = np.load(os.path.join(VENDOR, 'arm_weights.npz'))
-    LAST['arm_w'] = np.maximum(W['L'], W['R'])[body]
-    return vb[body], [[remap[i] for i in f] for f in faces], joints
-
-
-def _pose_arms(v, joints, target_deg):
-    """Rotate each arm about its shoulder joint (frontal plane) so the upper arm sits target_deg from vertical.
-    Per-vertex influence = MakeHuman default-rig skin weights of the arm chain (+45% of shoulder01), see arm_weights.npz."""
-    W = np.load(os.path.join(VENDOR, 'arm_weights.npz'))
-    v = v.copy()
-    for side, key, sgn in (('l', 'L', 1), ('r', 'R', -1)):
-        sh, el = joints[f'joint-{side}-shoulder'], joints[f'joint-{side}-elbow']
-        cur = math.degrees(math.atan2(abs(el[0] - sh[0]), sh[1] - el[1]))
-        rot = math.radians(cur - target_deg) * sgn
-        wgt = W[key][:len(v)]
-        a = -rot * wgt
-        c, s_ = np.cos(a), np.sin(a)
-        x, y = v[:, 0] - sh[0], v[:, 1] - sh[1]
-        v[:, 0] = sh[0] + x * c - y * s_
-        v[:, 1] = sh[1] + x * s_ + y * c
-    return v
+def load_wearer(height_m=1.78, arm_deg=17.0, elbow_deg=8.0, fit=os.path.join(HERE, 'wearer_fit.json')):
+    """Doha's body: the CORPUS MAP fit (fit_corpus.py -> wearer_fit.json) on the MakeHuman base mesh, posed to the
+    drawing's A-pose (upper arms 17° from vertical, elbows 8°). Returns body verts (Blender Z-up, m), faces, joints."""
+    import body
+    B = body.Base.get()
+    params = json.load(open(fit))
+    v = body.shape({'macro': params['macro'], 'sliders': params['sliders']}, B)
+    vp, J = body.pose(v, arm_deg, elbow_deg, B)
+    vw, Jw, _ = body.to_world(vp, J, height_m, B)
+    LAST['arm_w'] = np.maximum(B.arm_w['l'], B.arm_w['r'])[B.body]
+    LAST['fit'] = params
+    return vw[B.body], B.faces, Jw
 
 
 def mesh_object(name, verts, faces, smooth=True, subsurf=1):

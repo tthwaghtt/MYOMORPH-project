@@ -1,0 +1,342 @@
+{
+ "method": "Fit the wearer mannequin to the CORPUS anthropometric profile (docs/research/corpus/anthro.json + bodycomp.json).",
+ "chi2_per_measure": 0.26,
+ "macro": {
+  "muscle": 0.3369,
+  "weight": 0.3366,
+  "asian": 1.0
+ },
+ "sliders": {
+  "torso-scale-horiz-decr-incr": 0.1113,
+  "torso-scale-depth-decr-incr": -0.1094,
+  "torso-scale-vert-decr-incr": 0.2797,
+  "torso-vshape-decr-incr": 0.0467,
+  "torso-muscle-pectoral-decr-incr": -0.005,
+  "torso-muscle-dorsi-decr-incr": 0.1536,
+  "measure-bust-circ-decr-incr": 0.0756,
+  "measure-underbust-circ-decr-incr": 0.0752,
+  "measure-waist-circ-decr-incr": 0.1199,
+  "measure-napetowaist-dist-decr-incr": -0.0958,
+  "measure-waisttohip-dist-decr-incr": 0.2243,
+  "measure-shoulder-dist-decr-incr": -0.0258,
+  "measure-hips-circ-decr-incr": 0.2076,
+  "hip-scale-horiz-decr-incr": -0.1457,
+  "hip-scale-depth-decr-incr": -0.033,
+  "hip-scale-vert-decr-incr": -0.3418,
+  "hip-waist-down-up": 0.0042,
+  "buttocks-volume-decr-incr": -0.2181,
+  "measure-neck-circ-decr-incr": -0.0388,
+  "measure-neck-height-decr-incr": 0.3959,
+  "neck-scale-horiz-decr-incr": -0.0215,
+  "neck-scale-depth-decr-incr": -0.0174,
+  "upperarm-scale-horiz-decr-incr": 0.1525,
+  "upperarm-muscle-decr-incr": 0.0333,
+  "upperarm-fat-decr-incr": 0.0933,
+  "upperarm-shoulder-muscle-decr-incr": -0.0283,
+  "measure-upperarm-circ-decr-incr": 0.1109,
+  "measure-upperarm-length-decr-incr": 0.1488,
+  "lowerarm-scale-horiz-decr-incr": 0.0997,
+  "lowerarm-scale-depth-decr-incr": -0.0008,
+  "lowerarm-muscle-decr-incr": 0.341,
+  "lowerarm-fat-decr-incr": 0.3595,
+  "measure-lowerarm-length-decr-incr": 0.1103,
+  "hand-scale-decr-incr": -0.0596,
+  "hand-fingers-length-decr-incr": -0.0346,
+  "measure-wrist-circ-decr-incr": -0.0167,
+  "upperleg-scale-horiz-decr-incr": -0.5284,
+  "upperleg-muscle-decr-incr": -0.1738,
+  "upperleg-fat-decr-incr": -0.214,
+  "measure-thigh-circ-decr-incr": -0.0924,
+  "measure-upperleg-height-decr-incr": 0.1256,
+  "upperlegs-height-decr-incr": 0.1256,
+  "lowerleg-scale-depth-decr-incr": 0.03,
+  "lowerleg-muscle-decr-incr": 0.0439,
+  "measure-knee-circ-decr-incr": 0.3594,
+  "measure-lowerleg-height-decr-incr": 0.1074,
+  "lowerlegs-height-decr-incr": 0.1074,
+  "foot-scale-decr-incr": 0.3265,
+  "foot-scale-horiz-decr-incr": -0.033,
+  "measure-ankle-circ-decr-incr": -0.0951,
+  "head-scale-horiz-decr-incr": 0.1657,
+  "head-scale-depth-decr-incr": -0.6829,
+  "head-scale-vert-decr-incr": 0.1079,
+  "stomach-tone-decr-incr": 0.6,
+  "pelvis-tone-decr-incr": 0.3
+ },
+ "measurements": {
+  "acromialheight": {
+   "target_mm": 1450.5,
+   "sigma_mm": 19.9,
+   "start_mm": 1458.4,
+   "fit_mm": 1462.4,
+   "z": 0.6
+  },
+  "suprasternaleheight": {
+   "target_mm": 1444.3,
+   "sigma_mm": 13.4,
+   "start_mm": 1440.3,
+   "fit_mm": 1445.8,
+   "z": 0.11
+  },
+  "cervicaleheight": {
+   "target_mm": 1524.7,
+   "sigma_mm": 12.7,
+   "start_mm": 1521.6,
+   "fit_mm": 1523.8,
+   "z": -0.07
+  },
+  "chestheight": {
+   "target_mm": 1316.7,
+   "sigma_mm": 21.8,
+   "start_mm": 1286.4,
+   "fit_mm": 1299.3,
+   "z": -0.8
+  },
+  "waistheightomphalion": {
+   "target_mm": 1067.3,
+   "sigma_mm": 20.4,
+   "start_mm": 1078.4,
+   "fit_mm": 1068.9,
+   "z": 0.08
+  },
+  "trochanterionheight": {
+   "target_mm": 897.3,
+   "sigma_mm": 27.1,
+   "start_mm": 879.6,
+   "fit_mm": 877.1,
+   "z": -0.74
+  },
+  "crotchheight": {
+   "target_mm": 847.0,
+   "sigma_mm": 23.4,
+   "start_mm": 844.8,
+   "fit_mm": 848.7,
+   "z": 0.07
+  },
+  "kneeheightmidpatella": {
+   "target_mm": 485.0,
+   "sigma_mm": 16.6,
+   "start_mm": 504.3,
+   "fit_mm": 492.0,
+   "z": 0.43
+  },
+  "lateralfemoralepicondyleheight": {
+   "target_mm": 488.9,
+   "sigma_mm": 16.1,
+   "start_mm": 492.4,
+   "fit_mm": 482.5,
+   "z": -0.4
+  },
+  "lateralmalleolusheight": {
+   "target_mm": 71.7,
+   "sigma_mm": 8.1,
+   "start_mm": 59.1,
+   "fit_mm": 62.1,
+   "z": -1.19
+  },
+  "wristheight": {
+   "target_mm": 859.1,
+   "sigma_mm": 19.8,
+   "start_mm": 867.2,
+   "fit_mm": 868.8,
+   "z": 0.49
+  },
+  "biacromialbreadth": {
+   "target_mm": 412.7,
+   "sigma_mm": 16.8,
+   "start_mm": 426.6,
+   "fit_mm": 412.8,
+   "z": 0.01
+  },
+  "bideltoidbreadth": {
+   "target_mm": 469.8,
+   "sigma_mm": 16.7,
+   "start_mm": 488.8,
+   "fit_mm": 471.6,
+   "z": 0.11
+  },
+  "chestcircumference": {
+   "target_mm": 931.0,
+   "sigma_mm": 33.3,
+   "start_mm": 932.8,
+   "fit_mm": 915.2,
+   "z": -0.47
+  },
+  "chestdepth": {
+   "target_mm": 213.3,
+   "sigma_mm": 14.3,
+   "start_mm": 229.6,
+   "fit_mm": 221.4,
+   "z": 0.57
+  },
+  "waistcircumference": {
+   "target_mm": 710.5,
+   "sigma_mm": 10.7,
+   "start_mm": 752.1,
+   "fit_mm": 709.9,
+   "z": -0.06
+  },
+  "waistbreadth": {
+   "target_mm": 255.3,
+   "sigma_mm": 13.7,
+   "start_mm": 274.7,
+   "fit_mm": 257.9,
+   "z": 0.19
+  },
+  "waistdepth": {
+   "target_mm": 175.1,
+   "sigma_mm": 11.2,
+   "start_mm": 183.3,
+   "fit_mm": 175.1,
+   "z": 0.0
+  },
+  "buttockheight": {
+   "target_mm": 883.5,
+   "sigma_mm": 31.4,
+   "start_mm": 920.9,
+   "fit_mm": 909.2,
+   "z": 0.82
+  },
+  "buttockcircumference": {
+   "target_mm": 885.3,
+   "sigma_mm": 26.4,
+   "start_mm": 902.8,
+   "fit_mm": 863.3,
+   "z": -0.84
+  },
+  "buttockdepth": {
+   "target_mm": 192.3,
+   "sigma_mm": 11.9,
+   "start_mm": 217.8,
+   "fit_mm": 207.0,
+   "z": 1.24
+  },
+  "hipbreadth": {
+   "target_mm": 310.9,
+   "sigma_mm": 14.4,
+   "start_mm": 379.9,
+   "fit_mm": 327.4,
+   "z": 1.15
+  },
+  "neckcircumference": {
+   "target_mm": 357.2,
+   "sigma_mm": 13.6,
+   "start_mm": 381.6,
+   "fit_mm": 357.6,
+   "z": 0.03
+  },
+  "thighcircumference": {
+   "target_mm": 517.3,
+   "sigma_mm": 19.7,
+   "start_mm": 546.5,
+   "fit_mm": 503.4,
+   "z": -0.7
+  },
+  "lowerthighcircumference": {
+   "target_mm": 367.7,
+   "sigma_mm": 14.9,
+   "start_mm": 367.6,
+   "fit_mm": 364.5,
+   "z": -0.22
+  },
+  "calfcircumference": {
+   "target_mm": 359.1,
+   "sigma_mm": 16.4,
+   "start_mm": 367.5,
+   "fit_mm": 359.1,
+   "z": -0.0
+  },
+  "anklecircumference": {
+   "target_mm": 216.8,
+   "sigma_mm": 9.6,
+   "start_mm": 217.6,
+   "fit_mm": 217.0,
+   "z": 0.02
+  },
+  "armcircumference_relaxed": {
+   "target_mm": 294.5,
+   "sigma_mm": 18.0,
+   "start_mm": 290.4,
+   "fit_mm": 292.7,
+   "z": -0.1
+  },
+  "forearmcircumference_relaxed": {
+   "target_mm": 276.8,
+   "sigma_mm": 15.6,
+   "start_mm": 253.4,
+   "fit_mm": 272.0,
+   "z": -0.31
+  },
+  "wristcircumference": {
+   "target_mm": 168.1,
+   "sigma_mm": 6.6,
+   "start_mm": 167.6,
+   "fit_mm": 168.3,
+   "z": 0.03
+  },
+  "acromionradialelength": {
+   "target_mm": 333.2,
+   "sigma_mm": 11.1,
+   "start_mm": 330.9,
+   "fit_mm": 333.8,
+   "z": 0.05
+  },
+  "radialestylionlength": {
+   "target_mm": 266.6,
+   "sigma_mm": 11.1,
+   "start_mm": 266.7,
+   "fit_mm": 267.3,
+   "z": 0.06
+  },
+  "handlength": {
+   "target_mm": 195.9,
+   "sigma_mm": 9.2,
+   "start_mm": 210.0,
+   "fit_mm": 195.2,
+   "z": -0.08
+  },
+  "footlength": {
+   "target_mm": 269.5,
+   "sigma_mm": 11.0,
+   "start_mm": 264.3,
+   "fit_mm": 272.5,
+   "z": 0.28
+  },
+  "footbreadthhorizontal": {
+   "target_mm": 101.7,
+   "sigma_mm": 7.5,
+   "start_mm": 98.9,
+   "fit_mm": 101.7,
+   "z": 0.0
+  },
+  "headcircumference": {
+   "target_mm": 560.1,
+   "sigma_mm": 16.4,
+   "start_mm": 615.7,
+   "fit_mm": 567.1,
+   "z": 0.43
+  },
+  "headbreadth": {
+   "target_mm": 155.8,
+   "sigma_mm": 8.1,
+   "start_mm": 156.3,
+   "fit_mm": 152.4,
+   "z": -0.41
+  },
+  "headlength": {
+   "target_mm": 191.8,
+   "sigma_mm": 9.0,
+   "start_mm": 223.1,
+   "fit_mm": 199.0,
+   "z": 0.8
+  },
+  "span": {
+   "target_mm": 1820.0,
+   "sigma_mm": 8.0,
+   "start_mm": 1850.1,
+   "fit_mm": 1820.5,
+   "z": 0.07
+  }
+ },
+ "seconds": 39.6
+}

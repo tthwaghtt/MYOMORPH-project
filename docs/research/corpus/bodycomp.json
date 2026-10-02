@@ -1,0 +1,229 @@
+{
+ "inputs": {
+  "age": 22.0,
+  "H": 178.0,
+  "M": 65.0,
+  "bf_bia": 10.0
+ },
+ "source": "NHANES 2011-2012 DEMO_G, BMX_G, DXX_G (Hologic Discovery A DXA)",
+ "sample": {
+  "men_18_35_with_dxa": 776,
+  "of_which_dxa_bf_lt_17": 101,
+  "asian_18_35": 117
+ },
+ "bf_dxa_scenarios": {
+  "low": 10.0,
+  "mid": 12.5,
+  "high": 15.0
+ },
+ "nhanes_floor": {
+  "min_dxa_bf_men_18_35": 12.1,
+  "pct_men_18_29_below_12.5": 0.4
+ },
+ "composition": {
+  "low": {
+   "FM_kg": 6.5,
+   "FFM_kg": 58.5,
+   "FFMI": 18.46,
+   "FFMI_pct_men_18_29_weighted": 36.0,
+   "FFMI_pct_asian_men_18_29": 58.6,
+   "ARM_L_kg": {
+    "mean": 6.92,
+    "pi90": [
+     5.88,
+     7.95
+    ]
+   },
+   "LEG_L_kg": {
+    "mean": 19.0,
+    "pi90": [
+     17.13,
+     20.86
+    ]
+   },
+   "TRUNK_L_kg": {
+    "mean": 26.59,
+    "pi90": [
+     24.44,
+     28.74
+    ]
+   },
+   "ALST_kg": {
+    "mean": 25.91,
+    "pi90": [
+     23.85,
+     27.97
+    ]
+   },
+   "BMC_kg": {
+    "mean": 2.6,
+    "pi90": [
+     2.15,
+     3.05
+    ]
+   },
+   "SMM_kim2002_kg": 30.42,
+   "SMM_pct_body_mass": 46.8,
+   "waist_iliac_crest_cm": {
+    "mean": 71.59,
+    "pi90": [
+     64.68,
+     78.5
+    ],
+    "r2": 0.93,
+    "n": 775
+   },
+   "arm_circ_relaxed_cm": {
+    "mean": 29.55,
+    "pi90": [
+     26.67,
+     32.42
+    ],
+    "r2": 0.86,
+    "n": 775
+   }
+  },
+  "mid": {
+   "FM_kg": 8.12,
+   "FFM_kg": 56.88,
+   "FFMI": 17.95,
+   "FFMI_pct_men_18_29_weighted": 30.4,
+   "FFMI_pct_asian_men_18_29": 51.2,
+   "ARM_L_kg": {
+    "mean": 6.71,
+    "pi90": [
+     5.67,
+     7.74
+    ]
+   },
+   "LEG_L_kg": {
+    "mean": 18.43,
+    "pi90": [
+     16.56,
+     20.29
+    ]
+   },
+   "TRUNK_L_kg": {
+    "mean": 25.82,
+    "pi90": [
+     23.67,
+     27.97
+    ]
+   },
+   "ALST_kg": {
+    "mean": 25.13,
+    "pi90": [
+     23.07,
+     27.19
+    ]
+   },
+   "BMC_kg": {
+    "mean": 2.57,
+    "pi90": [
+     2.12,
+     3.02
+    ]
+   },
+   "SMM_kim2002_kg": 29.54,
+   "SMM_pct_body_mass": 45.4,
+   "waist_iliac_crest_cm": {
+    "mean": 72.73,
+    "pi90": [
+     65.83,
+     79.64
+    ],
+    "r2": 0.93,
+    "n": 775
+   },
+   "arm_circ_relaxed_cm": {
+    "mean": 29.3,
+    "pi90": [
+     26.43,
+     32.18
+    ],
+    "r2": 0.86,
+    "n": 775
+   }
+  },
+  "high": {
+   "FM_kg": 9.75,
+   "FFM_kg": 55.25,
+   "FFMI": 17.44,
+   "FFMI_pct_men_18_29_weighted": 20.1,
+   "FFMI_pct_asian_men_18_29": 38.3,
+   "ARM_L_kg": {
+    "mean": 6.5,
+    "pi90": [
+     5.46,
+     7.53
+    ]
+   },
+   "LEG_L_kg": {
+    "mean": 17.86,
+    "pi90": [
+     15.99,
+     19.72
+    ]
+   },
+   "TRUNK_L_kg": {
+    "mean": 25.05,
+    "pi90": [
+     22.9,
+     27.2
+    ]
+   },
+   "ALST_kg": {
+    "mean": 24.35,
+    "pi90": [
+     22.29,
+     26.41
+    ]
+   },
+   "BMC_kg": {
+    "mean": 2.53,
+    "pi90": [
+     2.08,
+     2.98
+    ]
+   },
+   "SMM_kim2002_kg": 28.66,
+   "SMM_pct_body_mass": 44.1,
+   "waist_iliac_crest_cm": {
+    "mean": 73.88,
+    "pi90": [
+     66.98,
+     80.78
+    ],
+    "r2": 0.93,
+    "n": 775
+   },
+   "arm_circ_relaxed_cm": {
+    "mean": 29.06,
+    "pi90": [
+     26.19,
+     31.93
+    ],
+    "r2": 0.86,
+    "n": 775
+   }
+  }
+ },
+ "neighbours_173_183cm_60_70kg_bf_lt17": {
+  "n": 14,
+  "waist_ic_cm_mean": 74.0,
+  "waist_sd": 4.0,
+  "dxa_bf_mean": 15.0,
+  "arm_circ_mean": 28.9,
+  "ffmi_mean": 17.58
+ },
+ "navy_method_waist_minus_neck_cm": {
+  "10": 39.5,
+  "12.5": 42.2,
+  "15": 45.2
+ },
+ "rfm_waist_cm": {
+  "10": 65.9,
+  "12.5": 69.1,
+  "15": 72.7
+ }
+}

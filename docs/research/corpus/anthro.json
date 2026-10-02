@@ -1,0 +1,1035 @@
+{
+ "source": "ANSUR II male public data (n = 4082), Gordon et al. 2014, NATICK/TR-15/007",
+ "target": {
+  "stature": 1780.0,
+  "span": 1820.0,
+  "weight": 65.0,
+  "waistcircumference": 710.5,
+  "Age": 22.0,
+  "asian": 1.0
+ },
+ "waist_omphalion_sd_mm": 25.2,
+ "kernel_bandwidth_sd": 0.645,
+ "effective_n_local": 350.0,
+ "nearest40": {
+  "stature": 1776.6,
+  "span": 1822.2,
+  "weight": 64.8,
+  "waist": 752.0,
+  "asian": 2
+ },
+ "measurements": {
+  "abdominalextensiondepthsitting": {
+   "value_mm": 186.2,
+   "pi90_mm": [
+    167.9,
+    206.4
+   ],
+   "global_mm": 181.7,
+   "ansur_mean_mm": 254.7,
+   "ansur_pct_of_wearer": 1.3,
+   "nearest40_mean_mm": 197.5
+  },
+  "acromialheight": {
+   "value_mm": 1450.5,
+   "pi90_mm": [
+    1419.6,
+    1482.0
+   ],
+   "global_mm": 1442.7,
+   "ansur_mean_mm": 1440.7,
+   "ansur_pct_of_wearer": 57.3,
+   "nearest40_mean_mm": 1448.7
+  },
+  "acromionradialelength": {
+   "value_mm": 333.2,
+   "pi90_mm": [
+    318.2,
+    348.9
+   ],
+   "global_mm": 333.6,
+   "ansur_mean_mm": 335.2,
+   "ansur_pct_of_wearer": 46.4,
+   "nearest40_mean_mm": 336.4
+  },
+  "anklecircumference": {
+   "value_mm": 216.8,
+   "pi90_mm": [
+    202.4,
+    232.2
+   ],
+   "global_mm": 216.9,
+   "ansur_mean_mm": 229.3,
+   "ansur_pct_of_wearer": 18.5,
+   "nearest40_mean_mm": 215.6
+  },
+  "axillaheight": {
+   "value_mm": 1350.9,
+   "pi90_mm": [
+    1323.7,
+    1378.6
+   ],
+   "global_mm": 1344.0,
+   "ansur_mean_mm": 1329.1,
+   "ansur_pct_of_wearer": 65.1,
+   "nearest40_mean_mm": 1347.5
+  },
+  "balloffootcircumference": {
+   "value_mm": 248.4,
+   "pi90_mm": [
+    231.4,
+    266.8
+   ],
+   "global_mm": 248.3,
+   "ansur_mean_mm": 252.0,
+   "ansur_pct_of_wearer": 41.7,
+   "nearest40_mean_mm": 244.2
+  },
+  "balloffootlength": {
+   "value_mm": 199.6,
+   "pi90_mm": [
+    187.1,
+    213.0
+   ],
+   "global_mm": 199.2,
+   "ansur_mean_mm": 200.9,
+   "ansur_pct_of_wearer": 44.3,
+   "nearest40_mean_mm": 200.8
+  },
+  "biacromialbreadth": {
+   "value_mm": 412.7,
+   "pi90_mm": [
+    387.6,
+    439.4
+   ],
+   "global_mm": 410.8,
+   "ansur_mean_mm": 415.7,
+   "ansur_pct_of_wearer": 44.1,
+   "nearest40_mean_mm": 409.7
+  },
+  "bicepscircumferenceflexed": {
+   "value_mm": 314.4,
+   "pi90_mm": [
+    288.3,
+    342.9
+   ],
+   "global_mm": 316.3,
+   "ansur_mean_mm": 358.1,
+   "ansur_pct_of_wearer": 9.6,
+   "nearest40_mean_mm": 301.6
+  },
+  "bicristalbreadth": {
+   "value_mm": 264.2,
+   "pi90_mm": [
+    242.0,
+    288.5
+   ],
+   "global_mm": 262.1,
+   "ansur_mean_mm": 275.4,
+   "ansur_pct_of_wearer": 28.2,
+   "nearest40_mean_mm": 265.3
+  },
+  "bideltoidbreadth": {
+   "value_mm": 469.8,
+   "pi90_mm": [
+    444.9,
+    496.0
+   ],
+   "global_mm": 467.9,
+   "ansur_mean_mm": 510.4,
+   "ansur_pct_of_wearer": 9.9,
+   "nearest40_mean_mm": 464.4
+  },
+  "bimalleolarbreadth": {
+   "value_mm": 74.7,
+   "pi90_mm": [
+    68.7,
+    81.2
+   ],
+   "global_mm": 74.7,
+   "ansur_mean_mm": 74.8,
+   "ansur_pct_of_wearer": 47.9,
+   "nearest40_mean_mm": 73.2
+  },
+  "bitragionchinarc": {
+   "value_mm": 327.2,
+   "pi90_mm": [
+    307.2,
+    348.4
+   ],
+   "global_mm": 325.1,
+   "ansur_mean_mm": 331.7,
+   "ansur_pct_of_wearer": 39.1,
+   "nearest40_mean_mm": 318.0
+  },
+  "bitragionsubmandibulararc": {
+   "value_mm": 306.2,
+   "pi90_mm": [
+    285.2,
+    328.7
+   ],
+   "global_mm": 302.1,
+   "ansur_mean_mm": 315.7,
+   "ansur_pct_of_wearer": 29.4,
+   "nearest40_mean_mm": 295.1
+  },
+  "bizygomaticbreadth": {
+   "value_mm": 144.6,
+   "pi90_mm": [
+    135.7,
+    154.1
+   ],
+   "global_mm": 143.1,
+   "ansur_mean_mm": 142.6,
+   "ansur_pct_of_wearer": 62.7,
+   "nearest40_mean_mm": 136.7
+  },
+  "buttockcircumference": {
+   "value_mm": 885.3,
+   "pi90_mm": [
+    848.6,
+    923.6
+   ],
+   "global_mm": 894.0,
+   "ansur_mean_mm": 1019.5,
+   "ansur_pct_of_wearer": 3.5,
+   "nearest40_mean_mm": 894.4
+  },
+  "buttockdepth": {
+   "value_mm": 192.3,
+   "pi90_mm": [
+    176.2,
+    210.0
+   ],
+   "global_mm": 200.7,
+   "ansur_mean_mm": 245.8,
+   "ansur_pct_of_wearer": 1.2,
+   "nearest40_mean_mm": 203.6
+  },
+  "buttockheight": {
+   "value_mm": 883.5,
+   "pi90_mm": [
+    834.3,
+    935.7
+   ],
+   "global_mm": 896.7,
+   "ansur_mean_mm": 887.9,
+   "ansur_pct_of_wearer": 48.6,
+   "nearest40_mean_mm": 906.1
+  },
+  "buttockkneelength": {
+   "value_mm": 601.8,
+   "pi90_mm": [
+    575.6,
+    629.3
+   ],
+   "global_mm": 598.5,
+   "ansur_mean_mm": 618.0,
+   "ansur_pct_of_wearer": 29.9,
+   "nearest40_mean_mm": 607.9
+  },
+  "buttockpopliteallength": {
+   "value_mm": 497.5,
+   "pi90_mm": [
+    468.1,
+    528.8
+   ],
+   "global_mm": 492.7,
+   "ansur_mean_mm": 502.9,
+   "ansur_pct_of_wearer": 42.7,
+   "nearest40_mean_mm": 501.4
+  },
+  "calfcircumference": {
+   "value_mm": 359.1,
+   "pi90_mm": [
+    334.6,
+    385.4
+   ],
+   "global_mm": 363.5,
+   "ansur_mean_mm": 392.3,
+   "ansur_pct_of_wearer": 13.4,
+   "nearest40_mean_mm": 351.3
+  },
+  "cervicaleheight": {
+   "value_mm": 1524.7,
+   "pi90_mm": [
+    1506.4,
+    1543.2
+   ],
+   "global_mm": 1527.4,
+   "ansur_mean_mm": 1517.3,
+   "ansur_pct_of_wearer": 54.9,
+   "nearest40_mean_mm": 1528.8
+  },
+  "chestbreadth": {
+   "value_mm": 266.8,
+   "pi90_mm": [
+    246.7,
+    288.4
+   ],
+   "global_mm": 269.2,
+   "ansur_mean_mm": 289.4,
+   "ansur_pct_of_wearer": 10.2,
+   "nearest40_mean_mm": 270.9
+  },
+  "chestcircumference": {
+   "value_mm": 931.0,
+   "pi90_mm": [
+    882.5,
+    982.1
+   ],
+   "global_mm": 907.3,
+   "ansur_mean_mm": 1058.7,
+   "ansur_pct_of_wearer": 6.3,
+   "nearest40_mean_mm": 926.2
+  },
+  "chestdepth": {
+   "value_mm": 213.3,
+   "pi90_mm": [
+    193.0,
+    235.7
+   ],
+   "global_mm": 208.7,
+   "ansur_mean_mm": 253.8,
+   "ansur_pct_of_wearer": 5.8,
+   "nearest40_mean_mm": 213.7
+  },
+  "chestheight": {
+   "value_mm": 1316.7,
+   "pi90_mm": [
+    1282.7,
+    1351.5
+   ],
+   "global_mm": 1305.2,
+   "ansur_mean_mm": 1291.1,
+   "ansur_pct_of_wearer": 68.0,
+   "nearest40_mean_mm": 1313.0
+  },
+  "crotchheight": {
+   "value_mm": 847.0,
+   "pi90_mm": [
+    810.6,
+    885.1
+   ],
+   "global_mm": 857.2,
+   "ansur_mean_mm": 845.9,
+   "ansur_pct_of_wearer": 52.6,
+   "nearest40_mean_mm": 863.5
+  },
+  "crotchlengthomphalion": {
+   "value_mm": 563.6,
+   "pi90_mm": [
+    516.8,
+    614.6
+   ],
+   "global_mm": 581.2,
+   "ansur_mean_mm": 622.3,
+   "ansur_pct_of_wearer": 9.7,
+   "nearest40_mean_mm": 575.2
+  },
+  "crotchlengthposterioromphalion": {
+   "value_mm": 337.5,
+   "pi90_mm": [
+    300.1,
+    379.6
+   ],
+   "global_mm": 352.3,
+   "ansur_mean_mm": 355.9,
+   "ansur_pct_of_wearer": 27.2,
+   "nearest40_mean_mm": 349.2
+  },
+  "earbreadth": {
+   "value_mm": 34.1,
+   "pi90_mm": [
+    29.2,
+    39.8
+   ],
+   "global_mm": 34.8,
+   "ansur_mean_mm": 36.1,
+   "ansur_pct_of_wearer": 31.1,
+   "nearest40_mean_mm": 34.9
+  },
+  "earlength": {
+   "value_mm": 61.0,
+   "pi90_mm": [
+    54.2,
+    68.6
+   ],
+   "global_mm": 62.6,
+   "ansur_mean_mm": 64.2,
+   "ansur_pct_of_wearer": 21.8,
+   "nearest40_mean_mm": 61.3
+  },
+  "earprotrusion": {
+   "value_mm": 23.8,
+   "pi90_mm": [
+    18.7,
+    30.3
+   ],
+   "global_mm": 24.0,
+   "ansur_mean_mm": 23.2,
+   "ansur_pct_of_wearer": 55.4,
+   "nearest40_mean_mm": 23.1
+  },
+  "elbowrestheight": {
+   "value_mm": 255.0,
+   "pi90_mm": [
+    211.6,
+    307.2
+   ],
+   "global_mm": 240.3,
+   "ansur_mean_mm": 245.0,
+   "ansur_pct_of_wearer": 62.0,
+   "nearest40_mean_mm": 231.9
+  },
+  "eyeheightsitting": {
+   "value_mm": 821.6,
+   "pi90_mm": [
+    785.2,
+    859.7
+   ],
+   "global_mm": 823.2,
+   "ansur_mean_mm": 804.5,
+   "ansur_pct_of_wearer": 70.0,
+   "nearest40_mean_mm": 807.8
+  },
+  "footbreadthhorizontal": {
+   "value_mm": 101.7,
+   "pi90_mm": [
+    94.7,
+    109.3
+   ],
+   "global_mm": 101.1,
+   "ansur_mean_mm": 101.9,
+   "ansur_pct_of_wearer": 48.9,
+   "nearest40_mean_mm": 99.1
+  },
+  "footlength": {
+   "value_mm": 269.5,
+   "pi90_mm": [
+    254.8,
+    285.0
+   ],
+   "global_mm": 268.8,
+   "ansur_mean_mm": 271.2,
+   "ansur_pct_of_wearer": 45.4,
+   "nearest40_mean_mm": 271.0
+  },
+  "forearmcenterofgriplength": {
+   "value_mm": 346.4,
+   "pi90_mm": [
+    330.8,
+    362.8
+   ],
+   "global_mm": 346.9,
+   "ansur_mean_mm": 349.0,
+   "ansur_pct_of_wearer": 45.3,
+   "nearest40_mean_mm": 349.0
+  },
+  "forearmcircumferenceflexed": {
+   "value_mm": 286.8,
+   "pi90_mm": [
+    267.7,
+    307.3
+   ],
+   "global_mm": 285.0,
+   "ansur_mean_mm": 310.1,
+   "ansur_pct_of_wearer": 13.6,
+   "nearest40_mean_mm": 279.9
+  },
+  "forearmforearmbreadth": {
+   "value_mm": 519.1,
+   "pi90_mm": [
+    471.3,
+    571.8
+   ],
+   "global_mm": 503.9,
+   "ansur_mean_mm": 579.9,
+   "ansur_pct_of_wearer": 12.5,
+   "nearest40_mean_mm": 504.0
+  },
+  "forearmhandlength": {
+   "value_mm": 480.6,
+   "pi90_mm": [
+    463.4,
+    498.4
+   ],
+   "global_mm": 481.0,
+   "ansur_mean_mm": 480.2,
+   "ansur_pct_of_wearer": 51.0,
+   "nearest40_mean_mm": 483.1
+  },
+  "functionalleglength": {
+   "value_mm": 1105.8,
+   "pi90_mm": [
+    1055.5,
+    1158.5
+   ],
+   "global_mm": 1112.1,
+   "ansur_mean_mm": 1130.2,
+   "ansur_pct_of_wearer": 33.2,
+   "nearest40_mean_mm": 1126.7
+  },
+  "handbreadth": {
+   "value_mm": 87.1,
+   "pi90_mm": [
+    81.1,
+    93.5
+   ],
+   "global_mm": 85.6,
+   "ansur_mean_mm": 88.3,
+   "ansur_pct_of_wearer": 42.9,
+   "nearest40_mean_mm": 86.1
+  },
+  "handcircumference": {
+   "value_mm": 207.6,
+   "pi90_mm": [
+    194.3,
+    221.8
+   ],
+   "global_mm": 204.7,
+   "ansur_mean_mm": 212.3,
+   "ansur_pct_of_wearer": 32.6,
+   "nearest40_mean_mm": 205.1
+  },
+  "handlength": {
+   "value_mm": 195.9,
+   "pi90_mm": [
+    184.8,
+    207.8
+   ],
+   "global_mm": 193.4,
+   "ansur_mean_mm": 193.3,
+   "ansur_pct_of_wearer": 60.5,
+   "nearest40_mean_mm": 192.4
+  },
+  "headbreadth": {
+   "value_mm": 155.8,
+   "pi90_mm": [
+    147.1,
+    165.1
+   ],
+   "global_mm": 156.4,
+   "ansur_mean_mm": 154.3,
+   "ansur_pct_of_wearer": 60.5,
+   "nearest40_mean_mm": 151.0
+  },
+  "headcircumference": {
+   "value_mm": 560.1,
+   "pi90_mm": [
+    537.3,
+    583.8
+   ],
+   "global_mm": 564.3,
+   "ansur_mean_mm": 574.4,
+   "ansur_pct_of_wearer": 19.7,
+   "nearest40_mean_mm": 565.2
+  },
+  "headlength": {
+   "value_mm": 191.8,
+   "pi90_mm": [
+    181.1,
+    203.1
+   ],
+   "global_mm": 193.4,
+   "ansur_mean_mm": 199.5,
+   "ansur_pct_of_wearer": 12.0,
+   "nearest40_mean_mm": 197.5
+  },
+  "heelanklecircumference": {
+   "value_mm": 328.7,
+   "pi90_mm": [
+    313.1,
+    345.1
+   ],
+   "global_mm": 332.1,
+   "ansur_mean_mm": 343.5,
+   "ansur_pct_of_wearer": 18.5,
+   "nearest40_mean_mm": 332.4
+  },
+  "heelbreadth": {
+   "value_mm": 69.8,
+   "pi90_mm": [
+    62.1,
+    78.4
+   ],
+   "global_mm": 69.6,
+   "ansur_mean_mm": 72.5,
+   "ansur_pct_of_wearer": 29.2,
+   "nearest40_mean_mm": 68.7
+  },
+  "hipbreadth": {
+   "value_mm": 310.9,
+   "pi90_mm": [
+    290.2,
+    333.2
+   ],
+   "global_mm": 310.2,
+   "ansur_mean_mm": 345.7,
+   "ansur_pct_of_wearer": 6.0,
+   "nearest40_mean_mm": 312.7
+  },
+  "hipbreadthsitting": {
+   "value_mm": 327.8,
+   "pi90_mm": [
+    307.3,
+    349.8
+   ],
+   "global_mm": 334.4,
+   "ansur_mean_mm": 379.3,
+   "ansur_pct_of_wearer": 2.8,
+   "nearest40_mean_mm": 334.9
+  },
+  "iliocristaleheight": {
+   "value_mm": 1066.8,
+   "pi90_mm": [
+    1035.8,
+    1098.7
+   ],
+   "global_mm": 1072.8,
+   "ansur_mean_mm": 1061.6,
+   "ansur_pct_of_wearer": 54.5,
+   "nearest40_mean_mm": 1076.8
+  },
+  "interpupillarybreadth": {
+   "value_mm": 637.3,
+   "pi90_mm": [
+    583.5,
+    695.9
+   ],
+   "global_mm": 641.9,
+   "ansur_mean_mm": 640.2,
+   "ansur_pct_of_wearer": 48.2,
+   "nearest40_mean_mm": 630.0
+  },
+  "interscyei": {
+   "value_mm": 388.6,
+   "pi90_mm": [
+    342.9,
+    440.5
+   ],
+   "global_mm": 389.2,
+   "ansur_mean_mm": 430.9,
+   "ansur_pct_of_wearer": 11.3,
+   "nearest40_mean_mm": 396.0
+  },
+  "interscyeii": {
+   "value_mm": 420.3,
+   "pi90_mm": [
+    378.4,
+    466.9
+   ],
+   "global_mm": 422.0,
+   "ansur_mean_mm": 450.2,
+   "ansur_pct_of_wearer": 16.5,
+   "nearest40_mean_mm": 426.4
+  },
+  "kneeheightmidpatella": {
+   "value_mm": 485.0,
+   "pi90_mm": [
+    460.3,
+    511.1
+   ],
+   "global_mm": 489.4,
+   "ansur_mean_mm": 488.4,
+   "ansur_pct_of_wearer": 46.9,
+   "nearest40_mean_mm": 496.2
+  },
+  "kneeheightsitting": {
+   "value_mm": 546.6,
+   "pi90_mm": [
+    527.9,
+    566.0
+   ],
+   "global_mm": 549.9,
+   "ansur_mean_mm": 554.2,
+   "ansur_pct_of_wearer": 40.0,
+   "nearest40_mean_mm": 555.9
+  },
+  "lateralfemoralepicondyleheight": {
+   "value_mm": 488.9,
+   "pi90_mm": [
+    464.9,
+    514.1
+   ],
+   "global_mm": 494.3,
+   "ansur_mean_mm": 491.7,
+   "ansur_pct_of_wearer": 46.0,
+   "nearest40_mean_mm": 498.6
+  },
+  "lateralmalleolusheight": {
+   "value_mm": 71.7,
+   "pi90_mm": [
+    63.4,
+    81.1
+   ],
+   "global_mm": 69.7,
+   "ansur_mean_mm": 72.9,
+   "ansur_pct_of_wearer": 40.5,
+   "nearest40_mean_mm": 71.9
+  },
+  "lowerthighcircumference": {
+   "value_mm": 367.7,
+   "pi90_mm": [
+    345.7,
+    391.1
+   ],
+   "global_mm": 371.0,
+   "ansur_mean_mm": 409.3,
+   "ansur_pct_of_wearer": 9.2,
+   "nearest40_mean_mm": 359.0
+  },
+  "mentonsellionlength": {
+   "value_mm": 126.4,
+   "pi90_mm": [
+    114.5,
+    139.4
+   ],
+   "global_mm": 123.1,
+   "ansur_mean_mm": 122.6,
+   "ansur_pct_of_wearer": 72.2,
+   "nearest40_mean_mm": 122.0
+  },
+  "neckcircumference": {
+   "value_mm": 357.2,
+   "pi90_mm": [
+    337.2,
+    378.4
+   ],
+   "global_mm": 357.0,
+   "ansur_mean_mm": 397.6,
+   "ansur_pct_of_wearer": 4.0,
+   "nearest40_mean_mm": 360.9
+  },
+  "neckcircumferencebase": {
+   "value_mm": 400.7,
+   "pi90_mm": [
+    376.4,
+    426.5
+   ],
+   "global_mm": 398.9,
+   "ansur_mean_mm": 434.6,
+   "ansur_pct_of_wearer": 8.1,
+   "nearest40_mean_mm": 400.9
+  },
+  "overheadfingertipreachsitting": {
+   "value_mm": 1417.2,
+   "pi90_mm": [
+    1355.7,
+    1481.6
+   ],
+   "global_mm": 1430.0,
+   "ansur_mean_mm": 1426.7,
+   "ansur_pct_of_wearer": 45.1,
+   "nearest40_mean_mm": 1428.0
+  },
+  "palmlength": {
+   "value_mm": 116.7,
+   "pi90_mm": [
+    108.8,
+    125.2
+   ],
+   "global_mm": 115.8,
+   "ansur_mean_mm": 116.5,
+   "ansur_pct_of_wearer": 52.4,
+   "nearest40_mean_mm": 115.8
+  },
+  "poplitealheight": {
+   "value_mm": 435.0,
+   "pi90_mm": [
+    414.8,
+    456.1
+   ],
+   "global_mm": 439.6,
+   "ansur_mean_mm": 429.8,
+   "ansur_pct_of_wearer": 57.7,
+   "nearest40_mean_mm": 443.4
+  },
+  "radialestylionlength": {
+   "value_mm": 266.6,
+   "pi90_mm": [
+    251.7,
+    282.5
+   ],
+   "global_mm": 269.1,
+   "ansur_mean_mm": 267.9,
+   "ansur_pct_of_wearer": 47.5,
+   "nearest40_mean_mm": 270.4
+  },
+  "shouldercircumference": {
+   "value_mm": 1104.7,
+   "pi90_mm": [
+    1055.3,
+    1156.4
+   ],
+   "global_mm": 1105.9,
+   "ansur_mean_mm": 1178.6,
+   "ansur_pct_of_wearer": 11.5,
+   "nearest40_mean_mm": 1096.8
+  },
+  "shoulderelbowlength": {
+   "value_mm": 362.2,
+   "pi90_mm": [
+    347.5,
+    377.6
+   ],
+   "global_mm": 364.4,
+   "ansur_mean_mm": 363.7,
+   "ansur_pct_of_wearer": 48.0,
+   "nearest40_mean_mm": 367.0
+  },
+  "shoulderlength": {
+   "value_mm": 154.1,
+   "pi90_mm": [
+    137.0,
+    173.3
+   ],
+   "global_mm": 154.6,
+   "ansur_mean_mm": 149.8,
+   "ansur_pct_of_wearer": 66.6,
+   "nearest40_mean_mm": 153.1
+  },
+  "sittingheight": {
+   "value_mm": 940.6,
+   "pi90_mm": [
+    904.6,
+    978.0
+   ],
+   "global_mm": 941.0,
+   "ansur_mean_mm": 918.3,
+   "ansur_pct_of_wearer": 73.4,
+   "nearest40_mean_mm": 923.6
+  },
+  "sleevelengthspinewrist": {
+   "value_mm": 876.9,
+   "pi90_mm": [
+    848.6,
+    906.2
+   ],
+   "global_mm": 880.9,
+   "ansur_mean_mm": 895.8,
+   "ansur_pct_of_wearer": 31.7,
+   "nearest40_mean_mm": 885.0
+  },
+  "sleeveoutseam": {
+   "value_mm": 593.8,
+   "pi90_mm": [
+    569.6,
+    619.1
+   ],
+   "global_mm": 598.0,
+   "ansur_mean_mm": 593.1,
+   "ansur_pct_of_wearer": 51.2,
+   "nearest40_mean_mm": 599.0
+  },
+  "span": {
+   "value_mm": 1820.0,
+   "pi90_mm": [
+    1820.0,
+    1820.0
+   ],
+   "global_mm": 1820.0,
+   "ansur_mean_mm": 1814.2,
+   "ansur_pct_of_wearer": 53.9,
+   "nearest40_mean_mm": 1822.2
+  },
+  "stature": {
+   "value_mm": 1780.0,
+   "pi90_mm": [
+    1780.0,
+    1780.0
+   ],
+   "global_mm": 1780.0,
+   "ansur_mean_mm": 1756.2,
+   "ansur_pct_of_wearer": 63.5,
+   "nearest40_mean_mm": 1776.6
+  },
+  "suprasternaleheight": {
+   "value_mm": 1444.3,
+   "pi90_mm": [
+    1424.6,
+    1464.2
+   ],
+   "global_mm": 1445.5,
+   "ansur_mean_mm": 1438.6,
+   "ansur_pct_of_wearer": 54.6,
+   "nearest40_mean_mm": 1448.5
+  },
+  "tenthribheight": {
+   "value_mm": 1125.3,
+   "pi90_mm": [
+    1091.2,
+    1160.4
+   ],
+   "global_mm": 1126.2,
+   "ansur_mean_mm": 1120.7,
+   "ansur_pct_of_wearer": 54.3,
+   "nearest40_mean_mm": 1133.6
+  },
+  "thighcircumference": {
+   "value_mm": 517.3,
+   "pi90_mm": [
+    488.3,
+    548.0
+   ],
+   "global_mm": 534.9,
+   "ansur_mean_mm": 625.1,
+   "ansur_pct_of_wearer": 3.0,
+   "nearest40_mean_mm": 523.1
+  },
+  "thighclearance": {
+   "value_mm": 159.1,
+   "pi90_mm": [
+    147.0,
+    172.3
+   ],
+   "global_mm": 159.6,
+   "ansur_mean_mm": 180.5,
+   "ansur_pct_of_wearer": 7.7,
+   "nearest40_mean_mm": 159.2
+  },
+  "thumbtipreach": {
+   "value_mm": 803.0,
+   "pi90_mm": [
+    758.0,
+    850.6
+   ],
+   "global_mm": 799.7,
+   "ansur_mean_mm": 811.9,
+   "ansur_pct_of_wearer": 42.1,
+   "nearest40_mean_mm": 800.6
+  },
+  "tibialheight": {
+   "value_mm": 460.5,
+   "pi90_mm": [
+    439.3,
+    482.8
+   ],
+   "global_mm": 466.7,
+   "ansur_mean_mm": 468.2,
+   "ansur_pct_of_wearer": 38.9,
+   "nearest40_mean_mm": 473.5
+  },
+  "tragiontopofhead": {
+   "value_mm": 133.0,
+   "pi90_mm": [
+    122.0,
+    145.0
+   ],
+   "global_mm": 132.7,
+   "ansur_mean_mm": 131.1,
+   "ansur_pct_of_wearer": 64.9,
+   "nearest40_mean_mm": 131.8
+  },
+  "trochanterionheight": {
+   "value_mm": 897.3,
+   "pi90_mm": [
+    854.8,
+    941.9
+   ],
+   "global_mm": 912.5,
+   "ansur_mean_mm": 900.9,
+   "ansur_pct_of_wearer": 48.7,
+   "nearest40_mean_mm": 917.5
+  },
+  "verticaltrunkcircumferenceusa": {
+   "value_mm": 1580.6,
+   "pi90_mm": [
+    1512.2,
+    1652.0
+   ],
+   "global_mm": 1563.1,
+   "ansur_mean_mm": 1664.8,
+   "ansur_pct_of_wearer": 17.2,
+   "nearest40_mean_mm": 1557.2
+  },
+  "waistbacklength": {
+   "value_mm": 474.3,
+   "pi90_mm": [
+    442.2,
+    508.7
+   ],
+   "global_mm": 457.9,
+   "ansur_mean_mm": 477.6,
+   "ansur_pct_of_wearer": 46.3,
+   "nearest40_mean_mm": 463.1
+  },
+  "waistbreadth": {
+   "value_mm": 255.3,
+   "pi90_mm": [
+    235.9,
+    276.3
+   ],
+   "global_mm": 259.7,
+   "ansur_mean_mm": 326.4,
+   "ansur_pct_of_wearer": 0.8,
+   "nearest40_mean_mm": 270.5
+  },
+  "waistcircumference": {
+   "value_mm": 710.5,
+   "pi90_mm": [
+    710.5,
+    710.5
+   ],
+   "global_mm": 710.5,
+   "ansur_mean_mm": 940.6,
+   "ansur_pct_of_wearer": 0.5,
+   "nearest40_mean_mm": 752.0
+  },
+  "waistdepth": {
+   "value_mm": 175.1,
+   "pi90_mm": [
+    160.2,
+    191.4
+   ],
+   "global_mm": 169.1,
+   "ansur_mean_mm": 237.8,
+   "ansur_pct_of_wearer": 1.2,
+   "nearest40_mean_mm": 185.1
+  },
+  "waistfrontlengthsitting": {
+   "value_mm": 365.3,
+   "pi90_mm": [
+    332.8,
+    401.0
+   ],
+   "global_mm": 366.4,
+   "ansur_mean_mm": 387.6,
+   "ansur_pct_of_wearer": 22.8,
+   "nearest40_mean_mm": 364.6
+  },
+  "waistheightomphalion": {
+   "value_mm": 1067.3,
+   "pi90_mm": [
+    1035.6,
+    1099.9
+   ],
+   "global_mm": 1083.9,
+   "ansur_mean_mm": 1056.5,
+   "ansur_pct_of_wearer": 58.4,
+   "nearest40_mean_mm": 1080.8
+  },
+  "wristcircumference": {
+   "value_mm": 168.1,
+   "pi90_mm": [
+    158.4,
+    178.4
+   ],
+   "global_mm": 167.4,
+   "ansur_mean_mm": 175.9,
+   "ansur_pct_of_wearer": 20.7,
+   "nearest40_mean_mm": 168.9
+  },
+  "wristheight": {
+   "value_mm": 859.1,
+   "pi90_mm": [
+    828.6,
+    890.8
+   ],
+   "global_mm": 842.2,
+   "ansur_mean_mm": 847.5,
+   "ansur_pct_of_wearer": 61.9,
+   "nearest40_mean_mm": 844.9
+  }
+ }
+}

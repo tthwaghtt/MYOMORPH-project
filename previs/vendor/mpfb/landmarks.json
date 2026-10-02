@@ -1,0 +1,33 @@
+{
+ "idx": {
+  "acromion": 8236,
+  "radiale": 10057,
+  "stylion": 10439,
+  "dactylion": 8787,
+  "cervicale": 857,
+  "suprasternale": 1524,
+  "thelion": 8554,
+  "omphalion": 4116,
+  "trochanterion": 10937,
+  "crotch": 6431,
+  "patella": 11250,
+  "femoral_epicondyle": 11267,
+  "malleolus": 12986,
+  "pternion": 12464,
+  "acropodion": 11551,
+  "vertex": 881
+ },
+ "mirror": {
+  "acromion": 1558,
+  "radiale": 3389,
+  "stylion": 3772,
+  "dactylion": 2119,
+  "thelion": 1882,
+  "trochanterion": 4307,
+  "patella": 4632,
+  "femoral_epicondyle": 4649,
+  "malleolus": 6389,
+  "pternion": 5867,
+  "acropodion": 4933
+ }
+}
