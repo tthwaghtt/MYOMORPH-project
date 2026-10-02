@@ -1,0 +1,219 @@
+{
+ "version": "v1 (P1, 2026-10-02)",
+ "wearer": {
+  "stature_m": 1.78,
+  "span_m": 1.82,
+  "mass_kg": 65.0,
+  "body_fat_bia_pct": 10,
+  "body_fat_dxa_adopted_pct": 11,
+  "ffm_kg": 57.9,
+  "ffmi": 18.26,
+  "waist_omphalion_cm": 71.0,
+  "bideltoid_cm": 47.2,
+  "chest_cm": 91.5,
+  "crotch_height_cm": 84.9,
+  "segments": {
+   "head_neck": {
+    "mass_kg": 4.51,
+    "com_from_proximal": null,
+    "length_m": null
+   },
+   "trunk": {
+    "mass_kg": 28.25,
+    "com_from_proximal": null,
+    "length_m": null
+   },
+   "upper_arm": {
+    "mass_kg": 1.76,
+    "com_from_proximal": 0.5772,
+    "length_m": 0.334
+   },
+   "forearm": {
+    "mass_kg": 1.05,
+    "com_from_proximal": 0.4574,
+    "length_m": 0.267
+   },
+   "hand": {
+    "mass_kg": 0.4,
+    "com_from_proximal": 0.79,
+    "length_m": 0.195
+   },
+   "thigh": {
+    "mass_kg": 9.2,
+    "com_from_proximal": 0.4095,
+    "length_m": 0.395
+   },
+   "shank": {
+    "mass_kg": 2.81,
+    "com_from_proximal": 0.4459,
+    "length_m": 0.42
+   },
+   "foot": {
+    "mass_kg": 0.89,
+    "com_from_proximal": 0.4415,
+    "length_m": 0.273
+   }
+  }
+ },
+ "suit": {
+  "height_m": 1.837,
+  "shell_area_m2": 3.469,
+  "panel_count_est": 480,
+  "mass_budget_kg": {
+   "panels (MYO, Ti-6Al-4V 0.9 mm, +12 % hems)": 15.49,
+   "frame (OS: LPBF nodes, drawn tubes, bearings)": 7.0,
+   "hydraulics (COR + 8 cylinders, lines, fluid)": 12.5,
+   "electric drives (shoulder 2, wrist/finger 4)": 4.0,
+   "battery (ENERGIA 2 x 1.2 kWh, 2036 pack 450 Wh/kg)": 5.33,
+   "electronics, sensors, cooling (NERVUS, BRANCHIA)": 2.5,
+   "liner, fasteners, misc (FASCIA, FIX)": 2.5,
+   "PERSONA (shell, visor, blowers)": 1.4
+  },
+  "mass_total_kg": 50.7,
+  "mass_ratio_to_wearer": 0.78,
+  "note": "suit weight is carried by the OS frame to the boot soles, not by the wearer"
+ },
+ "joint_torque": {
+  "hip": {
+   "peak_Nm": 92.1,
+   "suit_self_Nm": 60.9,
+   "assist_Nm": 31.2
+  },
+  "knee": {
+   "peak_Nm": 99.7,
+   "suit_self_Nm": 65.9,
+   "assist_Nm": 33.8
+  },
+  "ankle": {
+   "peak_Nm": 115.1,
+   "suit_self_Nm": 76.1,
+   "assist_Nm": 39.0
+  },
+  "shoulder": {
+   "peak_Nm": 49.7,
+   "case": "arm horizontal, 5 kg tool"
+  },
+  "elbow": {
+   "peak_Nm": 21.1,
+   "case": "forearm horizontal, 5 kg tool"
+  }
+ },
+ "hydraulic_cylinders": {
+  "knee": {
+   "moment_arm_mm": 35.0,
+   "design_torque_Nm": 124.6,
+   "force_kN": 3.56,
+   "bore_mm": 16.0,
+   "rod_mm": 8.0,
+   "thrust_at_21MPa_kN": 4.22,
+   "peak_speed_m_s": 0.21,
+   "peak_flow_L_min": 2.53,
+   "peak_hydraulic_W": 887.0
+  },
+  "hip": {
+   "moment_arm_mm": 40.0,
+   "design_torque_Nm": 115.1,
+   "force_kN": 2.88,
+   "bore_mm": 16.0,
+   "rod_mm": 8.0,
+   "thrust_at_21MPa_kN": 4.22,
+   "peak_speed_m_s": 0.16,
+   "peak_flow_L_min": 1.93,
+   "peak_hydraulic_W": 676.0
+  },
+  "ankle": {
+   "moment_arm_mm": 45.0,
+   "design_torque_Nm": 143.9,
+   "force_kN": 3.2,
+   "bore_mm": 16.0,
+   "rod_mm": 8.0,
+   "thrust_at_21MPa_kN": 4.22,
+   "peak_speed_m_s": 0.225,
+   "peak_flow_L_min": 2.71,
+   "peak_hydraulic_W": 950.0
+  },
+  "elbow": {
+   "moment_arm_mm": 30.0,
+   "design_torque_Nm": 26.4,
+   "force_kN": 0.88,
+   "bore_mm": 10.0,
+   "rod_mm": 5.0,
+   "thrust_at_21MPa_kN": 1.65,
+   "peak_speed_m_s": 0.18,
+   "peak_flow_L_min": 0.85,
+   "peak_hydraulic_W": 297.0
+  }
+ },
+ "system_pressure_MPa": 21,
+ "power": {
+  "mechanical_avg_W": 123.0,
+  "electrical_avg_W": {
+   "actuation": 323.0,
+   "electronics + sensors": 60.0,
+   "cooling blowers": 30.0,
+   "standby drives": 25.0
+  },
+  "electrical_total_W": 438.0,
+  "hydraulic_efficiency": 0.38
+ },
+ "battery": {
+  "energy_kWh": 2.4,
+  "modules": 2,
+  "pack_Wh_per_kg_2036": 450,
+  "cell_Wh_per_kg_2036": 600,
+  "pack_mass_kg": 5.33,
+  "runtime_mixed_h": 5.5,
+  "note": "2036 energy density is the one declared exception (Doha brief)"
+ },
+ "thermal": {
+  "heat_W": 315.0,
+  "air_dT_K": 20.0,
+  "airflow_L_s": 13.1,
+  "airflow_CFM": 28.0,
+  "louvres": [
+   "pectoral (shoulder motors)",
+   "trapezius boxes (electronics)",
+   "abdominal side vents (battery, HPU intake)",
+   "gluteal (HPU exhaust)"
+  ]
+ },
+ "rom_deg": {
+  "neck_flex_ext_rot": [
+   40,
+   45,
+   70
+  ],
+  "trunk_flex_ext_lat_rot": [
+   60,
+   20,
+   25,
+   35
+  ],
+  "shoulder_flex_abd_ext": [
+   160,
+   150,
+   45
+  ],
+  "elbow": [
+   0,
+   135
+  ],
+  "wrist_flex_ext": [
+   65,
+   60
+  ],
+  "hip_flex_ext_abd": [
+   110,
+   20,
+   35
+  ],
+  "knee": [
+   0,
+   125
+  ],
+  "ankle_dorsi_plantar": [
+   15,
+   40
+  ]
+ }
+}

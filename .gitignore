@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+# previs/blueprint: derived from the drawing by previs/blueprint.py (regenerated on demand)
+previs/blueprint/*.npy
+previs/blueprint/*_mask.png
+previs/blueprint/*_lines.png
+previs/blueprint/rear_sheet.png
+previs/blueprint/helmet_side_sheet.png

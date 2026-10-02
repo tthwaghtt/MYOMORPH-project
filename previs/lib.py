@@ -70,14 +70,15 @@ def mat_metal(name, f0, rough=0.35, aniso=0.0, rot=0.0, tangent_uv=True, bump=0.
     return m
 
 
-def mat_heat_tint(name, f0=(0.441, 0.400, 0.361), axis='Z', lo=0.0, hi=1.0, rough=0.28):
-    """Titanium with an oxide thin film whose thickness grows toward a heat source (temper colours)."""
+def mat_heat_tint(name, f0=(0.441, 0.400, 0.361), axis='Z', lo=0.0, hi=1.0, rough=0.28, nm=(15.0, 75.0), coord='Object'):
+    """Titanium with an oxide thin film whose thickness grows toward a heat source (temper colours). First-order
+    TiO2 interference: ~20-35 nm straw/gold, ~45 nm purple, ~55-70 nm blue (thicker gives second-order rainbows)."""
     m = mat_metal(name, f0, rough=rough, bump=0.15)
     nt = m.node_tree; p = _bsdf(m)
     tc = nt.nodes.new('ShaderNodeTexCoord'); sep = nt.nodes.new('ShaderNodeSeparateXYZ')
-    nt.links.new(tc.outputs['Object'], sep.inputs[0])
+    nt.links.new(tc.outputs[coord], sep.inputs[0])
     mr = nt.nodes.new('ShaderNodeMapRange'); mr.inputs['From Min'].default_value = lo; mr.inputs['From Max'].default_value = hi
-    mr.inputs['To Min'].default_value = 0.0; mr.inputs['To Max'].default_value = 420.0
+    mr.inputs['To Min'].default_value = nm[0]; mr.inputs['To Max'].default_value = nm[1]
     nt.links.new(sep.outputs[axis], mr.inputs['Value'])
     if 'Thin Film Thickness' in p.inputs:
         nt.links.new(mr.outputs['Result'], p.inputs['Thin Film Thickness']); p.inputs['Thin Film IOR'].default_value = 2.5
@@ -147,6 +148,11 @@ def materials():
 # ---------------------------------------------------------------- scene, lights, camera
 def new_scene(res=(1920, 1080), samples=96, exposure=0.0):
     bpy.ops.wm.read_factory_settings(use_empty=True)
+    MATS.clear()                                  # the factory reset removed the cached datablocks
+    try:
+        import suit; suit.FIN.clear()
+    except Exception:
+        pass
     sc = bpy.context.scene
     sc.unit_settings.system = 'METRIC'
     sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'
