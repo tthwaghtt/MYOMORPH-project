@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MYOMORPH P0 Platform Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+/* Layout: test console — live 3D viewport on top, auto results, then guided manual tests */
+:root {
+  --bg: #121314; --surface: #1a1b1d; --raise: #222427; --fg: #e9e7e3; --muted: #a3a29e; --line: #2e3033;
+  --gold: #d9ad52; --ok: #6cc28a; --warn: #e6b450; --bad: #ef7a6a; --info: #8fb4e6;
+  --f-display: "Saira Condensed", "Arial Narrow", sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.6; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.wrap { max-width: 920px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 28px; }
+h1, h2 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.label { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+header { display: grid; gap: 8px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(32px, 7vw, 48px); line-height: 1; }
+h1 span { color: var(--gold); }
+.lede { color: var(--muted); max-width: 64ch; }
+.save { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); }
+.save.on { color: var(--ok); }
+.viewport { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #0b0b0c; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.viewport canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.vp-bar { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; pointer-events: none; }
+.vp-bar > * { pointer-events: auto; }
+.seg { display: inline-flex; background: rgba(18,19,20,.82); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { font: 500 12.5px var(--f-mono); color: var(--muted); background: none; border: 0; padding: 7px 10px; cursor: pointer; }
+.seg button[aria-pressed="true"] { color: var(--bg); background: var(--gold); }
+.badge { font: 500 12px var(--f-mono); background: rgba(18,19,20,.82); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; color: var(--fg); }
+section { display: grid; gap: 12px; }
+h2 { font-size: 18px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+tr:last-child td { border-bottom: 0; }
+td.v { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); word-break: break-word; }
+.pill { display: inline-block; font: 500 11.5px var(--f-mono); padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.ok { color: var(--ok); } .pill.warn { color: var(--warn); } .pill.bad { color: var(--bad); } .pill.wait { color: var(--muted); } .pill.info { color: var(--info); }
+.tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.test { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.test h3 { margin: 0; font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.test p { font-size: 13.5px; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+button.key { font: 500 13.5px var(--f-body); color: var(--fg); background: var(--raise); border: 1px solid var(--line); border-bottom-width: 3px; border-radius: 6px; padding: 8px 14px; cursor: pointer; transition: transform .06s ease, border-bottom-width .06s ease; }
+button.key:active { transform: translateY(2px); border-bottom-width: 1px; }
+button.key.primary { border-color: var(--gold); color: var(--gold); }
+button:focus-visible, textarea:focus-visible, label:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ask { display: none; gap: 8px; align-items: center; font-size: 13.5px; }
+.ask.on { display: flex; flex-wrap: wrap; }
+textarea { width: 100%; min-height: 84px; font: 14px var(--f-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px; resize: vertical; }
+.ios-switch { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+@media (prefers-reduced-motion: reduce) { button.key { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="label">MYOMORPH-MK. 1 · P0 환경 시험</span>
+    <h1>Platform <span>Test</span></h1>
+    <p class="lede">이 페이지는 실제 슈트를 만들기 전에, 도하님 기기에서 3D 렌더러, 소리, 진동, 센서가 동작하는지 확인합니다. 위쪽 결과는 자동으로 측정되고, 아래 버튼 시험은 직접 눌러 주세요. 결과는 자동 저장되어 Claude가 읽습니다. 데스크톱과 휴대폰에서 각각 한 번씩 열어 주시면 가장 좋습니다.</p>
+    <span class="save" id="save">저장: 연결 중…</span>
+  </header>
+
+  <div class="viewport" id="vp">
+    <canvas id="c"></canvas>
+    <div class="vp-bar">
+      <div class="seg" role="group" aria-label="톤매핑">
+        <button id="tm-lut" aria-pressed="true">Blender AgX (LUT)</button>
+        <button id="tm-three" aria-pressed="false">three.js AgX</button>
+      </div>
+      <span class="badge" id="fps">— ms</span>
+    </div>
+  </div>
+  <p class="lede">시험용 곡면 티타늄 패널(1 mm 판, 0.4 mm 베벨, 결 방향 이방성)과 TiN 골드 체결부품 6개. 드래그로 돌려 보세요. 성능 측정을 위해 페이지를 최소 15초 정도 열어 두세요. 톤매핑 두 방식을 바꿔 보면 색 차이가 보입니다.</p>
+
+  <section>
+    <h2>자동 측정</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>결과</th><th>상세</th></tr></thead>
+      <tbody id="auto"></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>직접 시험</h2>
+    <div class="tests">
+      <div class="test" id="t-audio">
+        <h3>소리 <span class="pill wait" data-s>대기</span></h3>
+        <p>티타늄 패널 체결음을 물리 모델로 합성합니다. 볼륨을 적당히 켜고 누르세요.</p>
+        <div class="row"><button class="key primary" id="b-audio">체결음 재생</button><button class="key" id="b-audio2">연속 5회</button></div>
+        <div class="ask" data-ask>들렸나요? <button class="key" data-yes>들림</button><button class="key" data-no>안 들림</button></div>
+      </div>
+      <div class="test" id="t-vib">
+        <h3>진동 (Android) <span class="pill wait" data-s>대기</span></h3>
+        <p>휴대폰에서 눌러 주세요. 체결감용 짧은 진동 패턴입니다.</p>
+        <div class="row"><button class="key primary" id="b-vib">진동 시험</button></div>
+        <div class="ask" data-ask>느껴졌나요? <button class="key" data-yes>느낌</button><button class="key" data-no>없음</button></div>
+      </div>
+      <div class="test" id="t-ios">
+        <h3>햅틱 (iPhone) <span class="pill wait" data-s>대기</span></h3>
+        <p>iPhone에서 눌러 주세요. iOS 18 이상에서 시스템 햅틱이 울리는지 봅니다.</p>
+        <div class="row"><label class="key primary" id="b-ios" for="ios-sw">햅틱 시험<input type="checkbox" switch class="ios-switch" id="ios-sw"></label></div>
+        <div class="ask" data-ask>느껴졌나요? <button class="key" data-yes>느낌</button><button class="key" data-no>없음</button></div>
+      </div>
+      <div class="test" id="t-lock">
+        <h3>포인터 잠금 <span class="pill wait" data-s>대기</span></h3>
+        <p>데스크톱에서 눌러 주세요. 무게감 있는 드래그(의사 햅틱)에 씁니다. Esc로 해제됩니다.</p>
+        <div class="row"><button class="key primary" id="b-lock">포인터 잠금</button></div>
+      </div>
+      <div class="test" id="t-fs">
+        <h3>전체 화면 <span class="pill wait" data-s>대기</span></h3>
+        <p>몰입 모드용. 다시 누르거나 Esc로 나갑니다.</p>
+        <div class="row"><button class="key primary" id="b-fs">전체 화면</button></div>
+      </div>
+      <div class="test" id="t-tilt">
+        <h3>기울기 센서 <span class="pill wait" data-s>대기</span></h3>
+        <p>휴대폰을 기울이면 조명이 따라 움직이는 기능에 씁니다.</p>
+        <div class="row"><button class="key primary" id="b-tilt">센서 켜기</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>메모</h2>
+    <label for="memo" class="lede">본 것, 들은 것, 이상한 점을 자유롭게 적어 주세요. 입력을 멈추면 저장됩니다.</label>
+    <textarea id="memo" placeholder="예: 색은 LUT 쪽이 더 진함, 소리는 너무 높음"></textarea>
+  </section>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

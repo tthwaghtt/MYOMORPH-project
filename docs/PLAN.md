@@ -952,7 +952,7 @@ MYOMORPH-project/
 
 ### P0. 조사와 기반 (10%)
 - **P0.1 블렌더 방법론 심층 조사(깊이 10)** → 보고서 + MBS 규약 + 린터 설계 ✅
-- P0.2 **플랫폼 스파이크**: 작은 Vite 테스트 페이지를 비공개 Artifact로 발행해서 WebGPU, 오디오 잠금 해제, Vibration, Pointer Lock, wasm MIME, 상대 경로 fetch, 파일 한도를 실측
+- P0.2 ✅ (기기 측정 대기) **플랫폼 스파이크** → [`reviews/P0-platform.md`](reviews/P0-platform.md): 작은 Vite 테스트 페이지를 비공개 Artifact로 발행해서 WebGPU, 오디오 잠금 해제, Vibration, Pointer Lock, wasm MIME, 상대 경로 fetch, 파일 한도를 실측
 - P0.3 렌더/색 스파이크: ✅ bpy 5.2.1 설치·동작 확인, Cycles CPU 벤치, AgX LUT 정확도, ΔE 테스트를 G0 조사에서 선행 완료
 - P0.4 사운드 스파이크: 모달 합성 프로토타입 + 스펙트로그램 파이프라인
 - 🚩 **G0: 블렌더 조사 보고와 승인** (+ 스파이크 결과 공유)
@@ -1018,6 +1018,8 @@ P0 ──G0──▶ P1 ──G1──▶ P2 ──G2──▶ P3 ──G3──
 | R13 | KTX2 인코더(KTX-Software) 확보 불가 — **G0 확인: GitHub 릴리스 다운로드 차단** | 중간 / 낮음 | npm `ktx2-encoder`, PyPI `pyktx` 시험(P0.2) → 실패 시 WebP 폴백(GPU 메모리 예산 재조정) |
 | R14 | MPFB2 헤드리스 설치 불가 — **G0 확인: zip 차단, 단 기본 메시·타깃(CC0)은 raw로 개별 다운로드 가능** | 낮음 / 중간 | 필요한 파일만 받아 타깃 적용을 자체 구현. 최후 수단은 자체 SDF 바디(B2 2안) |
 | R15 | 블렌더 PyPI wheel에 Draco/meshopt 라이브러리 없음 (G0 실측: 압축 옵션이 조용히 무시됨) | 확정 / 낮음 | 압축은 glTF-Transform 후처리 (MBS-E02) |
+| R17 | **아티팩트 서버가 `.glb`/`.bin`/`.ktx2` 거부, CSP가 `blob:` fetch 차단** (P0 실측) | 확정 / 높음 | `application/wasm` 타입으로 발행(SHA-256 일치 확인), 버퍼 직접 디코딩 플러그인. 둘 다 P0에서 해결 |
+| R18 | three.js r186 WebGPU가 구버전 브라우저에서 실패 (P0 실측) | 중간 / 중간 | WebGL2 백엔드로 자동 재시작 (P0에서 구현·검증) |
 | R16 | AgX LUT 라이선스 원문 미확인 (G0) | 낮음 / 중간 | 출시 전 확인. 대안: 자체 생성 LUT 데이터 또는 Khronos PBR Neutral |
 
 ---
