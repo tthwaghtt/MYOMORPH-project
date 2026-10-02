@@ -3,7 +3,7 @@ import lib
 OUT = '/tmp/claude-0/-home-user-MYOMORPH-project/d54a34ea-8150-5612-94af-75c46b1d240a/scratchpad/'
 tag = sys.argv[1]
 if tag == 'before':
-    lib.SHAPE.pop('measure-shoulder-dist-decr'); lib.SHAPE['measure-shoulder-dist-incr'] = 0.45; lib.SHAPE['measure-waist-circ-decr'] = 0.45
+    lib.SHAPE.pop('measure-waist-circ-incr'); lib.SHAPE['measure-waist-circ-decr'] = 0.009
 sc = lib.new_scene(res=(700, 1000), samples=24)
 v, f, j = lib.load_wearer(); print(tag, lib.measure(v, j))
 b = lib.mesh_object('GEO-wearer', v, f); b.data.materials.append(lib.materials()['clay'])

@@ -41,7 +41,8 @@ def _target(name):
 SHAPE = {
     'torso-vshape-incr': 0.9, 'torso-muscle-pectoral-incr': 0.7, 'torso-muscle-dorsi-incr': 0.7,
     # 2026-10-02 Doha: waist girth +5 cm, shoulder width -4 cm (fit by measure(): waist 54.8->59.8 cm, bideltoid 57.1->53.2 cm)
-    'measure-shoulder-dist-decr': 0.52, 'measure-waist-circ-decr': 0.009, 'hip-scale-horiz-decr': 0.35,
+    # 2026-10-02 Doha (2): waist girth 65 cm -> measure-waist-circ-incr 0.442 (waist 65.0 cm, bideltoid 53.2 cm)
+    'measure-shoulder-dist-decr': 0.52, 'measure-waist-circ-incr': 0.442, 'hip-scale-horiz-decr': 0.35,
     'breast-point-decr': 1.0, 'breast-volume-vert-up': 0.6, 'stomach-tone-incr': 0.8,
     'l-upperarm-shoulder-muscle-incr': 0.7, 'r-upperarm-shoulder-muscle-incr': 0.7,
     'l-lowerarm-muscle-incr': 0.5, 'r-lowerarm-muscle-incr': 0.5,
