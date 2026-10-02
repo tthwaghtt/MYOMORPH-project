@@ -7,14 +7,14 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { noBlobTextures } from './gltf-noblob.js';
-import { renderLock, renderNutrunner, renderHydraulic, renderLockV1 } from './sfx.js';
+import { renderLock, renderNutrunner, renderHydraulic, renderLockV1, renderNutrunnerV2, renderHydraulicV2 } from './sfx.js';
 
 const $ = (id) => document.getElementById(id);
 const BASE = new URL('./', document.baseURI);   // published files are served next to the page
 const url = (p) => new URL(p, BASE).href;
 
 /* ---------------- results + persistence ---------------- */
-const results = { started: new Date().toISOString(), page: 'p0-platform v5', auto: {}, manual: {}, memo: '' };
+const results = { started: new Date().toISOString(), page: 'p0-platform v6', auto: {}, manual: {}, memo: '' };
 const rows = {};
 function setAuto(key, label, status, detail) {
   results.auto[key] = { status, detail };
@@ -287,7 +287,10 @@ const SFX = {
   'lock-m': (sr, k) => renderLock(sr, { a: 0.16, b: 0.10, h: 0.001, massG: 70 }, k),
   'lock-l': (sr, k) => renderLock(sr, { a: 0.24, b: 0.18, h: 0.0012, massG: 600 }, k),
   nut: (sr, k) => renderNutrunner(sr, {}, k),
-  hyd: (sr, k) => renderHydraulic(sr, {}, k),
+  hyd: (sr, k) => renderHydraulic(sr, { valve: true }, k),
+  hyd0: (sr, k) => renderHydraulic(sr, { valve: false }, k),
+  nut2: (sr, k) => renderNutrunnerV2(sr, {}, k),
+  hyd2: (sr, k) => renderHydraulicV2(sr, {}, k),
   old: (sr, k) => renderLockV1(sr, k),
 };
 let comp = null, lastSfx = null, plays = 0, hapticFromSfx = false;

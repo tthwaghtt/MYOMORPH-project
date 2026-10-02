@@ -83,7 +83,7 @@ function finish(out, sr, room = true) {
  * then the titanium panel seats hard against its stop (solid "컥") with one or two micro-bounces.
  * part: { a, b, h } panel size in m; massG drives how heavy the seat sounds.
  */
-export function renderLock(sr, part = { a: 0.16, b: 0.10, h: 0.001, massG: 70 }, seed = 1) {
+export function renderLockV2(sr, part = { a: 0.16, b: 0.10, h: 0.001, massG: 70 }, seed = 1) {
   const r = rng(seed), dur = 0.55, out = new Float32Array(Math.ceil(dur * sr));
   const heavy = Math.min(1, Math.max(0, Math.log10(part.massG / 20) / Math.log10(30)));   // 20 g → 0, 600 g → 1
   const jitter = () => 1 + (r() - 0.5) * 0.04;
@@ -117,7 +117,7 @@ export function renderLock(sr, part = { a: 0.16, b: 0.10, h: 0.001, massG: 70 },
  * Robot-arm nutrunner driving an M2.5 Ti screw: BLDC whine (rpm × pole pairs) + planetary gear mesh,
  * thread friction pulsing at spindle rotation, rpm sag as torque builds, mechanical clutch double-click, spin-down.
  */
-export function renderNutrunner(sr, opts = {}, seed = 3) {
+export function renderNutrunnerV2(sr, opts = {}, seed = 3) {
   const r = rng(seed);
   const tRun = opts.tRun ?? 0.62, dur = tRun + 0.28, out = new Float32Array(Math.ceil(dur * sr));
   const poles = 4, Zs = 13, Zr = 47, ratio = 1 + Zr / Zs, rpmMax = 15000, rpmEnd = 11800;   // planetary stage
@@ -153,7 +153,7 @@ export function renderNutrunner(sr, opts = {}, seed = 3) {
  * Hydraulic actuator stroke: solenoid valve opens (poppet on seat), internal-gear pump ripple
  * (rpm × teeth + harmonics), flow hiss ∝ velocity, cavitation fizz, rod-seal rumble, valve close + settle.
  */
-export function renderHydraulic(sr, opts = {}, seed = 5) {
+export function renderHydraulicV2(sr, opts = {}, seed = 5) {
   const r = rng(seed);
   const stroke = opts.stroke ?? 0.75, dur = stroke + 0.35, out = new Float32Array(Math.ceil(dur * sr));
   const pumpF = 3600 / 60 * 11;  // 660 Hz
@@ -189,4 +189,134 @@ export function renderLockV1(sr, seed = 1) {
   addNoise(out, sr, 0, 0.002, 0.35, r);
   addModes(out, sr, Math.round(0.03 * sr), [4200, 6900, 9100].map((f, i) => ({ f, a: 0.25 / (i + 1), tau: 0.012 })), 0, 0.7, r);
   return finish(out, sr, false);
+}
+
+/* =====================================================================================
+ * v3 — "rougher by layering" (Doha, P0 listening 2): keep each sound's pitch, add layers
+ * that make it rough: amplitude modulation in the 20–150 Hz roughness band, dense
+ * inharmonic partials that beat, and stochastic micro-impacts (rattle, grit, crackle).
+ * ===================================================================================== */
+
+// Poisson micro-impacts: each excites a few small-part modes with random strength (grit, rattle, crackle)
+function addRattle(out, sr, i0, dur, ratePerSec, amp, r, modes, tc = 0.00008, densityEnv = () => 1) {
+  const n = Math.min(out.length - i0, Math.ceil(dur * sr));
+  let t = 0;
+  while (true) {
+    t += -Math.log(1 - r()) / ratePerSec;
+    if (t * sr >= n) break;
+    const d = densityEnv(t / dur);
+    if (r() > d) continue;
+    const g = amp * (0.25 + 0.75 * r() ** 2);
+    const jit = 1 + (r() - 0.5) * 0.12;
+    addModes(out, sr, i0 + Math.round(t * sr), modes.map((m) => ({ ...m, f: m.f * jit })), tc, g, r);
+  }
+}
+
+// smooth random signal (for turbulence / jitter), value roughly in [-1, 1]
+function smoothNoise(n, sr, rateHz, r) {
+  const y = new Float32Array(n), step = Math.max(1, Math.round(sr / rateHz));
+  let a = r() * 2 - 1, b = r() * 2 - 1;
+  for (let i = 0; i < n; i++) {
+    if (i % step === 0) { a = b; b = r() * 2 - 1; }
+    const u = (i % step) / step, w = u * u * (3 - 2 * u);
+    y[i] = a + (b - a) * w;
+  }
+  return y;
+}
+
+export function renderLock(sr, part = { a: 0.16, b: 0.10, h: 0.001, massG: 70 }, seed = 1) {
+  const r = rng(seed ^ 0x5a5a);
+  const out = renderLockV2(sr, part, seed);                       // the approved "철컥" stays the core
+  const heavy = Math.min(1, Math.max(0, Math.log10(part.massG / 20) / Math.log10(30)));
+  const t1 = Math.round(0.06 * sr), t2 = t1 + Math.round((0.038 + 0.012 * heavy) * sr);
+  // layer: stick-slip grit while the panel slides along its guide (instead of a smooth hiss)
+  const grit = [1900, 3300, 5200].map((f, i) => ({ f, a: [1, 0.6, 0.35][i], tau: 0.004 }));
+  addRattle(out, sr, 0, 0.058, 260, 0.05, r, grit, 0.00012, (u) => u);
+  // layer: the second latch of the panel engages 2–5 ms later, slightly detuned → a thicker, rougher "철"
+  const pawl2 = [3150, 4870, 6620, 8930].map((f, i) => ({ f: f * (1.035 + r() * 0.03), a: [1, 0.7, 0.5, 0.3][i], tau: [0.02, 0.016, 0.012, 0.009][i] }));
+  addModes(out, sr, t1 + Math.round((0.002 + r() * 0.003) * sr), pawl2, 0.00007, 0.32, r);
+  // layer: loose clip / washer rattle after the seat
+  const clip = [2700, 4400, 6900].map((f, i) => ({ f, a: [1, 0.6, 0.3][i], tau: 0.006 }));
+  addRattle(out, sr, t2 + Math.round(0.006 * sr), 0.07, 140, 0.11 + 0.06 * heavy, r, clip, 0.0001, (u) => (1 - u) ** 2);
+  return finish(out, sr, false);
+}
+
+export function renderNutrunner(sr, opts = {}, seed = 3) {
+  const r = rng(seed);
+  const tRun = opts.tRun ?? 0.62, dur = tRun + 0.28, N = Math.ceil(dur * sr), out = new Float32Array(N);
+  const poles = 4, Zs = 13, Zr = 47, ratio = 1 + Zr / Zs, rpmMax = 15000, rpmEnd = 11800;
+  const white = Float32Array.from({ length: N }, () => r() * 2 - 1);
+  const fric = biquad(biquad(white, sr, 'bp', 1300, 1.4), sr, 'bp', 1300, 1.4);
+  const brush = biquad(biquad(white.map((v, i) => white[(i * 7919) % N]), sr, 'hp', 2500), sr, 'lp', 9000);   // decorrelated copy
+  const jitter = smoothNoise(N, sr, 35, r), rough = smoothNoise(N, sr, 140, r);
+  const rpmAt = (t) => t < 0.07 ? rpmMax * (1 - Math.exp(-t / 0.018))
+    : t < tRun ? rpmMax - (rpmMax - rpmEnd) * ((t - 0.07) / (tRun - 0.07)) ** 1.6
+    : rpmEnd * Math.exp(-(t - tRun) / 0.05);
+  const ph = new Float64Array(8);
+  for (let i = 0; i < N; i++) {
+    const t = i / sr, rpm = rpmAt(t) * (1 + 0.004 * jitter[i]);       // slight speed wander, same pitch centre
+    const load = t < tRun ? Math.min(1, (t / tRun) ** 2) : 0;
+    const fm = rpm / 60 * poles, fg = rpm / 60 * Zs * Zr / (Zs + Zr), fs = rpm / 60 / ratio;
+    const freqs = [fm, fm * 1.031, fm * 0.966, fg, fg * 1.047, fs, fm * 2, rpm / 60];   // detuned layers beat at 30–120 Hz → roughness
+    for (let k = 0; k < freqs.length; k++) ph[k] += 2 * Math.PI * freqs[k] / sr;
+    const env = Math.min(1, t / 0.01) * (t < tRun ? 1 : Math.exp(-(t - tRun) / 0.06));
+    // whine: core + two detuned layers, amplitude-modulated near 70 Hz (peak of perceived roughness)
+    const am = 1 - 0.35 * (0.5 + 0.5 * Math.sin(2 * Math.PI * 68 * t + 3 * jitter[i]));
+    const whine = (0.26 * Math.sin(ph[0]) + 0.13 * Math.sin(ph[1]) + 0.12 * Math.sin(ph[2]) + 0.09 * Math.sin(ph[6])) * am;
+    // gear mesh with tooth-impact harshness (clipped sine ~ square-ish) and its detuned partner
+    const gm = Math.tanh(2.2 * Math.sin(ph[3])) * 0.6 + 0.4 * Math.sin(ph[4]);
+    const gear = (0.13 + 0.2 * load) * gm * (1 + 0.35 * Math.sin(ph[5] * 3));
+    const thread = (0.05 + 0.25 * load) * fric[i] * (0.6 + 0.4 * Math.max(0, Math.sin(ph[5])));
+    const brushes = 0.07 * brush[i] * (0.6 + 0.4 * Math.sin(ph[7] * 2)) * (0.7 + 0.3 * rough[i]);
+    const pwm = 0.012 * Math.sin(2 * Math.PI * 9200 * t);
+    out[i] += env * (whine + gear + thread + brushes + pwm) * 0.42;
+  }
+  // gear backlash rattle grows with load
+  const tooth = [1800, 3100, 4700].map((f, i) => ({ f, a: [1, 0.55, 0.3][i], tau: 0.003 }));
+  addRattle(out, sr, Math.round(0.08 * sr), tRun - 0.08, 320, 0.07, r, tooth, 0.0001, (u) => 0.25 + 0.75 * u);
+  // clutch release double click (+ a faint third ratchet tick)
+  const click = [2250, 3820, 5640, 7900].map((f, i) => ({ f, a: [1, 0.7, 0.5, 0.3][i], tau: [0.016, 0.012, 0.009, 0.007][i] }));
+  for (const [dt, g] of [[0, 1], [0.024, 0.65], [0.041, 0.2]]) {
+    const i0 = Math.round((tRun + dt) * sr);
+    addModes(out, sr, i0, click, 0.00007, 0.9 * g, r);
+    addNoise(out, sr, i0, 0.0007, 0.8 * g, r, 'decay', ['hp', 2000]);
+  }
+  return finish(out, sr);
+}
+
+/**
+ * Hydraulic "슉": no tonal pump whine (the pump lives in the HPU, far from the joint).
+ * At the actuator you hear oil rushing through the valve and lines: layered turbulent noise bands with
+ * independent random modulation, cavitation crackle, a body "chuff", and (optionally) soft valve ticks.
+ */
+export function renderHydraulic(sr, opts = {}, seed = 5) {
+  const r = rng(seed);
+  const stroke = opts.stroke ?? 0.42, withValve = opts.valve ?? true, dur = stroke + 0.22, N = Math.ceil(dur * sr), out = new Float32Array(N);
+  const w1 = Float32Array.from({ length: N }, () => r() * 2 - 1), w2 = Float32Array.from({ length: N }, () => r() * 2 - 1);
+  const bands = [
+    [biquad(biquad(w1, sr, 'bp', 900, 0.9), sr, 'bp', 900, 0.9), 0.55, smoothNoise(N, sr, 18, r)],    // body
+    [biquad(biquad(w2, sr, 'bp', 2400, 0.8), sr, 'bp', 2400, 0.8), 0.85, smoothNoise(N, sr, 26, r)],  // main rush
+    [biquad(biquad(w1, sr, 'bp', 5200, 0.9), sr, 'bp', 5200, 0.9), 0.45, smoothNoise(N, sr, 40, r)],  // edge
+  ];
+  const grain = smoothNoise(N, sr, 90, r), grain2 = smoothNoise(N, sr, 55, r);   // fast random modulation (40–150 Hz) → rough, not smooth
+  const t0 = 0.012;
+  for (let i = 0; i < N; i++) {
+    const t = i / sr - t0;
+    if (t < 0) continue;
+    const x = t / stroke;
+    // "슉": fast onset, a short swell, then decay as the rod decelerates
+    const env = t < stroke ? Math.min(1, t / 0.018) * (1 - 0.55 * x) * (0.85 + 0.15 * Math.sin(Math.PI * Math.min(1, x * 1.6)))
+                           : (1 - 0.55) * Math.exp(-(t - stroke) / 0.035);
+    let v = 0;
+    for (const [b, g, mod] of bands) v += b[i] * g * (0.75 + 0.25 * mod[i]);
+    out[i] += v * env * (0.62 + 0.24 * grain[i] + 0.14 * grain2[i]);
+  }
+  const bubble = [3800, 6100, 8800].map((f, i) => ({ f, a: [1, 0.6, 0.35][i], tau: 0.0018 }));
+  addRattle(out, sr, Math.round(t0 * sr), stroke, 900, 0.07, r, bubble, 0.00005, (u) => (1 - u) * 0.9 + 0.1);
+  if (withValve) {
+    const tick = [2600, 4100].map((f, i) => ({ f, a: [1, 0.5][i], tau: 0.005 }));
+    addModes(out, sr, 0, tick, 0.0001, 0.18, r);
+    addModes(out, sr, Math.round((t0 + stroke + 0.015) * sr), [{ f: 140, a: 1, tau: 0.03 }, ...tick], 0.0004, 0.22, r);
+  }
+  return finish(out, sr);
 }

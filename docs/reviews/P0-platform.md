@@ -82,6 +82,27 @@
 
 출처: [Atlas Copco 나사 체결 가이드](https://www.atlascopco.com/content/dam/atlas-copco/industrial-technique/general/documents/pocketguides/1007%2001Pocket%20Guide%20to%20Screwdriving.pdf), [클러치 클릭 검출 특허 (모터/기어음과 클릭 분리, 이중 클릭)](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6814152), [유압 소음 (Wikibooks)](https://en.wikibooks.org/wiki/Acoustics/Noise_in_Hydraulic_Systems), [Fluid Power World: 유압 소음](https://www.fluidpowerworld.com/preventing-noise-and-vibration-in-industrial-hydraulic-systems/), [모달 합성 지각 평가](https://www.researchgate.net/publication/333661332_Perceptual_Evaluation_of_Modal_Synthesis_for_Impact-Based_Sounds), [Farnell 절차적 오디오](https://designingsound.org/2012/01/18/procedural-audio-interview-with-andy-farnell/)
 
+## 6-2. 두 번째 청음 (v5, Mac, 블루투스 이어폰)
+
+| 소리 | 평가 | 도하 메모 |
+|---|---|---|
+| 철컥 20 g / 70 g / 600 g | 좋음 / 좋음 / 좋음 | |
+| 너트러너 v2 | 별로 | "다 좋은데 윙- 할 때 조금 더 거칠면" |
+| 유압 v2 | 별로 | "슉 소리만 나야 하는데 중간 높이의 이이이이- 가 방해" |
+| 전반 | | "조금 거친 느낌을 다들 추가. 높낮이를 바꾸는 게 아니라 소리를 겹치는 방향" |
+
+- 블루투스 = 예 → 출력 지연 약 170 ms는 블루투스 때문으로 확정. 시각-청각 지연 보정을 P5 기본값으로 확정.
+
+**v3 대응 (음높이는 유지, 층을 겹쳐 거칠게)**
+
+| 소리 | 더한 층 | 객관 지표 (v2 → v3) |
+|---|---|---|
+| 철컥 (좋음 유지) | 가이드 스틱-슬립 그릿, 2~5 ms 늦게 걸리는 두 번째 걸쇠(살짝 다른 음정 → 두껍고 거침), 안착 후 클립 덜컥거림 | 핵심 소리는 그대로 두고 아주 약하게 |
+| 너트러너 | 모터음 ±3% 탈조 층 2개(30~120 Hz 맞놀이), 약 70 Hz 진폭 변조(거칠기 지각이 가장 큰 대역), 클리핑한 기어 맞물림(톱니 충격 배음), 브러시 잡음, 부하에 따라 늘어나는 기어 백래시 덜컥거림, 클러치 세 번째 틱 | 거칠기 지표 0.48 → **0.62** |
+| 유압 | 펌프 음정 성분 **삭제**(펌프는 HPU에 있어 관절에서는 들리지 않는 것이 맞음). 900 Hz / 2.4 kHz / 5.2 kHz 난류 노이즈 3개 층이 각자 무작위로 흔들림, 40~150 Hz 빠른 떨림, 캐비테이션 기포 터짐, 행정 0.42 s의 짧은 '슉'. 밸브 틱 있는 판 / 없는 판 두 가지 | 음정 피크 45.9 dB → **14.3 dB**, 거칠기 0.36 → 0.40 |
+
+거칠기 지표 = 1~6 kHz 포락선의 변조 스펙트럼 중 20~150 Hz(거칠기 지각 대역) 비중. `tools/sound_metrics.py`.
+
 ## 7. P0 판정
 
 | 게이트 조건 | 상태 |
@@ -90,6 +111,6 @@
 | 렌더러 (WebGPU + 폴백) | ✅ |
 | 에셋 파이프라인 (블렌더 → 압축 → 웹) | ✅ |
 | 색 파이프라인 (AgX LUT) | ✅ |
-| 소리 엔진 | ✅ 동작, 소리 품질은 v2 청음 대기 |
+| 소리 엔진 | ✅ 동작. 체결음 승인(좋음 ×3), 너트러너·유압은 v3 청음 대기 |
 | 햅틱 | ✅ iPhone / Android는 기기 없음(코드 준비) |
 | 모바일 프레임 상한 원인 | ⏳ v5 재측정 |

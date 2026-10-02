@@ -9,7 +9,7 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const page = await browser.newPage(); const logs = [];
 page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(m.type() + ': ' + m.text()); }); page.on('pageerror', (e) => logs.push('pageerror: ' + e.message));
 await page.goto('http://localhost:5179/'); await page.waitForTimeout(6000);
-for (const k of ['lock-s', 'lock-m', 'lock-l', 'nut', 'hyd', 'old']) { await page.click(`[data-sfx="${k}"]`); await page.waitForTimeout(400); }
+for (const k of ['lock-s', 'lock-m', 'lock-l', 'nut', 'nut2', 'hyd', 'hyd0', 'hyd2']) { await page.click(`[data-sfx="${k}"]`); await page.waitForTimeout(400); }
 await page.click('[data-rate="good"]'); await page.click('#rebench'); await page.waitForTimeout(500);
 console.log(await page.$eval('#t-audio [data-s]', (e) => e.textContent), logs.filter((l) => !/CERT|fonts|GPU stall|404/.test(l)).slice(0, 10));
 await browser.close(); srv.close();

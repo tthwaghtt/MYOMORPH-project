@@ -101,15 +101,21 @@ textarea { width: 100%; min-height: 84px; font: 14px var(--f-body); color: var(-
     <h2>직접 시험</h2>
     <div class="tests">
       <div class="test wide" id="t-audio">
-        <h3>소리 v2 <span class="pill wait" data-s>대기</span></h3>
-        <p>도하 피드백("뚱뚱 → 철컥", 부품과 물성별로 다른 소리, 로봇팔 너트러너, 유압음)을 반영해 새로 합성했습니다. 체결음은 부품 크기와 무게에 따라 달라집니다. iPhone에서는 체결음과 함께 햅틱도 울립니다.</p>
+        <h3>소리 v3 <span class="pill wait" data-s>대기</span></h3>
+        <p>두 번째 청음 피드백 반영: 유압의 "이이이이" 음정 성분을 없애고 흐름 소리만 남겼습니다. 모든 소리는 음높이를 그대로 두고 층을 겹쳐 거칠게 만들었습니다(두 번째 걸쇠, 클립 덜컥거림, 기어 백래시, 난류 떨림, 기포 터짐). 체결음은 부품 크기와 무게에 따라 달라지고, iPhone에서는 햅틱도 함께 울립니다.</p>
         <div class="row">
           <button class="key primary" data-sfx="lock-s">철컥 · 작은 부품 20 g</button>
           <button class="key primary" data-sfx="lock-m">철컥 · 패널 70 g</button>
           <button class="key primary" data-sfx="lock-l">철컥 · 대흉근 패널 600 g</button>
-          <button class="key primary" data-sfx="nut">로봇팔 너트러너 (나사 체결)</button>
-          <button class="key primary" data-sfx="hyd">유압 실린더 작동</button>
-          <button class="key" data-sfx="old">이전 소리 (비교용)</button>
+        </div>
+        <div class="row">
+          <button class="key primary" data-sfx="nut">로봇팔 너트러너 v3 (거칠게)</button>
+          <button class="key" data-sfx="nut2">너트러너 v2 (비교)</button>
+        </div>
+        <div class="row">
+          <button class="key primary" data-sfx="hyd">유압 슉 v3 (+ 밸브 틱)</button>
+          <button class="key primary" data-sfx="hyd0">유압 슉 v3 (슉만)</button>
+          <button class="key" data-sfx="hyd2">유압 v2 (비교)</button>
         </div>
         <div class="row rate" id="rate">
           <span>방금 소리는?</span>
