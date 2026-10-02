@@ -48,6 +48,48 @@
 3. **WebGPU 실패 시 WebGL2 재시작**은 필수 (three.js r186 WebGPU가 구버전 브라우저의 텍스처 swizzle 미지원에서 실패).
 4. 로컬 시험 서버는 아티팩트와 같은 CSP를 흉내 내야 한다 (`connect-src 'self'`).
 
-## 5. 도하 기기 결과 (대기)
+## 5. 도하 기기 결과 (2026-10-02, 기록 8건)
 
-도하가 데스크톱과 휴대폰에서 시험 페이지를 열고 버튼 시험을 하면 이 절을 채운다.
+| 항목 | Mac (Apple M4, Claude 데스크톱 앱, Chrome 152 엔진) | iPhone (iOS 18.7, Claude 앱) |
+|---|---|---|
+| WebGPU / three.js 백엔드 | ✅ WebGPU (metal-3) | ✅ WebGPU (apple) |
+| 압축 모델 + KTX2 텍스처 (blob 우회 후) | ✅ ASTC 4×4 | ✅ ASTC 4×4 |
+| wasm, LUT 로드 | ✅ | ✅ |
+| 렌더 성능 (시험 장면) | ✅ 16.6 ms (60 fps, 화면 주사율 상한) @ 1658×930 | ⚠️ 33 ms (30 fps) @ 712×402 — 장면이 아주 가벼운데도 정확히 30 fps라서 GPU 한계가 아니라 **프레임 상한**으로 판단. 원인 후보: iOS 저전력 모드, 또는 WebKit이 상호작용 전 교차 출처 iframe을 30 fps로 제한. v5에 '상호작용 후 재측정' 추가 |
+| 소리 (AudioWorklet) | ✅ 들림, 기본 지연 5.3 ms | ✅ 들림, 기본 지연 2.7 ms |
+| 출력 지연 (outputLatency) | 168 ms | 176 ms (1회), 이후 미보고 |
+| iOS 햅틱 (switch 트릭) | 해당 없음 | ✅ **느껴짐** — 아티팩트 안에서도 동작 |
+| 진동 (Vibration API) | 해당 없음 | 없음 (iPhone 정상) |
+| 포인터 잠금 | ✅ | 해당 없음 |
+| 전체 화면 | ✅ | ❌ (iPhone은 요소 전체 화면 미지원) |
+| 기울기 센서 | ❌ 권한 거부 | ❌ 권한 거부 (아티팩트 iframe에서 허용되지 않음) |
+
+**판단**
+- 출력 지연 약 170 ms는 블루투스 이어폰의 전형적인 값이다(유선/내장 스피커는 보통 10~40 ms). → v5에 블루투스 여부 체크 추가. 지연이 40 ms를 넘으면 **화면의 충격 효과(플래시, 카메라 임펄스, 히트스톱)를 측정된 지연만큼 늦춰 소리와 맞추는** 동기화를 P5 기본값으로 한다.
+- 기울기 조명은 이 플랫폼에서 불가 → 모바일은 터치 드래그로 점검 조명을 움직이는 방식으로 대체.
+- iPhone 햅틱은 확정 채택. 체결음과 동시에 울리도록 v5에서 연결했다.
+
+## 6. 도하 피드백 (메모 원문 요지)과 대응
+
+1. "소리가 지금 뚱뚱뚱 소리야. '철컥' 소리가 나며 금속이 콱 맞물리며 체결되는 느낌" → **분석으로 확인**: 이전 소리는 에너지의 68%가 500 Hz 아래(판의 저차 굽힘 모드가 길게 울림). v2 '철컥'은 저역 7~33%, 스펙트럼 중심 4~5.7 kHz.
+   - 구조: ① 가이드 슬라이드(희미한 마찰음) → ② **'철'**: 경화강 폴(pawl)이 캐치를 넘어 때리는 짧은 접촉(0.06 ms), 소형 부품 모드 3~11 kHz, 짧은 울림 → ③ **'컥'**: 패널이 하드 스톱에 안착(접촉 0.22 ms), 아이솔레이터로 감쇠된 판 모드 + 1.7 kHz 대역 '청크' + 짧은 몸체음 + 미세 바운스 2회 → ④ 작은 실내 반사.
+2. "모든 부품에 같은 소리 금지, 부품과 물성에 따라" → 체결음 파라미터가 부품 크기·두께·질량에서 계산된다 (20 g / 70 g / 600 g 세 종 시연). 본 제작에서는 `assembly.json`의 부품별 값으로 자동 생성.
+3. "나사는 드릴 달린 로봇팔들이 직접 조이며 모터음" → **로봇팔 너트러너** 합성: BLDC 모터음(회전수 × 극쌍) + 유성기어 맞물림음(f_sun·Zs·Zr/(Zs+Zr)) + 나사산 마찰 + 토크 상승에 따른 회전수 저하 + **클러치 이중 클릭**(실제 너트러너 클러치의 특징) + 감속. → 스토리에 **자동 조립 셀(로봇팔 + 너트러너)** 을 추가한다 (PLAN 반영).
+4. "유압식 부품에는 유압 소리" → 솔레노이드 밸브 개방(포핏-시트 금속 클릭) + 내접기어 펌프 맥동(3600 rpm × 11 = 660 Hz + 고조파) + 속도에 비례하는 유량 히스 + 캐비테이션 + 로드 실 마찰 + 밸브 닫힘과 안착음.
+5. 레퍼런스 근거: 너트러너 클러치 클릭과 모터/기어 대역 분리, 펌프 맥동 주파수 공식, 밸브 포핏 접촉, 모달 합성(여기-공진 모델) — 출처는 아래.
+
+검증: 같은 코드(`src/sfx.js`)를 Node에서 오프라인 렌더 → 스펙트로그램으로 두 타격 분리, 울림 길이, 모터/기어 선, 클릭 대역을 확인. 최종 판단은 도하의 귀(v5 평가 버튼).
+
+출처: [Atlas Copco 나사 체결 가이드](https://www.atlascopco.com/content/dam/atlas-copco/industrial-technique/general/documents/pocketguides/1007%2001Pocket%20Guide%20to%20Screwdriving.pdf), [클러치 클릭 검출 특허 (모터/기어음과 클릭 분리, 이중 클릭)](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6814152), [유압 소음 (Wikibooks)](https://en.wikibooks.org/wiki/Acoustics/Noise_in_Hydraulic_Systems), [Fluid Power World: 유압 소음](https://www.fluidpowerworld.com/preventing-noise-and-vibration-in-industrial-hydraulic-systems/), [모달 합성 지각 평가](https://www.researchgate.net/publication/333661332_Perceptual_Evaluation_of_Modal_Synthesis_for_Impact-Based_Sounds), [Farnell 절차적 오디오](https://designingsound.org/2012/01/18/procedural-audio-interview-with-andy-farnell/)
+
+## 7. P0 판정
+
+| 게이트 조건 | 상태 |
+|---|---|
+| 배포 경로(다중 파일, 형식, 보안 정책) | ✅ 확정 |
+| 렌더러 (WebGPU + 폴백) | ✅ |
+| 에셋 파이프라인 (블렌더 → 압축 → 웹) | ✅ |
+| 색 파이프라인 (AgX LUT) | ✅ |
+| 소리 엔진 | ✅ 동작, 소리 품질은 v2 청음 대기 |
+| 햅틱 | ✅ iPhone / Android는 기기 없음(코드 준비) |
+| 모바일 프레임 상한 원인 | ⏳ v5 재측정 |

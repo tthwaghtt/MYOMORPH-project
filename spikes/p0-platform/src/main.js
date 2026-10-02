@@ -7,13 +7,14 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { noBlobTextures } from './gltf-noblob.js';
+import { renderLock, renderNutrunner, renderHydraulic, renderLockV1 } from './sfx.js';
 
 const $ = (id) => document.getElementById(id);
 const BASE = new URL('./', document.baseURI);   // published files are served next to the page
 const url = (p) => new URL(p, BASE).href;
 
 /* ---------------- results + persistence ---------------- */
-const results = { started: new Date().toISOString(), page: 'p0-platform v3', auto: {}, manual: {}, memo: '' };
+const results = { started: new Date().toISOString(), page: 'p0-platform v5', auto: {}, manual: {}, memo: '' };
 const rows = {};
 function setAuto(key, label, status, detail) {
   results.auto[key] = { status, detail };
@@ -205,7 +206,8 @@ async function init3D() {
   } catch (e) { setAuto('asset', 'glTF (meshopt + KTX2 + 이방성)', 'bad', String(e)); }
 
   // frame-time benchmark: 120 frames after warm-up
-  const times = []; let last = performance.now(), frame = 0;
+  let times = []; let last = performance.now(), frame = 0, benchRun = 0;
+  $('rebench').onclick = () => { times = []; frame = 20; benchRun++; $('rebench').textContent = '측정 중…'; };
   renderer.setAnimationLoop(() => {
     const now = performance.now(); const dt = now - last; last = now;
     controls.update(); pipe.render();
@@ -214,8 +216,10 @@ async function init3D() {
     if (times.length === 120) {
       times.sort((a, b) => a - b);
       const med = times[60], p95 = times[114];
-      setAuto('bench', '렌더 성능 (프레임 시간)', med < 17.5 ? 'ok' : med < 34 ? 'warn' : 'bad',
-        { medianMs: +med.toFixed(2), p95Ms: +p95.toFixed(2), px: `${renderer.domElement.width}x${renderer.domElement.height}`, mode });
+      const key = benchRun ? `bench${benchRun}` : 'bench';
+      setAuto(key, benchRun ? `렌더 성능 재측정 ${benchRun} (상호작용 후)` : '렌더 성능 (프레임 시간)', med < 17.5 ? 'ok' : med < 34 ? 'warn' : 'bad',
+        { medianMs: +med.toFixed(2), p95Ms: +p95.toFixed(2), px: `${renderer.domElement.width}x${renderer.domElement.height}`, mode, afterInteraction: benchRun > 0 });
+      $('rebench').textContent = '성능 다시 측정';
       times.push(0);
     }
     if (frame % 15 === 0) $('fps').textContent = `${dt.toFixed(1)} ms · ${renderer.backend.isWebGPUBackend ? 'WebGPU' : 'WebGL2'}`;
@@ -278,14 +282,40 @@ function strike(delay = 0, gain = 0.5) {
   node.port.postMessage({ type: 'strike', modes: latch, noise: 0.15, gain: gain * 0.7, delay: delay + 0.03, life: 0.1 });
   if (nav.vibrate) nav.vibrate([10, 24, 14]);
 }
-$('b-audio').onclick = async () => {
-  try {
-    await audioInit(); await actx.resume(); strike();
-    setManual('t-audio', 'info', { ...results.manual.audioEngine, firstModesHz: plateModes(0.16, 0.10, 0.001).slice(0, 4).map((m) => Math.round(m.f)) });
-    ask('t-audio', () => setManual('t-audio', 'ok', { heard: true, ...results.manual.audioEngine }), () => setManual('t-audio', 'bad', { heard: false, state: actx.state, ...results.manual.audioEngine }));
-  } catch (e) { setManual('t-audio', 'bad', String(e)); }
+const SFX = {
+  'lock-s': (sr, k) => renderLock(sr, { a: 0.05, b: 0.03, h: 0.0008, massG: 20 }, k),
+  'lock-m': (sr, k) => renderLock(sr, { a: 0.16, b: 0.10, h: 0.001, massG: 70 }, k),
+  'lock-l': (sr, k) => renderLock(sr, { a: 0.24, b: 0.18, h: 0.0012, massG: 600 }, k),
+  nut: (sr, k) => renderNutrunner(sr, {}, k),
+  hyd: (sr, k) => renderHydraulic(sr, {}, k),
+  old: (sr, k) => renderLockV1(sr, k),
 };
-$('b-audio2').onclick = async () => { try { await audioInit(); await actx.resume(); for (let i = 0; i < 5; i++) strike(i * 0.16, 0.45 + Math.random() * 0.1); } catch (e) { setManual('t-audio', 'bad', String(e)); } };
+let comp = null, lastSfx = null, plays = 0, hapticFromSfx = false;
+async function playSfx(name) {
+  await audioInit(); await actx.resume();
+  if (!comp) { comp = actx.createDynamicsCompressor(); comp.threshold.value = -8; comp.ratio.value = 6; comp.connect(actx.destination); }
+  const t0 = performance.now();
+  const data = SFX[name](actx.sampleRate, (Date.now() + plays++) & 0xffff);   // new seed → natural variation every press
+  const buf = actx.createBuffer(1, data.length, actx.sampleRate); buf.copyToChannel(data, 0);
+  const src = actx.createBufferSource(); src.buffer = buf;
+  const g = actx.createGain(); g.gain.value = 0.8; src.connect(g).connect(comp); src.start();
+  if (name.startsWith('lock') && /iPhone|iPad/.test(nav.userAgent)) { hapticFromSfx = true; $('ios-sw').click(); hapticFromSfx = false; }      // iOS system haptic with the "철컥"
+  if (name.startsWith('lock') && nav.vibrate) nav.vibrate(name === 'lock-l' ? [14, 30, 24] : [8, 30, 14]);
+  lastSfx = name;
+  const log = results.manual.sfx || (results.manual.sfx = { plays: {}, ratings: [] });
+  log.plays[name] = (log.plays[name] || 0) + 1; log.renderMs = Math.round(performance.now() - t0);
+  log.bluetooth = $('bt').checked; log.engine = results.manual.audioEngine;
+  setManual('t-audio', 'info', { last: name, renderMs: log.renderMs, bluetooth: log.bluetooth });
+}
+document.querySelectorAll('[data-sfx]').forEach((el) => { el.onclick = () => playSfx(el.dataset.sfx).catch((e) => setManual('t-audio', 'bad', String(e))); });
+document.querySelectorAll('[data-rate]').forEach((el) => {
+  el.onclick = () => {
+    if (!lastSfx) return;
+    const log = results.manual.sfx; log.ratings.push({ sound: lastSfx, rating: el.dataset.rate, at: new Date().toISOString() });
+    setManual('t-audio', 'ok', { lastRated: lastSfx, rating: el.dataset.rate, ratings: log.ratings.length, bluetooth: $('bt').checked });
+  };
+});
+$('bt').onchange = () => { (results.manual.sfx ||= { plays: {}, ratings: [] }).bluetooth = $('bt').checked; queueSave(); };
 
 $('b-vib').onclick = () => {
   if (!nav.vibrate) return setManual('t-vib', 'bad', 'Vibration API 없음 (iPhone, 데스크톱에서는 정상)');
@@ -294,6 +324,7 @@ $('b-vib').onclick = () => {
   ask('t-vib', () => setManual('t-vib', 'ok', { felt: true, returned: r }), () => setManual('t-vib', 'bad', { felt: false, returned: r }));
 };
 $('ios-sw').addEventListener('change', () => {
+  if (hapticFromSfx) return;
   setManual('t-ios', 'info', 'switch toggled');
   ask('t-ios', () => setManual('t-ios', 'ok', { felt: true }), () => setManual('t-ios', 'bad', { felt: false }));
 });

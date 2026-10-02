@@ -57,6 +57,9 @@ button.key { font: 500 13.5px var(--f-body); color: var(--fg); background: var(-
 button.key:active { transform: translateY(2px); border-bottom-width: 1px; }
 button.key.primary { border-color: var(--gold); color: var(--gold); }
 button:focus-visible, textarea:focus-visible, label:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
+.test.wide { grid-column: 1 / -1; }
+.rate { align-items: center; font-size: 13.5px; }
+.bt { font-size: 13.5px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
 .ask { display: none; gap: 8px; align-items: center; font-size: 13.5px; }
 .ask.on { display: flex; flex-wrap: wrap; }
 textarea { width: 100%; min-height: 84px; font: 14px var(--f-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px; resize: vertical; }
@@ -81,6 +84,7 @@ textarea { width: 100%; min-height: 84px; font: 14px var(--f-body); color: var(-
         <button id="tm-three" aria-pressed="false">three.js AgX</button>
       </div>
       <span class="badge" id="fps">— ms</span>
+      <button class="badge" id="rebench" style="cursor:pointer">성능 다시 측정</button>
     </div>
   </div>
   <p class="lede">시험용 곡면 티타늄 패널(1 mm 판, 0.4 mm 베벨, 결 방향 이방성)과 TiN 골드 체결부품 6개. 드래그로 돌려 보세요. 성능 측정을 위해 페이지를 최소 15초 정도 열어 두세요. 톤매핑 두 방식을 바꿔 보면 색 차이가 보입니다.</p>
@@ -96,11 +100,22 @@ textarea { width: 100%; min-height: 84px; font: 14px var(--f-body); color: var(-
   <section>
     <h2>직접 시험</h2>
     <div class="tests">
-      <div class="test" id="t-audio">
-        <h3>소리 <span class="pill wait" data-s>대기</span></h3>
-        <p>티타늄 패널 체결음을 물리 모델로 합성합니다. 볼륨을 적당히 켜고 누르세요.</p>
-        <div class="row"><button class="key primary" id="b-audio">체결음 재생</button><button class="key" id="b-audio2">연속 5회</button></div>
-        <div class="ask" data-ask>들렸나요? <button class="key" data-yes>들림</button><button class="key" data-no>안 들림</button></div>
+      <div class="test wide" id="t-audio">
+        <h3>소리 v2 <span class="pill wait" data-s>대기</span></h3>
+        <p>도하 피드백("뚱뚱 → 철컥", 부품과 물성별로 다른 소리, 로봇팔 너트러너, 유압음)을 반영해 새로 합성했습니다. 체결음은 부품 크기와 무게에 따라 달라집니다. iPhone에서는 체결음과 함께 햅틱도 울립니다.</p>
+        <div class="row">
+          <button class="key primary" data-sfx="lock-s">철컥 · 작은 부품 20 g</button>
+          <button class="key primary" data-sfx="lock-m">철컥 · 패널 70 g</button>
+          <button class="key primary" data-sfx="lock-l">철컥 · 대흉근 패널 600 g</button>
+          <button class="key primary" data-sfx="nut">로봇팔 너트러너 (나사 체결)</button>
+          <button class="key primary" data-sfx="hyd">유압 실린더 작동</button>
+          <button class="key" data-sfx="old">이전 소리 (비교용)</button>
+        </div>
+        <div class="row rate" id="rate">
+          <span>방금 소리는?</span>
+          <button class="key" data-rate="good">좋음</button><button class="key" data-rate="close">거의</button><button class="key" data-rate="bad">별로</button>
+        </div>
+        <label class="bt"><input type="checkbox" id="bt"> 블루투스 이어폰(에어팟 등)으로 듣는 중</label>
       </div>
       <div class="test" id="t-vib">
         <h3>진동 (Android) <span class="pill wait" data-s>대기</span></h3>
