@@ -1,0 +1,11 @@
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import lib, bpy
+sc = lib.new_scene(res=(900, 1100), samples=24)
+v, f, j = lib.load_wearer()
+body = lib.mesh_object('GEO-wearer', v, f); body.data.materials.append(lib.materials()['clay'])
+lib.floor()
+lib.area('key', (2, -4, 3), (0, 0, 1), size=(2, 2), energy=900)
+lib.area('fill', (-3, -3, 1.5), (0, 0, 1), size=(2, 2), energy=300)
+lib.camera((0, -7.5, 0.95), (0, 0, 0.92), lens=50, ortho_scale=2.1)
+print('height', round(v[:, 2].max(), 3), 'shoulder L', j['joint-l-shoulder'].round(3), 'elbow L', j['joint-l-elbow'].round(3), 'hand L', j['joint-l-hand'].round(3), 'knee', j['joint-l-knee'].round(3), 'hip', j['joint-l-upper-leg'].round(3))
+lib.render('/tmp/claude-0/-home-user-MYOMORPH-project/d54a34ea-8150-5612-94af-75c46b1d240a/scratchpad/mannequin_front.png')
