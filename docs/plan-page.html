@@ -94,7 +94,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 
 <div class="wrap">
   <header>
-    <span class="label">Project plan · v1.2 · 2026-10-02</span>
+    <span class="label">Project plan · v1.3 · 2026-10-02</span>
     <h1>MYOMORPH-MK. 1</h1>
     <span class="tag">NOT ARMOR. ANATOMY.</span>
     <p class="lede">근육 해부도를 티타늄 패널로 입체화한, 실제로 작동 가능한 근골격 슈트. 이 슈트를 주인공으로 마우스와 스크롤에 반응하는 3D 웹 경험을 만든다. 이 페이지는 전체 계획과 지금 위치를 한눈에 보기 위한 요약이다.</p>
@@ -103,7 +103,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   <section>
     <div class="status">
       <span class="label">현재 위치</span>
-      <p><strong>P0 환경 시험 단계입니다.</strong> G0 승인 후 시험 페이지를 만들어 발행했고, 도하 기기에서의 직접 시험(소리, 진동 등)을 기다리고 있습니다. 슈트 본격 제작은 아직 시작하지 않았습니다.</p>
+      <p><strong>P0 환경 시험을 마쳤습니다.</strong> 다음은 P1 프리프로덕션이며, 도하가 "실행"이라고 말할 때 시작합니다. 슈트 본격 제작은 아직 시작하지 않았습니다.</p>
     </div>
   </section>
 
@@ -114,8 +114,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <ol class="track">
       <li class="done"><span class="dot">✓</span><div class="step"><h3>브리프 해석과 마스터 플랜 <span class="pill">완료</span></h3><p>스토리, 슈트 설계, 실사화 전략, 기술 구조, 일정, 리스크. 드로잉 실측 분석 포함.</p></div></li>
       <li class="done"><span class="dot">✓</span><div class="step"><h3>블렌더 방법론 조사 <span class="pill">승인됨</span></h3><p>Blender 5.2.1 실행 확인, 업계 작업 방식 조사, 색과 재질 수치 실측, 작업 규약(MBS) 작성.</p></div></li>
-      <li class="now"><span class="dot">P0</span><div class="step"><h3>환경 시험 <span class="pill">진행 중 · 소리 v2 청음 대기</span></h3><p>Mac과 iPhone에서 3D 렌더러, 압축 모델, 색 LUT, 소리, iPhone 햅틱 통과. 도하 피드백으로 소리를 새로 만들었고 자동 조립 로봇팔을 스토리에 추가했다.</p><p class="you"><b>도하가 할 일</b> 새 체결음(철컥), 로봇팔 너트러너, 유압음을 듣고 평가 버튼 누르기</p></div></li>
-      <li><span class="dot">P1</span><div class="step"><h3>프리프로덕션 <span class="pill">G1</span></h3><p>스토리보드 확정, 분위기를 보여주는 스타일프레임 6~8장, 재질 비교 렌더, 무게·토크·배터리 계산서.</p><p class="you"><b>도하가 할 일</b> 그림체와 분위기, 남은 결정 사항 확정</p></div></li>
+      <li class="done"><span class="dot">✓</span><div class="step"><h3>환경 시험 <span class="pill">완료</span></h3><p>Mac과 iPhone에서 3D 렌더러, 압축 모델, 색 LUT, 소리, iPhone 햅틱 통과. 도하 피드백으로 소리를 새로 만들었고 자동 조립 로봇팔을 스토리에 추가했다.</p></div></li>
+      <li class="now"><span class="dot">P1</span><div class="step"><h3>프리프로덕션 <span class="pill">다음 · 실행 지시 대기</span></h3><p>스토리보드 확정, 분위기를 보여주는 스타일프레임 6~8장, 재질 비교 렌더, 무게·토크·배터리 계산서.</p><p class="you"><b>도하가 할 일</b> 그림체와 분위기, 남은 결정 사항 확정</p></div></li>
     </ol>
     <div class="group">제작</div>
     <ol class="track">
@@ -176,6 +176,9 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>Blender 5.2.1 LTS (이 환경에서 실행 확인)</li>
         <li>색 일치: Blender AgX를 LUT로 웹에 적용</li>
         <li>재질: 티타늄 기본 + 골드 포인트 + 열변색 디테일</li>
+        <li>조립 로봇팔: 페인트가 살짝 벗겨진 노란색</li>
+        <li>소리: 체결 철컥, 로봇팔 너트러너, 유압 (P0 청음으로 확정)</li>
+        <li>성능 목표: 데스크톱 60 fps, 모바일 30 fps</li>
       </ul></div>
       <div><h3>P1까지 정하면 되는 것</h3><ul>
         <li>도하의 원본 드로잉을 사이트에 크레딧과 함께 넣을지</li>
@@ -191,7 +194,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   <section>
     <div class="next">
       <span class="label">다음 행동</span>
-      <p>시험 페이지에서 버튼 시험을 마쳐 주면 결과를 읽고 P0 보고를 마무리한다. 그 다음 P1(프리프로덕션)은 도하가 실행이라고 말할 때 시작한다.</p>
+      <p>P1 프리프로덕션(스토리보드, 스타일프레임, 재질 비교 렌더, 계산서)은 도하가 실행이라고 말할 때 시작한다.</p>
     </div>
   </section>
 

@@ -150,10 +150,10 @@ export function renderNutrunnerV2(sr, opts = {}, seed = 3) {
 }
 
 /**
- * Hydraulic actuator stroke: solenoid valve opens (poppet on seat), internal-gear pump ripple
+ * ADOPTED (Doha, P0 listening 3: "v2 is better"). Hydraulic actuator stroke: solenoid valve opens (poppet on seat), internal-gear pump ripple
  * (rpm × teeth + harmonics), flow hiss ∝ velocity, cavitation fizz, rod-seal rumble, valve close + settle.
  */
-export function renderHydraulicV2(sr, opts = {}, seed = 5) {
+export function renderHydraulic(sr, opts = {}, seed = 5) {
   const r = rng(seed);
   const stroke = opts.stroke ?? 0.75, dur = stroke + 0.35, out = new Float32Array(Math.ceil(dur * sr));
   const pumpF = 3600 / 60 * 11;  // 660 Hz
@@ -289,7 +289,7 @@ export function renderNutrunner(sr, opts = {}, seed = 3) {
  * At the actuator you hear oil rushing through the valve and lines: layered turbulent noise bands with
  * independent random modulation, cavitation crackle, a body "chuff", and (optionally) soft valve ticks.
  */
-export function renderHydraulic(sr, opts = {}, seed = 5) {
+export function renderHydraulicV3(sr, opts = {}, seed = 5) {
   const r = rng(seed);
   const stroke = opts.stroke ?? 0.42, withValve = opts.valve ?? true, dur = stroke + 0.22, N = Math.ceil(dur * sr), out = new Float32Array(N);
   const w1 = Float32Array.from({ length: N }, () => r() * 2 - 1), w2 = Float32Array.from({ length: N }, () => r() * 2 - 1);

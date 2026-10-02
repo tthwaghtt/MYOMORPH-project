@@ -11,5 +11,5 @@ const wav = (name, x) => {
 const P = { a: 0.16, b: 0.10, h: 0.001, massG: 70 };
 wav('lock_v2', S.renderLockV2(sr, P, 12)); wav('lock_v3', S.renderLock(sr, P, 12));
 wav('nut_v2', S.renderNutrunnerV2(sr, {}, 3)); wav('nut_v3', S.renderNutrunner(sr, {}, 3));
-wav('hyd_v2', S.renderHydraulicV2(sr, {}, 5)); wav('hyd_v3', S.renderHydraulic(sr, {}, 5)); wav('hyd_v3_novalve', S.renderHydraulic(sr, { valve: false }, 5));
+wav('hyd_v2', S.renderHydraulic(sr, {}, 5)); wav('hyd_v3', S.renderHydraulicV3(sr, {}, 5)); wav('hyd_v3_novalve', S.renderHydraulicV3(sr, { valve: false }, 5));
 console.log('ok');
