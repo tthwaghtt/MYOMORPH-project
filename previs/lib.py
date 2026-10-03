@@ -1,4 +1,4 @@
-"""MYOMORPH previs library (P1 storyboard styleframes).
+"""MYOMORPH previs library (scenes, lights, cameras, materials, the fitted body).
 
 Throwaway blockout tooling for mood frames — not the production pipeline (that is MYOFORGE, P2+).
 Wearer body: body.py (MakeHuman/MPFB2 CC0 base mesh + targets) fitted to Doha's CORPUS profile (fit_corpus.py).
@@ -150,7 +150,7 @@ def new_scene(res=(1920, 1080), samples=96, exposure=0.0):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     MATS.clear()                                  # the factory reset removed the cached datablocks
     import sys as _sys
-    for mod, attr in (('suit', 'FIN'), ('cell', 'MAT'), ('assembly', 'MATS')):     # caches of removed datablocks
+    for mod, attr in (('materials', 'FIN'), ('cell', 'MAT')):     # caches of removed datablocks
         if mod in _sys.modules:
             getattr(_sys.modules[mod], attr).clear()
     sc = bpy.context.scene

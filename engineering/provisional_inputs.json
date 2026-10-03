@@ -1,0 +1,12 @@
+{
+ "status": "PROVISIONAL. Frozen from the retired R2 previs shell (2026-10-03). Replace with the panel catalogue and shell area of the reference-based suit model (docs/INTAKE.md, step 7); every panel-dependent number (panels, parts, fasteners, mass, EHA sizing, power, runtime) then changes.",
+ "shell_area_m2": 3.469,
+ "panel_groups": [
+  {"name": "torso + limbs front", "n": 208, "size": 1.0, "mounts": 3},
+  {"name": "back", "n": 102, "size": 1.25, "mounts": 3},
+  {"name": "limb backs", "n": 44, "size": 1.5, "mounts": 4},
+  {"name": "helmet (PERSONA + side detail, both sides)", "n": 40, "size": 0.45, "mounts": 2},
+  {"name": "hand plates", "n": 38, "size": 0.22, "mounts": 2},
+  {"name": "louvre slats + neck lamellae", "n": 45, "size": 0.30, "mounts": 2}
+ ]
+}

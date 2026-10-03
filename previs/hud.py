@@ -1,4 +1,5 @@
-"""Engineering-drawing HUD over the R2 styleframes (the site's L2 overlay, previewed in post).
+"""Engineering-drawing HUD (the site's L2 overlay, previewed in post). Its per-frame layouts were written for the retired
+R2 styleframes F01-F11; the style (leader lines, mono labels, numbers from the JSON) carries over to the new frames.
 
 Thin leader lines, Geist-like mono labels (DejaVu Sans Mono here), Korean in WenQuanYi Zen Hei; every number from the
 JSON sources. `python hud.py IN_DIR OUT_DIR` -> OUT_DIR/F??_*.webp

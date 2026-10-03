@@ -5,9 +5,10 @@ reduced to fit it, battery built into two back panels, external cable only where
 chill line, bring-up in the cell). Mass comes from the bill of materials (bom.py) and the sizing is iterated to a
 fixed point with it (heavier suit -> bigger muscles -> heavier suit).
 
-Inputs: CORPUS profile (docs/research/corpus), fitted mannequin (previs/wearer_fit.json), previs shell area
-(previs/suit_stats.json), packaging space (engineering/packaging.json). The single declared exception to
-present-day engineering is the battery cell energy density (2036 assumption, Doha's brief).
+Inputs: CORPUS profile (docs/research/corpus), fitted mannequin (previs/wearer_fit.json), and - PROVISIONAL until the
+reference-based suit exists - the panel count and shell area in engineering/provisional_inputs.json (frozen from the
+retired R2 shell). The single declared exception to present-day engineering is the battery cell energy density (2036
+assumption, Doha's brief).
 Run: python engineering/calc.py
 """
 import json, math, os
@@ -16,9 +17,8 @@ import bom
 R = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.join(R, '..')
 J = lambda *p: json.load(open(os.path.join(ROOT, *p)))
 A = J('docs', 'research', 'corpus', 'anthro.json')['measurements']
-FIT = J('previs', 'wearer_fit.json')['measurements']; SS = J('previs', 'suit_stats.json')
+FIT = J('previs', 'wearer_fit.json')['measurements']; PI = J('engineering', 'provisional_inputs.json')
 MUS = {m['key']: m for m in J('docs', 'research', 'corpus', 'muscles.json')['muscles']}
-PK = J('engineering', 'packaging.json') if os.path.exists(os.path.join(R, 'packaging.json')) else None
 g = 9.81
 m_w, H = 65.0, 1.78
 mm = lambda k: (FIT.get(k) or {}).get('fit_mm') or A[k]['value_mm']
@@ -109,13 +109,9 @@ kWh_each = cells_per_panel * cell_Wh / 1000
 area_each = cells_per_panel * CELL['dims_mm'][0] * CELL['dims_mm'][1] / 1e6 / 0.80
 
 # ---------------------------------------------------------------- panels
-area_shell = SS['area_m2']
+area_shell = PI['shell_area_m2']                          # PROVISIONAL (provisional_inputs.json)
 panel_area = area_shell - 0.13                            # helmet crown/occipital shells are counted in PERSONA
-BPR = {v: J('previs', 'blueprint', f'{v}_regions.json')['n_regions'] for v in ('front', 'rear', 'helmet_side')}
-groups = {'torso + limbs front (blueprint front view)': {'n': BPR['front'], 'size': 1.0, 'mounts': 3},
-          'back (blueprint rear inset)': {'n': BPR['rear'], 'size': 1.25, 'mounts': 3},
-          'limb backs': {'n': 44, 'size': 1.5, 'mounts': 4}, 'helmet (PERSONA + side detail, both sides)': {'n': 2 * BPR['helmet_side'], 'size': 0.45, 'mounts': 2},
-          'hand plates': {'n': 38, 'size': 0.22, 'mounts': 2}, 'louvre slats + neck lamellae': {'n': 45, 'size': 0.30, 'mounts': 2}}
+groups = {g_['name']: {'n': g_['n'], 'size': g_['size'], 'mounts': g_['mounts']} for g_ in PI['panel_groups']}
 norm = sum(v['n'] * v['size'] for v in groups.values()) / sum(v['n'] for v in groups.values())
 for v in groups.values(): v['size'] = round(v['size'] / norm, 4)
 
@@ -198,7 +194,7 @@ out = {
     'version': 'v2 (R2, 2026-10-03)',
     'changes_from_v1': ['machines outside the wearer, layered: undersuit -> cuffs -> frame -> muscles -> systems -> panels',
                         'central HPU + 8 valve-controlled cylinders -> 6 sealed EHA muscles (pump-controlled, free-swing bypass)',
-                        'assist 40 % -> 25 %, tool 5 kg -> 3 kg (slim blueprint silhouette)',
+                        'assist 40 % -> 25 %, tool 5 kg -> 3 kg (slim silhouette)',
                         'battery 2.4 kWh in two modules -> 0.84 kWh inside two back panels',
                         'cooling: air only -> cooling undersuit + membrane gill (evaporative, no compressor: a 56 mm compressor does not fit the 27 mm lumbar space)',
                         'life support: PAPR helmet air, gas sensors, hydration, mechanical emergency release',
@@ -228,7 +224,7 @@ out = {
                 'lcg_reynolds': round(re), 'lcg_dp_kPa': round(dp_total / 1000, 1), 'coolant_pump_W': round(pump_W, 1),
                 'gill': gill, 'ambient_C': AMB_C, 'ambient_RH': AMB_RH, 'heat_to_air_W': round(q_air), 'air_dT_K': 12,
                 'airflow_L_s': round(air_L_s, 1), 'fans': 6, 'pcm_kJ': pcm_kJ,
-                'louvres': ['flank L/R (blueprint abdominal side slots): membrane gills', 'upper back L/R: spine core, electronics']},
+                'louvres': ['flank L/R (behind the vents drawn in the reference): membrane gills', 'upper back L/R: spine core, electronics']},
     'life_support': {'papr': papr, 'VO2_L_min': round(VO2, 2), 'VCO2_L_min': round(VCO2, 2), 'hydration_L': 0.5,
                      'emergency_release': 'one sternum handle, cable-actuated, no power needed',
                      'vitals': ['ECG 3-lead', 'SpO2 + HR (forehead PPG)', 'core temperature estimate (dual heat flux)', 'respiration', 'sweat'],
@@ -239,7 +235,7 @@ out = {
                'human_electromechanical_delay_ms': [30, 100],
                'muscle_model': 'Hill-type, personalised from muscles.json (Fmax, optimal fibre length, pennation)',
                'muscle_model_examples': {k: {f: MUS[k][f] for f in ('ko', 'fmax_N', 'fibre_length_cm', 'pennation_deg')} for k in ('vaslat', 'recfem', 'gasmed', 'BIC')}},
-    'packaging': PK and {k: v for k, v in PK.items() if k != 'zones'},
+    'provisional': PI['status'],
     'rom_deg': {'neck_flex_ext_rot': [40, 45, 70], 'trunk_flex_ext_lat_rot': [60, 20, 25, 35], 'shoulder_flex_abd_ext': [160, 150, 45],
                 'elbow': [0, 135], 'wrist_flex_ext': [65, 60], 'hip_flex_ext_abd': [110, 20, 35], 'knee': [0, 125], 'ankle_dorsi_plantar': [15, 40]},
     'bom_summary': {'total_parts': B['total_parts'], 'robot_ops': B['robot_ops'],

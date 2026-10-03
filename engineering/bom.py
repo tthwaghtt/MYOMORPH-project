@@ -1,7 +1,7 @@
 """MYOMORPH-MK. 1 bill of materials v2 (R2, 2026-10-03).
 
 Architecture v2 (Doha feedback 2026-10-03): every machine sits OUTSIDE the wearer, layered over a functional
-undersuit and covered by (or built into) the blueprint panels. Robot arms install pre-assembled modules (LRUs);
+undersuit and covered by (or built into) the suit panels drawn in Doha's reference. Robot arms install pre-assembled modules (LRUs);
 the parts inside each module are counted here so the site can say how many parts the suit really has.
 
 Counting rule: one part = one separately made or bought item that is assembled (a PCB assembly, a bearing, a cell,
@@ -35,9 +35,9 @@ SYSTEMS = {
     'BRANCHIA': ('THERMAL', '아가미', '막 아가미(증발 냉각기), 냉각수 회로, 팬, 열리는 루버'),
     'VITA': ('LIFE SUPPORT', '생명유지', '헬멧 송풍 정화, 가스 감시, 수분 공급, 비상 해제'),
     'NERVUS': ('NERVOUS SYSTEM', '신경계', '척추 연산부, 실시간 버스, 상태광'),
-    'PERSONA': ('HELMET', '얼굴', '헬멧, 눈 슬릿 카메라, 시야 디스플레이'),
+    'PERSONA': ('HELMET', '얼굴', '헬멧(도하 디자인), 눈 카메라, 시야 디스플레이'),
     'FUNCTIO': ('FUNCTION', '기능', '툴 베이, 보조 손, 교체 포트'),
-    'MYO': ('PANELS', '근육 패널', '도하의 청사진 판 477장과 패널 캐리어'),
+    'MYO': ('PANELS', '외부 패널', '도하의 레퍼런스 판(잠정 477장)과 패널 캐리어'),
     'FIX': ('FASTENERS', '체결', '설치 볼트, 패널 체결구, 방진 그로밋'),
 }
 
@@ -47,8 +47,8 @@ STAGES = {
     2: ('SKELETON', '골격', '다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임'),
     3: ('MUSCLE', '근육', 'EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력'),
     4: ('SYSTEMS', '내장 시스템', '배전, 버퍼, 막 아가미, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결'),
-    5: ('PANELS', '패널', '청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함)'),
-    6: ('PERSONA', '헬멧', '후두 셸 → 측두 허브 → 안면판 → 락'),
+    5: ('PANELS', '패널', '레퍼런스 판 전체(잠정 477장, 배터리 패널, 루버, 툴 베이 패널 포함)'),
+    6: ('PERSONA', '헬멧', '헬멧 셸 → 안면판 → 락(순서는 도하의 헬멧 디자인에 맞춘다)'),
     7: ('BRING-UP', '기동', '신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동'),
 }
 
@@ -318,7 +318,7 @@ def build(S):
         P('pack fuse', 1, 'mixed', 4), P('solid-state contactor', 1, 'mixed', 9), P('blind-mate power / data connector', 1, 'mixed', 12),
         P('guide pin', 2, 'Ti64', 2), P('quarter-turn latch', 4, 'Ti64', 3), P('pack gasket', 1, 'silicone', 6),
         P('pressure relief vent', 1, 'mixed', 2), P('pack base housing', 1, 'Ti64', 70),
-    ], '배터리를 따로 매달지 않는다. 등의 넓은등근 판 두 장이 곧 배터리 팩이다. 바깥은 청사진의 티타늄 판, 안쪽 9 mm에 '
+    ], '배터리를 따로 매달지 않는다. 등판 두 장이 곧 배터리 팩이다. 바깥은 티타늄 판, 안쪽 9 mm에 '
        '셀이 들어 있다. 쿼터턴 래치 4개를 풀면 판째로 빠지고, 버퍼가 버티는 동안 새 판을 꽂는다(유일한 미래 가정: 셀 에너지 밀도).',
        {'kWh_each': b['kWh_each'], 'cells': b['cells_per_panel'], 'thickness_mm': b['thickness_mm'], 'area_m2_each': b['area_m2_each']},
        envelope=b['envelope_mm'], install={'by': 'robot', 'ops': ['slide on guide pins', '4 quarter-turns'], 'bolts': 0},
@@ -343,21 +343,21 @@ def build(S):
         P('cartridge housing', 1, 'Ti64', 30), P('thermal camera core', 1, 'mixed', 8), P('4-gas sensor', 1, 'mixed', 12),
         P('cartridge board', 1, 'FR4', 5), P('internal screw M2, Ti', 8, 'Ti64', 0.3),
     ], '공통 규격 포트. 지금은 열화상 카메라와 가스 센서 카트리지가 꽂혀 있다.', install={'by': 'robot (with forearm panels)'}))
-    # panels: counts per blueprint group (PLAN §5.3), mount points per panel from its size class
+    # panels: PROVISIONAL counts per group (provisional_inputs.json, PLAN §5.3), mount points per panel from its size class
     groups = S['panel_groups']
     t_mm = S['panel_t_mm']
     n_pan = sum(g['n'] for g in groups.values())
     area_pan = S['panel_area_m2']
     pan_g = area_pan * t_mm * RHO['Ti64'] * 1000 * 1.10 / n_pan
     mounts = sum(g['n'] * g['mounts'] for g in groups.values())
-    mods.append(M('MYO-PANELS', 'MYO', 'BLUEPRINT PANELS', '청사진 판', 5, 'whole body', 'C', [
+    mods.append(M('MYO-PANELS', 'MYO', 'SUIT PANELS', '외부 판', 5, 'whole body', 'C', [
         *[P(f'panel, {k} (Ti-6Al-4V {t_mm} mm, SPIF)', g['n'], 'Ti64', pan_g * g['size']) for k, g in groups.items()],
         P('panel carrier (CFRP sub-frame)', 36, 'CFRP', 40), P('sliding panel guide (PEEK)', 48, 'PEEK', 3),
-    ], '도하가 손으로 그린 판 그대로. 0.6 mm 티타늄 판을 점진 성형(SPIF)으로 곡면을 만들고 가장자리를 말아 강성을 낸다. '
+    ], '도하의 레퍼런스에 그려진 판 그대로. 0.6 mm 티타늄 판을 점진 성형(SPIF)으로 곡면을 만들고 가장자리를 말아 강성을 낸다. '
        '판은 몸에 닿지 않고 탄소섬유 캐리어 위에 방진 그로밋으로 떠 있어서, 관절이 움직일 때 겹치고 미끄러진다.',
        {'panels': n_pan, 'thickness_mm': t_mm, 'area_m2': round(area_pan, 2), 'mount_points': mounts},
        install={'by': 'robot', 'ops': ['place', 'nutrunner'], 'picks': S['panel_picks']},
-       moves=['deltoid caps slide in layers', 'abdominal bands telescope', 'knee cop slides over the knee', 'neck lamellae fan']))
+       moves=['panels around the joints overlap and slide (which ones: from the reference panel list)']))
     # ------------------------------------------------------------------ 6 PERSONA
     mods.append(M('PER-HELMET', 'PERSONA', 'PERSONA HELMET', '페르소나 헬멧', 6, 'head', 'C', [
         P('occipital shell, SPIF', 1, 'Ti64', 180), P('crown shell', 1, 'Ti64', 120), P('face plate carrier', 1, 'CFRP', 60),

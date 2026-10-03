@@ -1,15 +1,18 @@
 """Generate the human-readable engineering documents from the JSON sources (no hand-copied numbers).
 
 docs/design/systems.md   every system and pre-assembled module: principle (system-card copy), specs, parts table
-docs/design/_plan_tables.md   tables included in PLAN §5 (BOM tree, EHA sizing, packaging, sensor sites, stages)
-Run after calc.py (and previs/modules.py, previs/undersuit.py): python engineering/report.py
+docs/design/_plan_tables.md   tables included in PLAN (BOM tree, EHA sizing, sensor sites, stages)
+Run after calc.py (and previs/undersuit.py): python engineering/report.py
+Panel-dependent numbers are PROVISIONAL until the reference-based suit exists (engineering/provisional_inputs.json).
 """
 import json, os
 
 R = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.join(R, '..')
 J = lambda *p: json.load(open(os.path.join(ROOT, *p)))
 E = J('engineering', 'engineering.json'); B = J('engineering', 'bom.json')
-PK = J('engineering', 'packaging.json'); U = J('engineering', 'undersuit.json')
+U = J('engineering', 'undersuit.json')
+PROV = ('> ⚠️ **잠정 수치**: 판 수, 부품 수, 체결구, 질량과 그에 따른 근육 크기·전력·운전 시간은 폐기한 R2 셸에서 고정한 '
+        '입력(`engineering/provisional_inputs.json`)으로 계산했다. 도하의 새 레퍼런스로 판 목록이 나오면 다시 계산한다(`docs/INTAKE.md`).')
 OUT = os.path.join(ROOT, 'docs', 'design'); os.makedirs(OUT, exist_ok=True)
 fmt = lambda x: f'{x:,}' if isinstance(x, int) else (f'{x:,.2f}' if isinstance(x, float) else str(x))
 
@@ -18,7 +21,7 @@ def systems_md():
     L = ['# MYOMORPH-MK. 1 — 시스템 카탈로그 (부품표 v2)', '',
          f"> 자동 생성: `engineering/report.py` ← `bom.json` {B['version']}. 손으로 고치지 않는다.",
          f"> **부품 {B['total_parts']:,}개** · 사전 조립 모듈 {B['pre_assembled_modules']}개 · 질량 {B['total_mass_kg']:.2f} kg(유체 제외) · 사람이 입는 것 {B['worn_mass_kg']:.2f} kg",
-         f"> 세는 법: {B['counting_rule']}", '',
+         f"> 세는 법: {B['counting_rule']}", PROV, '',
          '각 모듈의 "원리"는 사이트 시스템 카드의 본문이다. 부품표는 그 카드의 분해도에 붙는 이름표다.', '',
          '## 시스템 요약', '', '| 코드 | 이름 | 한 줄 | 부품 | 질량 kg |', '|---|---|---|---:|---:|']
     for k, s in B['systems'].items():
@@ -59,18 +62,6 @@ def plan_tables():
     for j, e in E['muscles_eha'].items():
         t = E['joint_torque'][j]
         T.append(f"| {j} | {where[j]} | {t['peak_Nm']} N·m ({t['suit_self_Nm']} + {t['assist_Nm']}) | {e['design_torque_Nm']} N·m | {e['moment_arm_mm']:.0f} mm | {e['bore_mm']:.0f} / {e['rod_mm']:.0f} mm | {e['stroke_mm']} mm | {e['force_kN']} kN | {e['motor_W']:.0f} W | {' × '.join(str(x) for x in e['envelope_mm'])} mm |")
-    T += ['', '<!-- PACK -->', '| 모듈 | 두께 mm | 사용 가능 mm | 여유 mm | 판정 |', '|---|---:|---:|---:|---|']
-    seen = set()
-    for r in PK['modules']:
-        key = (r['module'], r['label'])
-        if key in seen: continue
-        seen.add(key)
-        T.append(f"| {r['label']} ({r['module']}) | {r['envelope_mm'][2]} | {r['available_T_mm']} | {r['margin_mm']:+.1f} | {'✅' if r['fits'] else '❌'} |")
-    T += ['', '<!-- ZONES -->', '| 부위 | 앞 | 옆 | 뒤 | 안쪽 |', '|---|---:|---:|---:|---:|']
-    for z, rec in PK['zones'].items():
-        if z in ('helmet',): continue
-        c = lambda f: f"{rec[f]['offs_p50']:.0f}" if f in rec else '-'
-        T.append(f"| {z} | {c('front')} | {c('lateral')} | {c('back')} | {c('medial')} |")
     T += ['', '<!-- SITES -->', '| 부위 | 근육 | 종류 | 부착 규칙 | 근육 표 (최대 힘 / 섬유 길이 / 깃각) |', '|---|---|---|---|---|']
     for s in U['emg_sites']:
         if not s['site'].endswith('-L'): continue

@@ -87,6 +87,15 @@ h2 { font-size: 21px; font-weight: 600; }
 .dec ul { margin: 0; padding-left: 18px; font-size: 14px; display: grid; gap: 4px; }
 .dec h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
 .next { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: grid; gap: 8px; }
+.why { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.why div { background: var(--surface); padding: 12px 16px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; font-size: 14px; }
+.why div.head { background: var(--bg); font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-block: 8px; }
+.why .was { color: var(--muted); }
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; counter-reset: st; }
+.flow li { counter-increment: st; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; font-size: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; min-width: 0; }
+.flow li::before { content: counter(st); font-family: var(--f-mono); font-size: 12px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); }
+.flow li.ask { border-color: var(--gold); }
+.flow small { grid-column: 2; display: block; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
 footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; font-family: var(--f-mono); }
 @media (prefers-reduced-motion: no-preference) { .now .dot { animation: pulse 2.4s ease-in-out infinite; } }
 @keyframes pulse { 50% { box-shadow: 0 0 0 6px var(--now-soft); } }
@@ -94,17 +103,41 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 
 <div class="wrap">
   <header>
-    <span class="label">Project plan · v2.0 · 2026-10-03</span>
+    <span class="label">Project plan · v3.0 · 2026-10-03</span>
     <h1>MYOMORPH-MK. 1</h1>
     <span class="tag">NOT ARMOR. ANATOMY.</span>
-    <p class="lede">근육 해부도를 티타늄 패널로 입체화한, 실제로 작동 가능한 근골격 슈트. 어둠 속 조립 셀에서 천장의 로봇팔들이 한 사람의 몸 바깥에 이 슈트를 조립하는 과정을, 마우스와 스크롤에 반응하는 웹 경험으로 만든다. 이 페이지는 전체 계획과 지금 위치를 한눈에 보기 위한 요약이다.</p>
+    <p class="lede">실제로 작동 가능한 근골격 티타늄 슈트. 어둠 속 조립 셀에서 천장의 로봇팔들이 한 사람의 몸 바깥에 이 슈트를 조립하는 과정을, 마우스와 스크롤에 반응하는 웹 경험으로 만든다. 슈트의 외형과 헬멧은 도하의 레퍼런스를 그대로 따른다. 이 페이지는 전체 계획과 지금 위치를 한눈에 보기 위한 요약이다.</p>
   </header>
 
   <section>
     <div class="status">
       <span class="label">현재 위치</span>
-      <p><strong>P1 프리프로덕션을 도하 피드백에 맞춰 다시 짰고(R2), G1 재검토를 기다립니다.</strong> 사람이 먼저 나오는 스토리, 몸 바깥에 층으로 쌓는 슈트 구조(부품 5,819개, 모듈 41개), 슬림 실루엣 안 공간 검사, 신경 언더슈트, 얇은 눈 슬릿, 무광과 사용 흔적, 조립 셀, 스타일프레임 11장, 하이브리드 렌더 계획을 끝냈습니다.</p>
+      <p><strong>마네킹 기반 슈트 디자인을 폐기하고, 도하의 새 레퍼런스로 슈트를 다시 만들 준비를 마쳤습니다. 레퍼런스를 기다립니다.</strong> 레퍼런스 작성 가이드와 도하 몸 치수 템플릿 3장, 파일 정리와 폐기물의 git 기록 삭제, 계획서 v3.0, 새 세션 인계 문서, 레퍼런스 처리 절차를 끝냈습니다. 의도, 몸 치수, 동작 원리, 공학, 언더슈트, 기능, 색, 소리, 웹 디자인은 그대로입니다.</p>
     </div>
+  </section>
+
+  <section>
+    <h2>왜 레퍼런스 기반으로 바꾸나</h2>
+    <p class="lede">지난 슈트는 정면 청사진의 2D 선을 마네킹 피부를 부풀린 한 장의 껍데기에 투영해서 만들었다. 그래서 판이 독립된 조각이 되지 못했다. 이번에는 도하가 모든 면을 그린 레퍼런스에서 판을 하나씩 직접 만든다.</p>
+    <div class="why">
+      <div class="head"><span>지난 방식의 문제</span><span>이번 방식</span></div>
+      <div><span class="was">해칭과 두 줄 선이 전부 이음선이 됨</span><span>선의 뜻을 색과 레이어로 나눈다(판 틈, 꺾임, 겹침, 부품)</span></div>
+      <div><span class="was">경계가 계단 모양, 이음선이 끊김</span><span>벡터 도면. 판은 홈이 아니라 따로 만든 솔리드</span></div>
+      <div><span class="was">한 장의 껍데기에 홈을 낸 판</span><span>판마다 두께, 헴, 모따기, 틈, 겹침 순서</span></div>
+      <div><span class="was">정면·측면 한 장씩이라 안쪽과 옆면을 추측</span><span>정면, 후면, 측면, 팔 4면, 다리 안쪽, 헬멧 4면 + 얼굴</span></div>
+    </div>
+    <ol class="flow">
+      <li class="ask">받기와 검토<small>빠진 뷰와 질문 목록을 보고하고 동의를 받는다</small></li>
+      <li>뷰별 벡터화<small>선 종류별로 나눠 읽는다</small></li>
+      <li>뷰 정합<small>높이선으로 뷰끼리, 몸과 맞춘다</small></li>
+      <li class="ask">판 목록과 판 솔리드<small>한 부위를 먼저 만들어 확인받는다</small></li>
+      <li>비율 조정 보고<small>5 %를 넘으면 먼저 묻는다</small></li>
+      <li class="ask">공간·가동 범위 검사<small>장치 깊이와 관절 간섭, 충돌 목록</small></li>
+      <li>수치 다시 계산<small>부품, 질량, 근육, 전력, 가동 시간</small></li>
+      <li>검토 렌더<small>레퍼런스 위에 겹친 정사영 렌더</small></li>
+      <li>스토리보드와 페이지 갱신<small>조금씩, 한 번에 완성하지 않는다</small></li>
+    </ol>
+    <p class="you"><b>금색 테두리</b> 도하에게 보고하고 동의를 받은 뒤 넘어가는 단계</p>
   </section>
 
   <section>
@@ -115,13 +148,13 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
       <li class="done"><span class="dot">✓</span><div class="step"><h3>브리프 해석과 마스터 플랜 <span class="pill">완료</span></h3><p>스토리, 슈트 설계, 실사화 전략, 기술 구조, 일정, 리스크. 드로잉 실측 분석 포함.</p></div></li>
       <li class="done"><span class="dot">✓</span><div class="step"><h3>블렌더 방법론 조사 <span class="pill">승인됨</span></h3><p>Blender 5.2.1 실행 확인, 업계 작업 방식 조사, 색과 재질 수치 실측, 작업 규약(MBS) 작성.</p></div></li>
       <li class="done"><span class="dot">✓</span><div class="step"><h3>환경 시험 <span class="pill">완료</span></h3><p>Mac과 iPhone에서 3D 렌더러, 압축 모델, 색 LUT, 소리, iPhone 햅틱 통과. 체결음, 너트러너, 유압 소리 확정.</p></div></li>
-      <li class="now"><span class="dot">P1</span><div class="step"><h3>프리프로덕션 <span class="pill">R2 개정 완료 · G1 재검토 대기</span></h3><p>R1: 도하의 몸 분석과 맞춘 마네킹, 청사진 판 477장, 착용 보정, PERSONA. R2: 사람이 먼저인 스토리 v2.0, 몸 바깥 층 구조(13 시스템, 모듈 41, 부품 5,819), 공간 검사 53/53, 근전도·뇌파 언더슈트, 얇은 눈 슬릿, 무광과 마모, 조립 셀, 스타일프레임 11장.</p><p class="you"><b>도하가 할 일</b> 스토리 구조, 언더슈트 룩, 눈 슬릿 안(A/B/C), 성능 축소 폭, 무릎 +5 mm, 배터리 패널, 외부 연결 범위, 마모 정도 확인</p></div></li>
+      <li class="now"><span class="dot">P1</span><div class="step"><h3>프리프로덕션 <span class="pill">R3 준비 완료 · 레퍼런스 대기</span></h3><p>R1: 도하의 몸 분석과 맞춘 마네킹. R2: 사람이 먼저인 스토리 v2.0, 몸 바깥 층 구조(13 시스템, 모듈 41, 부품 5,819), 근전도·뇌파 언더슈트, 무광과 마모, 조립 셀. 마네킹으로 만든 슈트 외형, 헬멧, 스타일프레임은 폐기했다. R3: 레퍼런스 가이드와 템플릿, 계획서 v3.0, 인계 문서, 처리 절차. 레퍼런스가 오면 위의 9단계로 판 모델을 만들고 G1에서 함께 본다.</p><p class="you"><b>도하가 할 일</b> 가이드대로 레퍼런스 그리기(정면, 후면, 측면, 팔 4면, 다리 안쪽, 헬멧 4면 + 얼굴) → GitHub의 docs/reference/incoming/에 올리거나 대화에 첨부 → 새 세션 열기(첫 메시지는 HANDOFF §1.2)</p></div></li>
     </ol>
     <div class="group">제작</div>
     <ol class="track">
-      <li><span class="dot">P2</span><div class="step"><h3>자산 기반과 파이프라인 증명 <span class="pill">G2</span></h3><p>제작용 몸과 모션, 언더슈트 제작 모델, 슈트 외형 정밀 모델과 측면도, 판 솔리드화 시제품(오른팔), 모듈 라이브러리(무릎 근육, 배터리 패널, 막 아가미 우선), 조립 셀과 로봇 리그, 미리 렌더한 프레임을 스크롤로 재생하는 파이프라인 시험, 렌더 시간 실측.</p><p class="you"><b>도하가 할 일</b> 비율, 측면도, 사람과 언더슈트 룩 승인, 렌더 방법 결정(이 환경 / 도하 PC GPU / 클라우드)</p></div></li>
+      <li><span class="dot">P2</span><div class="step"><h3>자산 기반과 파이프라인 증명 <span class="pill">G2</span></h3><p>제작용 몸과 모션, 언더슈트 제작 모델, 레퍼런스 판 모델을 제작 수준으로(헴, 체결점, 안쪽 면), 헬멧 정밀 모델, 모듈 라이브러리(무릎 근육, 배터리 패널, 막 아가미 우선), 조립 셀과 로봇 리그, 미리 렌더한 프레임을 스크롤로 재생하는 파이프라인 시험. 프레임 렌더 실측 추정: 이 환경 CPU 약 120~280시간, GPU 약 6~28시간.</p><p class="you"><b>도하가 할 일</b> 사람과 언더슈트 룩, 판 제작 디테일 승인, 렌더 방법 결정(이 환경 / 도하 PC GPU / 클라우드)</p></div></li>
       <li><span class="dot">P3</span><div class="step"><h3>한 챕터를 최종 품질로 <span class="pill">G3 · 가장 중요</span></h3><p>06 MUSCLE: 로봇이 무릎 근육을 도하의 허벅지에 설치하고, 시험 동작, 분해 카드, 호버, 소리까지. 어둠과 손전등 오프닝, 판 체결 한 장면 포함.</p><p class="you"><b>도하가 할 일</b> 직접 보고 듣고 만져본 뒤 품질 기준 확정</p></div></li>
-      <li><span class="dot">P4</span><div class="step"><h3>전체 제작 <span class="pill">G4</span></h3><p>모듈 41개와 판 477장(나사 1,458개), 헬멧, 로봇 4대와 사람의 조립 애니메이션, 패널의 독립적 움직임.</p></div></li>
+      <li><span class="dot">P4</span><div class="step"><h3>전체 제작 <span class="pill">G4</span></h3><p>모듈 41개와 레퍼런스의 판 전체(나사 포함), 헬멧, 로봇 4대와 사람의 조립 애니메이션, 판의 독립적 움직임.</p></div></li>
       <li><span class="dot">P5</span><div class="step"><h3>경험 제작과 렌더 <span class="pill">G5</span></h3><p>조립 장면 프레임 렌더(약 2,640장), 16개 챕터, 실시간 레이어, 시스템 카드, 놀링, 자유 탐색.</p></div></li>
       <li><span class="dot">P6</span><div class="step"><h3>사운드와 손맛 <span class="pill">G6</span></h3><p>체결음, 근육 신호음, 탯줄과 루버 소리, 믹싱, 진동, 스크롤 감각.</p><p class="you"><b>도하가 할 일</b> 실제 기기로 듣고 느낀 피드백 (저는 소리를 들을 수 없습니다)</p></div></li>
     </ol>
@@ -135,23 +168,23 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <h2>무엇을 만드나</h2>
     <div class="facts">
       <div><b>약 290초</b><span>스크롤 감상 분량 (요청 100초)</span></div>
-      <div><b>5,819</b><span>부품 (모듈 41개, 판 477장)</span></div>
-      <div><b>36.6 kg</b><span>슈트 질량 (사람이 입는 것 1.92 kg)</span></div>
+      <div><b>5,819</b><span>부품, 모듈 41개 (판 수는 레퍼런스로 다시 계산)</span></div>
+      <div><b>36.6 kg</b><span>슈트 질량, 잠정 (사람이 입는 것 1.92 kg)</span></div>
       <div><b>3.7 h</b><span>배터리 패널 0.84 kWh로 케이블 없이</span></div>
     </div>
     <p class="lede">완성된 슈트는 처음에 나오지 않는다. 어둠 속 조립 셀에서 손전등 커서가 로봇과 케이블과 사람을 찾고, 조명이 켜지면 레이싱 슈트형 언더슈트와 바라클라바를 입은 도하가 서 있다. 로봇팔들이 몸 바깥에 부츠, 뼈대, 근육, 시스템, 판, 헬멧을 조립하고, 탯줄이 빠지는 순간 완성된 슈트가 처음으로 전신을 드러낸다.</p>
     <ul class="chapters">
       <li><code>P</code>어둠과 손전등, 길게 눌러 전원</li>
       <li><code>00</code>조명 점등, 로봇 기상, 도하</li>
-      <li><code>01</code>도하의 청사진, 판 477장</li>
+      <li><code>01</code>도하의 레퍼런스 도면, 판 번호 매김</li>
       <li><code>02</code>스캐너 링이 몸을 잰다</li>
       <li><code>03</code>신경 언더슈트: 근전도 784 ch, 뇌파 32 ch, 냉각 튜브</li>
       <li><code>04</code>부츠</li>
       <li><code>05</code>몸 바깥의 뼈대</li>
       <li><code>06</code>전기유압 근육 6개, 분해 카드</li>
       <li><code>07</code>배터리, 막 아가미, 연산부, 생명유지</li>
-      <li><code>08</code>청사진의 판 477장, 나사 1,458개 (본편)</li>
-      <li><code>09</code>헬멧, 얇은 눈 슬릿</li>
+      <li><code>08</code>레퍼런스의 판 전체와 나사 (본편)</li>
+      <li><code>09</code>헬멧(도하 디자인)이 닫힌다</li>
       <li><code>10</code>상태광, 이름의 발견</li>
       <li><code>11</code>탯줄 분리, 완성된 슈트 첫 공개</li>
       <li><code>12</code>움직임, 따로 움직이는 판</li>
@@ -166,7 +199,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <p class="lede">도하 피드백대로 덜 반짝이게, 가볍게 쓴 흔적을 넣는다. 열변색은 실제로 열이 나는 곳에만 쓴다.</p>
     <div class="mats">
       <div class="mat"><div class="sw ti"></div><b>무광 티타늄 (기본)</b><span>비드블라스트. 가장자리는 손에 닳아 매끈하고, 이음선 옆에는 먼지가 앉고, 드물게 긁힘.</span></div>
-      <div class="mat"><div class="sw tin"></div><b>새틴 골드 (TiN)</b><span>포인트 5곳. 가장자리에서 코팅이 닳아 티타늄이 비친다.</span></div>
+      <div class="mat"><div class="sw tin"></div><b>새틴 골드 (TiN)</b><span>포인트에만. 위치는 레퍼런스를 따른다. 가장자리에서 코팅이 닳아 티타늄이 비친다.</span></div>
       <div class="mat"><div class="sw hair"></div><b>그라파이트 니트</b><span>언더슈트. 봉제선, 대비 스티치, 견장, 은사 배선, 점 무늬 센서 패드.</span></div>
       <div class="mat"><div class="sw heat"></div><b>열변색</b><span>용접부와 근육 모터 하우징 같은 숨은 곳에만.</span></div>
     </div>
@@ -176,12 +209,14 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <h2>결정 사항</h2>
     <div class="dec">
       <div><h3>확정</h3><ul>
-        <li>마스크: 드로잉 실루엣 + 안면근 기반 오리지널 PERSONA</li>
         <li>Blender 5.2.1 LTS, 색 일치는 AgX LUT</li>
         <li>조립 로봇팔: 페인트가 살짝 벗겨진 노란색, 천장에 매달림</li>
         <li>소리: 체결 철컥, 너트러너, 유압 (P0 확정), 배경음악 없음</li>
         <li>성능 목표: 데스크톱 60 fps, 모바일 30 fps</li>
-        <li>패널 디자인 = 도하의 청사진 (얼굴만 PERSONA)</li>
+        <li>슈트 외형 = 도하의 새 레퍼런스 그대로, 마네킹 기반 디자인 폐기 (2026-10-03)</li>
+        <li>헬멧과 얼굴(PERSONA)도 도하가 디자인 (2026-10-03)</li>
+        <li>도구(Blender, three.js) 유지, 폐기한 디자인의 git 기록 삭제 (2026-10-03)</li>
+        <li>스토리보드는 아이디어에 따라 조금씩 고친다 (2026-10-03)</li>
         <li>영문 라벨 + 한글 본문, 크레딧은 도면 표제란</li>
         <li>완성은 끝에, 조립 셀로 시작 (2026-10-03)</li>
         <li>슬림 실루엣 유지, 성능 축소, 배터리는 패널, 케이블은 불가피할 때만 (2026-10-03)</li>
@@ -189,13 +224,12 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>렌더: 하이브리드 (2026-10-03)</li>
       </ul></div>
       <div><h3>G1 재검토에서 정하면 되는 것</h3><ul>
+        <li>레퍼런스 판 모델 (겹침 렌더, 비율 조정 표, 충돌과 대응)</li>
         <li>스토리 v2 구조 (정점 3개, 약 290초)</li>
         <li>언더슈트와 바라클라바 룩</li>
-        <li>눈 슬릿 안 A / B / C</li>
-        <li>성능 축소 폭 (보조 25 %, 3.7시간, 36.6 kg)</li>
-        <li>무릎 바깥 +5 mm (정면 실루엣이 커지는 유일한 곳)</li>
-        <li>배터리 패널 = 등판, 외부 연결 범위, 마모 정도</li>
-        <li>골드 포인트 5종, 상태광 색</li>
+        <li>성능 축소 폭 (다시 계산한 값으로)</li>
+        <li>배터리 등판, 외부 연결 범위, 마모 정도</li>
+        <li>골드 포인트 위치, 상태광 색</li>
       </ul></div>
     </div>
   </section>
@@ -203,9 +237,9 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   <section>
     <div class="next">
       <span class="label">다음 행동</span>
-      <p>도하가 스토리보드 페이지와 G1 항목을 검토한다. 승인되면 P2(제작용 몸과 모션, 언더슈트, 외형 정밀 모델과 측면도, 모듈 라이브러리, 프레임 재생 파이프라인 시험)를 시작한다.</p>
+      <p>도하가 가이드대로 레퍼런스를 그려 보낸다(1~2일 예정). 새 세션은 HANDOFF를 읽고 처리 절차 1단계(받기와 검토)부터 시작해, 빠진 뷰와 질문 목록을 보고한다. 도하가 동의하면 벡터화, 정합, 판 모델로 넘어간다.</p>
     </div>
   </section>
 
-  <footer>상세 문서: docs/PLAN.md · docs/storyboard/STORYBOARD.md · docs/design/systems.md · docs/reviews/P1-r2.md (브랜치 claude/dazzling-newton-19zxf5)</footer>
+  <footer>상세 문서: docs/PLAN.md · docs/HANDOFF.md · docs/INTAKE.md · docs/reference/GUIDE.md · docs/storyboard/STORYBOARD.md (브랜치 claude/dazzling-newton-19zxf5)</footer>
 </div>

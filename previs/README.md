@@ -1,24 +1,18 @@
-# previs — P1 preproduction (throwaway blockout tooling)
+# previs — 유지하는 도구
 
-Not the production pipeline (MYOFORGE, P2+). Mood frames and analysis only. Run everything with the Blender 5.2.1
-Python venv (bpy + numpy, scipy, pandas, statsmodels, pillow, matplotlib).
+> 2026-10-03 정리: 마네킹을 부풀린 셸로 만든 슈트 디자인(R1·R2)은 폐기했다. 슈트는 도하의 새 상세 레퍼런스에서 판 단위로 다시 만든다(`docs/INTAKE.md`). 여기 남은 것은 슈트 외형과 무관하게 계속 쓰는 도구다.
 
-| file | what |
-|---|---|
-| `body.py` | Doha's body without bpy: MakeHuman/MPFB2 base mesh (CC0) + targets (`vendor/mpfb/targets/`), posing, ANSUR-style landmarks and measurements |
-| `fit_corpus.py` | MAP fit of the mannequin to the CORPUS profile (`docs/research/corpus/`) → `wearer_fit.json` |
-| `lib.py` | `load_wearer()` (fitted body in the drawing's A-pose), materials, studio helpers |
-| `blueprint.py` | reads Doha's blueprint: lines, silhouette, symmetry, panel regions, PERSONA face drawn into the face oval, eye-slit variants `SLITS` (R2) → `blueprint/` (derived maps regenerate on demand) |
-| `suit.py` | blueprint suit shell: registration with arm/crotch fit corrections, silhouette fit, R2 depth table + knee allowance, panel seams from the drawing, lofted PERSONA helmet with eye slits, matte worn panel material (`set_wear`, `set_slit_glow`) |
-| `suit_stats.py` | builds the shell without rendering → `suit_stats.json` (area for the engineering budget) |
-| **R2** `clearance.py` | skin → outer panel distance per body zone and facing → `engineering/packaging.json` (zones) + heat-map sheet |
-| **R2** `modules.py` | every pre-assembled module anchored to the body and checked against the space under the shell (53/53) → `packaging.json` (modules) + space-claim sheet |
-| **R2** `undersuit.py` | neural undersuit: SENIAM EMG sites from the muscle research, EEG 10-10, nodes, embroidered bus, cooling-garment runs, knit with seams, epaulettes, balaclava → `engineering/undersuit.json` + previs objects (`xray_left` for 03 NEURAL) |
-| **R2** `cell.py` | the assembly cell: ceiling grid, gantry rails, energy chains, trays, duct, scanner ring, umbilical; telescopic-mast ceiling robots (`robot_ceiling`, tools: nutrunner / gripper / vacuum); periphery (bench, carts, panel rack, blueprint light table, telemetry screens drawn from the JSON) |
-| **R2** `assembly.py` | build stages 0-6 on Doha: module blockouts from `packaging.json`, cuffs, harness, shell trimmed to the installed panels, kits on the carts |
-| **R2** `styleframes2.py` | F01-F11: `python styleframes2.py OUT [F01 F02 ...] [--draft] [--res=1600x900] [--spp=64]`; build and path-tracing seconds per frame → `OUT/render_times.json` (PLAN §8.8) |
-| **R2** `hud.py` | engineering-drawing overlay (the site's real-time layer, previewed): `python hud.py IN OUT` |
-| **R2** `render_slits.py` | PERSONA eye-slit variants A / B / C |
-| `props.py` | P1 floor robot arm, cables, beams |
-| `macro.py`, `styleframes.py`, `material_sheet.py`, `render_persona.py` | P1 frames (superseded by R2 for the story) |
-| `render_corpus.py`, `test_suit.py`, `test_undersuit.py` | check renders |
+실행은 Blender 5.2.1 Python 모듈(bpy) 가상환경에서 한다. 설치 방법은 `docs/HANDOFF.md` §3.
+
+| 파일 | 무엇 | 쓰임 |
+|---|---|---|
+| `body.py` | MakeHuman/MPFB2 기본 메시(CC0) + 타깃(`vendor/mpfb/`), 자세, 랜드마크, 치수 | 도하의 몸(CORPUS) |
+| `fit_corpus.py` | CORPUS 치수에 마네킹을 맞춤 → `wearer_fit.json` | 도하의 몸 |
+| `lib.py` | 장면, 조명, 카메라, 기본 재질, `load_wearer()`(도하 몸, 자세 지정) | 공통 |
+| `materials.py` | 판 재질(무광 티타늄 + 약한 마모, TiN 골드, PVD, 아노다이즈, 바이저). 속성 계약은 파일 머리말 | 재질 방향(유지) |
+| `undersuit.py` | 신경 언더슈트: SENIAM 근전도 40곳, 뇌파 10-10, 노드, 은사 배선, 냉각복, 바라클라바 → `engineering/undersuit.json` | 언더슈트(유지) |
+| `cell.py` | 조립 셀: 천장 격자, 갠트리, 드래그 체인, 트레이, 덕트, 스캐너 링, 탯줄, 천장 로봇(망원 마스트 6축), 주변 장비, 모니터 | 무대(유지) |
+| `props.py` | 보, 원기둥, 케이블 도우미(`cell.py`가 씀) | 공통 |
+| `hud.py` | 엔지니어링 도면풍 오버레이 미리보기 | HUD 스타일(유지) |
+| `reference_template.py` | 레퍼런스 작성용 도하 신체 정사영 템플릿 → `docs/reference/template/` | 레퍼런스 준비 |
+| `render_corpus.py`, `test_undersuit.py` | 확인 렌더 | |

@@ -244,7 +244,7 @@ def steel_or(m):
 
 
 # ---------------------------------------------------------------- the cell
-def build(blueprint_img=os.path.join(ROOT, 'docs', 'brief', 'reference-drawing-mk1.webp'), screens_dir=None, periphery=True, umbilical_to=None):
+def build(blueprint_img=os.path.join(ROOT, 'docs', 'reference', 'previous', 'mk1-front.webp'), screens_dir=None, periphery=True, umbilical_to=None):
     m = mats(); objs = []
     # floor + markings
     bpy.ops.mesh.primitive_plane_add(size=24, location=(0, 0, 0)); fl = bpy.context.active_object; fl.name = 'ENV-floor'; fl.data.materials.append(m['floor'])

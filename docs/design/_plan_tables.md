@@ -12,7 +12,7 @@
 | **NERVUS** | 신경계 | 259 | 0.48 | SPINE CORE, BUS HUBS, STATUS LIGHT PIPES |
 | **PERSONA** | 얼굴 | 88 | 0.82 | PERSONA HELMET |
 | **FUNCTIO** | 기능 | 96 | 0.53 | TOOL BAY, ASSIST HAND, SWAP PORT + SENSOR CARTRIDGE |
-| **MYO** | 근육 패널 | 561 | 11.35 | BLUEPRINT PANELS |
+| **MYO** | 외부 패널 | 561 | 11.35 | SUIT PANELS |
 | **FIX** | 체결 | 2,826 | 0.97 | INSTALLATION HARDWARE |
 | | **합계** | **5,819** | **35.13** + 유체 1.50 = **36.6 kg** | |
 
@@ -22,66 +22,6 @@
 | hip | 둔부 뒤(골반 아치 → 대퇴 지주) | 64.2 N·m (44.7 + 19.5) | 80.2 N·m | 40 mm | 12 / 6 mm | 72.5 mm | 2.01 kN | 159 W | 215 × 44 × 18 mm |
 | knee | 대퇴 앞(→ 4절 링크) | 63.8 N·m (42.6 + 21.1) | 79.8 N·m | 32 mm | 14 / 7 mm | 56.8 mm | 2.49 kN | 158 W | 184 × 44 × 20 mm |
 | ankle | 종아리 뒤(→ 아킬레스 링크 → 뒤꿈치 레버) | 76.2 N·m (51.8 + 24.4) | 95.2 N·m | 45 mm | 12 / 6 mm | 41.6 mm | 2.12 kN | 283 W | 153 × 44 × 18 mm |
-
-<!-- PACK -->
-| 모듈 | 두께 mm | 사용 가능 mm | 여유 mm | 판정 |
-|---|---:|---:|---:|---|
-| knee muscle EHA (MUS-EHA-KNEE) | 20 | 21.3 | +1.3 | ✅ |
-| ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.7 | +1.7 | ✅ |
-| hip muscle EHA (MUS-EHA-HIP) | 18 | 21.7 | +3.7 | ✅ |
-| elbow tendon drive (TEN-ELBOW) | 14 | 16.0 | +2.0 | ✅ |
-| shoulder spring (TEN-SHOULDER) | 30 | 41.8 | +11.8 | ✅ |
-| thigh strut lat. (OS-LEG) | 8 | 8.5 | +0.5 | ✅ |
-| thigh strut med. (OS-LEG) | 8 | 13.6 | +5.6 | ✅ |
-| knee four-bar lat. (OS-LEG) | 6 | 8.3 | +2.3 | ✅ |
-| knee four-bar med. (OS-LEG) | 10 | 22.6 | +12.6 | ✅ |
-| shank strut postero-lat. (OS-LEG) | 8 | 8.8 | +0.8 | ✅ |
-| shank strut med. (OS-LEG) | 7 | 34.9 | +27.9 | ✅ |
-| hip joint (3 axes) (OS-PELVIS) | 26 | 27.0 | +1.0 | ✅ |
-| scapular tracking rail (OS-SPINE) | 12 | 20.9 | +8.9 | ✅ |
-| upper arm strut (OS-ARM) | 8 | 33.8 | +25.8 | ✅ |
-| forearm strut (OS-ARM) | 8 | 42.5 | +34.5 | ✅ |
-| battery panel (ENE-BATT) | 9 | 18.4 | +9.4 | ✅ |
-| membrane gill (BRA-GILL) | 12 | 13.8 | +1.8 | ✅ |
-| louvre fan (flank) (BRA-FAN) | 14 | 27.3 | +13.3 | ✅ |
-| louvre fan (trapezius box) (BRA-FAN) | 14 | 38.9 | +24.9 | ✅ |
-| louvre fan (back) (BRA-FAN) | 14 | 20.9 | +6.9 | ✅ |
-| pelvic arch (OS-PELVIS) | 14 | 26.8 | +12.8 | ✅ |
-| lumbar leaf spine (OS-SPINE) | 14 | 22.9 | +8.9 | ✅ |
-| thoracic frame (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
-| spine core (NER-CORE) | 18 | 21.4 | +3.4 | ✅ |
-| power distribution (ENE-PDU) | 22 | 28.6 | +6.6 | ✅ |
-| hot-swap buffer (ENE-BUF) | 18 | 26.9 | +8.9 | ✅ |
-| pump + manifold (BRA-LOOP) | 15 | 27.0 | +12.0 | ✅ |
-| drink bladder (VIT-HYDRA) | 12 | 21.1 | +9.1 | ✅ |
-| evaporant bladder (BRA-GILL) | 12 | 21.2 | +9.2 | ✅ |
-| emergency handle (VIT-SALUS) | 12 | 25.6 | +13.6 | ✅ |
-| tool bay (FUN-TOOLBAY) | 28 | 39.6 | +11.6 | ✅ |
-| assist hand (folded) (FUN-HAND) | 16 | 17.2 | +1.2 | ✅ |
-| swap port (FUN-PORT) | 22 | 43.8 | +21.8 | ✅ |
-
-<!-- ZONES -->
-| 부위 | 앞 | 옆 | 뒤 | 안쪽 |
-|---|---:|---:|---:|---:|
-| neck | 53 | 62 | 30 | - |
-| shoulder_top | - | - | - | - |
-| chest | 36 | - | - | - |
-| abdomen | 27 | - | - | - |
-| pelvis_front | 27 | - | - | - |
-| axilla_flank_hi | - | 26 | - | - |
-| flank | - | 30 | - | - |
-| hip_lateral | - | 40 | - | 27 |
-| upper_back | - | - | 31 | - |
-| lumbar | - | - | 36 | - |
-| sacrum_gluteal | - | - | 40 | - |
-| upper_arm | 33 | 49 | 31 | 19 |
-| elbow | 26 | 45 | 25 | 14 |
-| forearm | 31 | 56 | 29 | 15 |
-| hand | 15 | 14 | 13 | 13 |
-| thigh | 32 | 31 | 25 | 26 |
-| knee | 27 | 19 | 25 | 37 |
-| shank | 28 | 16 | 32 | 49 |
-| foot | 34 | 34 | 34 | 59 |
 
 <!-- SITES -->
 | 부위 | 근육 | 종류 | 부착 규칙 | 근육 표 (최대 힘 / 섬유 길이 / 깃각) |
@@ -115,6 +55,6 @@
 | 2 | SKELETON | 다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임 | 599 |
 | 3 | MUSCLE | EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력 | 590 |
 | 4 | SYSTEMS | 배전, 버퍼, 막 아가미, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 |
-| 5 | PANELS | 청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 |
-| 6 | PERSONA | 후두 셸 → 측두 허브 → 안면판 → 락 | 116 |
+| 5 | PANELS | 레퍼런스 판 전체(잠정 477장, 배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 |
+| 6 | PERSONA | 헬멧 셸 → 안면판 → 락(순서는 도하의 헬멧 디자인에 맞춘다) | 116 |
 | 7 | BRING-UP | 신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동 | 0 |

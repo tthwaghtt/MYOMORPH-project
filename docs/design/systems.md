@@ -3,6 +3,7 @@
 > 자동 생성: `engineering/report.py` ← `bom.json` v2 (R2, 2026-10-03). 손으로 고치지 않는다.
 > **부품 5,819개** · 사전 조립 모듈 41개 · 질량 35.13 kg(유체 제외) · 사람이 입는 것 1.92 kg
 > 세는 법: one part = one separately made or bought item that is assembled (a PCB assembly, a bearing, a cell, a screw each count 1; a sewn pattern piece counts 1; a moulded or printed one-piece item counts 1).
+> ⚠️ **잠정 수치**: 판 수, 부품 수, 체결구, 질량과 그에 따른 근육 크기·전력·운전 시간은 폐기한 R2 셸에서 고정한 입력(`engineering/provisional_inputs.json`)으로 계산했다. 도하의 새 레퍼런스로 판 목록이 나오면 다시 계산한다(`docs/INTAKE.md`).
 
 각 모듈의 "원리"는 사이트 시스템 카드의 본문이다. 부품표는 그 카드의 분해도에 붙는 이름표다.
 
@@ -19,9 +20,9 @@
 | **BRANCHIA** | THERMAL · 아가미 | 막 아가미(증발 냉각기), 냉각수 회로, 팬, 열리는 루버 | 151 | 1.57 |
 | **VITA** | LIFE SUPPORT · 생명유지 | 헬멧 송풍 정화, 가스 감시, 수분 공급, 비상 해제 | 58 | 0.50 |
 | **NERVUS** | NERVOUS SYSTEM · 신경계 | 척추 연산부, 실시간 버스, 상태광 | 259 | 0.48 |
-| **PERSONA** | HELMET · 얼굴 | 헬멧, 눈 슬릿 카메라, 시야 디스플레이 | 88 | 0.82 |
+| **PERSONA** | HELMET · 얼굴 | 헬멧(도하 디자인), 눈 카메라, 시야 디스플레이 | 88 | 0.82 |
 | **FUNCTIO** | FUNCTION · 기능 | 툴 베이, 보조 손, 교체 포트 | 96 | 0.53 |
-| **MYO** | PANELS · 근육 패널 | 도하의 청사진 판 477장과 패널 캐리어 | 561 | 11.35 |
+| **MYO** | PANELS · 외부 패널 | 도하의 레퍼런스 판(잠정 477장)과 패널 캐리어 | 561 | 11.35 |
 | **FIX** | FASTENERS · 체결 | 설치 볼트, 패널 체결구, 방진 그로밋 | 2,826 | 0.97 |
 
 ## 조립 단계 (로봇 작업 순서)
@@ -33,8 +34,8 @@
 | 2 | SKELETON · 골격 | 다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임 | 599 | 6 |
 | 3 | MUSCLE · 근육 | EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력 | 590 | 10 |
 | 4 | SYSTEMS · 내장 시스템 | 배전, 버퍼, 막 아가미, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 | 15 |
-| 5 | PANELS · 패널 | 청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 | 8 |
-| 6 | PERSONA · 헬멧 | 후두 셸 → 측두 허브 → 안면판 → 락 | 116 | 2 |
+| 5 | PANELS · 패널 | 레퍼런스 판 전체(잠정 477장, 배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 | 8 |
+| 6 | PERSONA · 헬멧 | 헬멧 셸 → 안면판 → 락(순서는 도하의 헬멧 디자인에 맞춘다) | 116 | 2 |
 | 7 | BRING-UP · 기동 | 신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동 | 0 | 0 |
 
 로봇 작업 합계: 모듈 설치 41회, 판 픽 168회, 나사 1,458개, 쿼터턴 16개, 커넥터 76개.
@@ -570,7 +571,7 @@
 - **설치** by: robot, ops: slide on guide pins → 4 quarter-turns, bolts: 0
 - **독립적 움직임** panel releases and slides out (swap)
 
-**원리** 배터리를 따로 매달지 않는다. 등의 넓은등근 판 두 장이 곧 배터리 팩이다. 바깥은 청사진의 티타늄 판, 안쪽 9 mm에 셀이 들어 있다. 쿼터턴 래치 4개를 풀면 판째로 빠지고, 버퍼가 버티는 동안 새 판을 꽂는다(유일한 미래 가정: 셀 에너지 밀도).
+**원리** 배터리를 따로 매달지 않는다. 등판 두 장이 곧 배터리 팩이다. 바깥은 티타늄 판, 안쪽 9 mm에 셀이 들어 있다. 쿼터턴 래치 4개를 풀면 판째로 빠지고, 버퍼가 버티는 동안 새 판을 꽂는다(유일한 미래 가정: 셀 에너지 밀도).
 
 | 부품 | 수량 | 재료 | g/개 |
 |---|---:|---|---:|
@@ -780,7 +781,7 @@
 
 ## PERSONA — HELMET · 얼굴
 
-헬멧, 눈 슬릿 카메라, 시야 디스플레이
+헬멧(도하 디자인), 눈 카메라, 시야 디스플레이
 
 ### PER-HELMET · PERSONA HELMET · 페르소나 헬멧
 
@@ -895,24 +896,24 @@
 | cartridge board | 1 | FR4 | 5 |
 | internal screw M2, Ti | 8 | Ti64 | 0.3 |
 
-## MYO — PANELS · 근육 패널
+## MYO — PANELS · 외부 패널
 
-도하의 청사진 판 477장과 패널 캐리어
+도하의 레퍼런스 판(잠정 477장)과 패널 캐리어
 
-### MYO-PANELS · BLUEPRINT PANELS · 청사진 판
+### MYO-PANELS · SUIT PANELS · 외부 판
 
 - **수량** 1 (C) · **위치** whole body · **조립 단계** 5 PANELS
 - **부품** 개당 561개 · 합계 561개 · **질량** 개당 11.347 kg · 합계 11.347 kg
 - **사양** panels 477 · thickness_mm 0.60 · area_m2 3.34 · mount_points 1,352
 - **설치** by: robot, ops: place → nutrunner, picks: 168
-- **독립적 움직임** deltoid caps slide in layers / abdominal bands telescope / knee cop slides over the knee / neck lamellae fan
+- **독립적 움직임** panels around the joints overlap and slide (which ones: from the reference panel list)
 
-**원리** 도하가 손으로 그린 판 그대로. 0.6 mm 티타늄 판을 점진 성형(SPIF)으로 곡면을 만들고 가장자리를 말아 강성을 낸다. 판은 몸에 닿지 않고 탄소섬유 캐리어 위에 방진 그로밋으로 떠 있어서, 관절이 움직일 때 겹치고 미끄러진다.
+**원리** 도하의 레퍼런스에 그려진 판 그대로. 0.6 mm 티타늄 판을 점진 성형(SPIF)으로 곡면을 만들고 가장자리를 말아 강성을 낸다. 판은 몸에 닿지 않고 탄소섬유 캐리어 위에 방진 그로밋으로 떠 있어서, 관절이 움직일 때 겹치고 미끄러진다.
 
 | 부품 | 수량 | 재료 | g/개 |
 |---|---:|---|---:|
-| panel, torso + limbs front (blueprint front view) (Ti-6Al-4V 0.6 mm, SPIF) | 208 | Ti64 | 22.12 |
-| panel, back (blueprint rear inset) (Ti-6Al-4V 0.6 mm, SPIF) | 102 | Ti64 | 27.65 |
+| panel, torso + limbs front (Ti-6Al-4V 0.6 mm, SPIF) | 208 | Ti64 | 22.12 |
+| panel, back (Ti-6Al-4V 0.6 mm, SPIF) | 102 | Ti64 | 27.65 |
 | panel, limb backs (Ti-6Al-4V 0.6 mm, SPIF) | 44 | Ti64 | 33.18 |
 | panel, helmet (PERSONA + side detail, both sides) (Ti-6Al-4V 0.6 mm, SPIF) | 40 | Ti64 | 9.95 |
 | panel, hand plates (Ti-6Al-4V 0.6 mm, SPIF) | 38 | Ti64 | 4.87 |
