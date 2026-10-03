@@ -1,0 +1,4322 @@
+{
+ "version": "v2 (R2, 2026-10-03)",
+ "counting_rule": "one part = one separately made or bought item that is assembled (a PCB assembly, a bearing, a cell, a screw each count 1; a sewn pattern piece counts 1; a moulded or printed one-piece item counts 1).",
+ "systems": {
+  "FASCIA": {
+   "name_en": "NEURAL WEAR",
+   "name_ko": "신경 언더슈트",
+   "summary_ko": "피부에 닿는 층. 근전도·뇌파 센서와 냉각 튜브가 들어 있는 레이싱 슈트형 옷",
+   "parts": 208,
+   "mass_kg": 1.92,
+   "units": 4
+  },
+  "PES": {
+   "name_en": "GROUND",
+   "name_ko": "발",
+   "summary_ko": "땅과 만나는 곳. 슈트의 무게가 내려가는 끝",
+   "parts": 102,
+   "mass_kg": 2.28,
+   "units": 2
+  },
+  "OS": {
+   "name_en": "SKELETON",
+   "name_ko": "골격",
+   "summary_ko": "몸 바깥의 뼈대. 슈트 무게를 땅으로 내리고 힘을 몸에 전달하는 프레임과 커프",
+   "parts": 599,
+   "mass_kg": 6.53,
+   "units": 6
+  },
+  "MUSCULUS": {
+   "name_en": "MUSCLE",
+   "name_ko": "근육",
+   "summary_ko": "전기로 움직이는 밀폐형 유압 근육(EHA) 6개",
+   "parts": 450,
+   "mass_kg": 4.47,
+   "units": 6
+  },
+  "TENDO": {
+   "name_en": "TENDON",
+   "name_ko": "힘줄",
+   "summary_ko": "케이블로 힘을 전하는 팔꿈치 구동기와 어깨 중력보상 스프링",
+   "parts": 140,
+   "mass_kg": 0.83,
+   "units": 4
+  },
+  "ENERGIA": {
+   "name_en": "ENERGY",
+   "name_ko": "에너지",
+   "summary_ko": "외부 패널이 곧 배터리. 48 V 배전과 하네스",
+   "parts": 281,
+   "mass_kg": 2.88,
+   "units": 5
+  },
+  "BRANCHIA": {
+   "name_en": "THERMAL",
+   "name_ko": "아가미",
+   "summary_ko": "막 아가미(증발 냉각기), 냉각수 회로, 팬, 열리는 루버",
+   "parts": 151,
+   "mass_kg": 1.57,
+   "units": 8
+  },
+  "VITA": {
+   "name_en": "LIFE SUPPORT",
+   "name_ko": "생명유지",
+   "summary_ko": "헬멧 송풍 정화, 가스 감시, 수분 공급, 비상 해제",
+   "parts": 58,
+   "mass_kg": 0.5,
+   "units": 3
+  },
+  "NERVUS": {
+   "name_en": "NERVOUS SYSTEM",
+   "name_ko": "신경계",
+   "summary_ko": "척추 연산부, 실시간 버스, 상태광",
+   "parts": 259,
+   "mass_kg": 0.48,
+   "units": 3
+  },
+  "PERSONA": {
+   "name_en": "HELMET",
+   "name_ko": "얼굴",
+   "summary_ko": "헬멧, 눈 슬릿 카메라, 시야 디스플레이",
+   "parts": 88,
+   "mass_kg": 0.82,
+   "units": 1
+  },
+  "FUNCTIO": {
+   "name_en": "FUNCTION",
+   "name_ko": "기능",
+   "summary_ko": "툴 베이, 보조 손, 교체 포트",
+   "parts": 96,
+   "mass_kg": 0.53,
+   "units": 3
+  },
+  "MYO": {
+   "name_en": "PANELS",
+   "name_ko": "근육 패널",
+   "summary_ko": "도하의 청사진 판 477장과 패널 캐리어",
+   "parts": 561,
+   "mass_kg": 11.35,
+   "units": 1
+  },
+  "FIX": {
+   "name_en": "FASTENERS",
+   "name_ko": "체결",
+   "summary_ko": "설치 볼트, 패널 체결구, 방진 그로밋",
+   "parts": 2826,
+   "mass_kg": 0.97,
+   "units": 1
+  }
+ },
+ "stages": {
+  "0": {
+   "name_en": "WEAR",
+   "name_ko": "착용",
+   "what_ko": "도하가 언더슈트, 바라클라바, 이너 장갑을 입고 셀에 들어온다(사람이 입는다)",
+   "parts": 208,
+   "modules": 4,
+   "mass_kg": 1.92
+  },
+  "1": {
+   "name_en": "GROUND",
+   "name_ko": "발",
+   "what_ko": "부츠에 발을 넣고 로봇이 바인딩을 조인다",
+   "parts": 102,
+   "modules": 2,
+   "mass_kg": 2.28
+  },
+  "2": {
+   "name_en": "SKELETON",
+   "name_ko": "골격",
+   "what_ko": "다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임",
+   "parts": 599,
+   "modules": 6,
+   "mass_kg": 6.53
+  },
+  "3": {
+   "name_en": "MUSCLE",
+   "name_ko": "근육",
+   "what_ko": "EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력",
+   "parts": 590,
+   "modules": 10,
+   "mass_kg": 5.3
+  },
+  "4": {
+   "name_en": "SYSTEMS",
+   "name_ko": "내장 시스템",
+   "what_ko": "배전, 버퍼, 냉동기, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결",
+   "parts": 403,
+   "modules": 15,
+   "mass_kg": 3.04
+  },
+  "5": {
+   "name_en": "PANELS",
+   "name_ko": "패널",
+   "what_ko": "청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함)",
+   "parts": 3801,
+   "modules": 8,
+   "mass_kg": 15.0
+  },
+  "6": {
+   "name_en": "PERSONA",
+   "name_ko": "헬멧",
+   "what_ko": "후두 셸 → 측두 허브 → 안면판 → 락",
+   "parts": 116,
+   "modules": 2,
+   "mass_kg": 1.06
+  },
+  "7": {
+   "name_en": "BRING-UP",
+   "name_ko": "기동",
+   "what_ko": "신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동"
+  }
+ },
+ "modules": [
+  {
+   "id": "FAS-SUIT",
+   "system": "FASCIA",
+   "name_en": "NEURAL UNDERSUIT",
+   "name_ko": "신경 언더슈트",
+   "stage": 0,
+   "zone": "whole body",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "3-layer knit pattern piece (aramid/elastane spacer, 1.1 mm)",
+     "qty": 28,
+     "material": "aramid",
+     "g_each": 21.0,
+     "note": ""
+    },
+    {
+     "name": "two-way front zip",
+     "qty": 1,
+     "material": "PA/steel",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "cooling tube circuit, PU 3.2 OD / 1.6 ID (total 77 m)",
+     "qty": 24,
+     "material": "PU",
+     "g_each": 23.24,
+     "note": ""
+    },
+    {
+     "name": "tube distribution manifold, 6-port",
+     "qty": 4,
+     "material": "PEEK",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "dry-break quick disconnect, garment half",
+     "qty": 4,
+     "material": "Ti64/FKM",
+     "g_each": 11.0,
+     "note": ""
+    },
+    {
+     "name": "HD-sEMG grid, 32 ch printed on knit (4 x 8, 10 mm)",
+     "qty": 24,
+     "material": "Ag/AgCl-knit",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "bipolar dry EMG electrode pair",
+     "qty": 16,
+     "material": "Ag/AgCl",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "biopotential node, 64 ch, overmoulded pod",
+     "qty": 22,
+     "material": "FR4/TPU",
+     "g_each": 7.0,
+     "note": "the visible sensor pods"
+    },
+    {
+     "name": "dry ECG electrode",
+     "qty": 3,
+     "material": "Ag-knit",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "heat-flux / skin temperature sensor",
+     "qty": 6,
+     "material": "FR4",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "respiration strain band",
+     "qty": 1,
+     "material": "TPU",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "sweat conductance sensor",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "embroidered data bus run (Ag yarn, TPU laminate)",
+     "qty": 14,
+     "material": "Ag/TPU",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "sealed trunk connector, 24-pin (nape, waist L/R)",
+     "qty": 3,
+     "material": "mixed",
+     "g_each": 9.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "MYO(근육)를 읽는 옷. 근육이 수축하기 30~100 ms 전에 척수의 운동신경이 근섬유에 전기 신호를 보낸다. 피부 위 고밀도 전극 격자가 이 신호를 받아 운동단위 하나하나의 발화로 분해하면, 슈트는 몸이 움직이기 전에 얼마나 힘을 쓰려는지 안다. 같은 원단 속 3.2 mm 튜브에는 냉각수가 흘러 몸의 열을 직접 뺀다.",
+   "specs": {
+    "emg_channels": 784,
+    "tube_m": 77.5,
+    "lcg_flow_L_min": 1.43
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "wearer",
+    "connect": [
+     "waist L/R coolant + data",
+     "nape data"
+    ]
+   },
+   "moves": [],
+   "parts_per_unit": 151,
+   "mass_g_per_unit": 1725.8,
+   "units": 1,
+   "parts_total": 151,
+   "mass_kg_total": 1.726
+  },
+  {
+   "id": "FAS-BALA",
+   "system": "FASCIA",
+   "name_en": "EEG BALACLAVA",
+   "name_ko": "뇌파 바라클라바",
+   "stage": 0,
+   "zone": "head",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "knit hood",
+     "qty": 1,
+     "material": "aramid",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "dry comb EEG electrode, spring-loaded",
+     "qty": 32,
+     "material": "Ag/AgCl",
+     "g_each": 1.6,
+     "note": ""
+    },
+    {
+     "name": "EEG node, 32 ch",
+     "qty": 1,
+     "material": "FR4/TPU",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "forehead PPG (SpO2, HR)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "bone-conduction transducer",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "bone-conduction mic",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "nape connector",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "embroidered bus run",
+     "qty": 2,
+     "material": "Ag/TPU",
+     "g_each": 3.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "뇌는 움직이기 0.5~1.5초 전부터 운동피질에서 준비 신호(운동관련 전위, 뮤·베타 리듬 감소)를 낸다. 헬멧 라이너가 누르는 32개 건식 전극이 이 신호를 읽어 동작 모드(걷기, 계단, 들기, 공구)를 고르고, 슈트가 의도와 다르게 움직였을 때 뇌가 내는 오류 전위로 즉시 멈춘다. 연속 제어는 근전도, 판단은 뇌파가 맡는다.",
+   "specs": {
+    "eeg_channels": 32,
+    "sample_Hz": 500
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "wearer"
+   },
+   "moves": [],
+   "parts_per_unit": 41,
+   "mass_g_per_unit": 134.2,
+   "units": 1,
+   "parts_total": 41,
+   "mass_kg_total": 0.134
+  },
+  {
+   "id": "FAS-GLOVE",
+   "system": "FASCIA",
+   "name_en": "INNER GLOVE",
+   "name_ko": "이너 장갑",
+   "stage": 0,
+   "zone": "hand",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "knit glove",
+     "qty": 1,
+     "material": "aramid",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "fingertip pressure sensor",
+     "qty": 5,
+     "material": "FR4",
+     "g_each": 0.5,
+     "note": ""
+    },
+    {
+     "name": "wrist connector",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "embroidered bus run",
+     "qty": 1,
+     "material": "Ag/TPU",
+     "g_each": 2.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "손끝 압력을 읽어 보조 손과 공구의 힘을 맞춘다.",
+   "specs": {},
+   "envelope_mm": null,
+   "install": {
+    "by": "wearer"
+   },
+   "moves": [],
+   "parts_per_unit": 8,
+   "mass_g_per_unit": 29.5,
+   "units": 2,
+   "parts_total": 16,
+   "mass_kg_total": 0.059
+  },
+  {
+   "id": "PES-BOOT",
+   "system": "PES",
+   "name_en": "BOOT",
+   "name_ko": "부츠",
+   "stage": 1,
+   "zone": "foot",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "sole plate, CFRP",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 250.0,
+     "note": ""
+    },
+    {
+     "name": "heel node, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 95.0,
+     "note": ""
+    },
+    {
+     "name": "outsole, lugged",
+     "qty": 1,
+     "material": "NBR",
+     "g_each": 180.0,
+     "note": ""
+    },
+    {
+     "name": "midsole",
+     "qty": 1,
+     "material": "TPU foam",
+     "g_each": 85.0,
+     "note": ""
+    },
+    {
+     "name": "pressure insole, 16-zone capacitive",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "shear-beam load cell",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "heel lever (Achilles link anchor), LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 70.0,
+     "note": ""
+    },
+    {
+     "name": "ankle hinge yoke",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 38.0,
+     "note": ""
+    },
+    {
+     "name": "thin-section bearing",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "hinge axle",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "instep shell",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 60.0,
+     "note": ""
+    },
+    {
+     "name": "heel cup",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 55.0,
+     "note": ""
+    },
+    {
+     "name": "BOA dial",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "BOA lace",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "foot node (load-cell amp + IMU)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "inner bootie",
+     "qty": 1,
+     "material": "EVA",
+     "g_each": 60.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 22,
+     "material": "Ti64",
+     "g_each": 0.8,
+     "note": ""
+    }
+   ],
+   "principle_ko": "슈트 무게는 사람 몸이 아니라 프레임을 따라 이 발판으로 내려간다. 발판 아래 하중 센서 4개와 16구역 압력 깔창이 무게중심과 보행 단계(뒤꿈치 닿음 → 발바닥 → 밀기)를 1 kHz로 읽는다.",
+   "specs": {
+    "load_cells": 4,
+    "pressure_zones": 16
+   },
+   "envelope_mm": [
+    290,
+    115,
+    95
+   ],
+   "install": {
+    "by": "wearer + robot",
+    "ops": [
+     "close binding (BOA)"
+    ]
+   },
+   "moves": [],
+   "parts_per_unit": 51,
+   "mass_g_per_unit": 1142.2,
+   "units": 2,
+   "parts_total": 102,
+   "mass_kg_total": 2.284
+  },
+  {
+   "id": "OS-LEG",
+   "system": "OS",
+   "name_en": "LEG FRAME",
+   "name_ko": "다리 프레임",
+   "stage": 2,
+   "zone": "thigh + shank",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "thigh strut, lateral (CFRP / Ti end fittings)",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 170.0,
+     "note": ""
+    },
+    {
+     "name": "thigh strut, medial",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 130.0,
+     "note": ""
+    },
+    {
+     "name": "shank strut, lateral",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 110.0,
+     "note": ""
+    },
+    {
+     "name": "shank strut, medial",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 100.0,
+     "note": ""
+    },
+    {
+     "name": "knee crossed four-bar link",
+     "qty": 4,
+     "material": "Ti64",
+     "g_each": 26.0,
+     "note": ""
+    },
+    {
+     "name": "knee joint plate",
+     "qty": 4,
+     "material": "Ti64",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "needle roller bearing",
+     "qty": 8,
+     "material": "steel",
+     "g_each": 2.5,
+     "note": ""
+    },
+    {
+     "name": "knee pin",
+     "qty": 8,
+     "material": "Ti64",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 16,
+     "material": "steel",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "knee hard stop + bumper",
+     "qty": 2,
+     "material": "Ti/PU",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "knee absolute encoder",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "encoder magnet",
+     "qty": 1,
+     "material": "NdFeB",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "ankle bracket, LPBF",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "EHA clevis node, thigh, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "EHA clevis node, shank, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 38.0,
+     "note": ""
+    },
+    {
+     "name": "thigh cuff shell",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 95.0,
+     "note": ""
+    },
+    {
+     "name": "thigh cuff liner (EPP + gel)",
+     "qty": 1,
+     "material": "EPP/silicone",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "thigh cuff strap",
+     "qty": 2,
+     "material": "PA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "thigh cuff BOA dial",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "shank cuff shell",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 70.0,
+     "note": ""
+    },
+    {
+     "name": "shank cuff liner (EPP + gel)",
+     "qty": 1,
+     "material": "EPP/silicone",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "shank cuff strap",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "shank cuff BOA dial",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "strain gauge bridge",
+     "qty": 2,
+     "material": "FR4",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "IMU node",
+     "qty": 2,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "harness clip",
+     "qty": 6,
+     "material": "PA",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M4, Ti",
+     "qty": 40,
+     "material": "Ti64",
+     "g_each": 0.9,
+     "note": ""
+    }
+   ],
+   "principle_ko": "허벅지와 정강이 양옆을 지나는 탄소섬유 지주. 무릎은 단순 경첩이 아니라 교차 4절 링크라서 사람 무릎처럼 굽힐수록 회전중심이 뒤로 이동한다(순간회전중심 추종). 그래서 슈트 무릎이 사람 무릎을 비틀지 않는다. 커프는 힘을 몸에 전하는 유일한 접점이고, 나머지는 몸에서 떠 있다.",
+   "specs": {
+    "knee_rom_deg": [
+     0,
+     125
+    ],
+    "icr_tracking": true
+   },
+   "envelope_mm": [
+    820,
+    150,
+    150
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "dock to boot ankle hinge",
+     "pin hip",
+     "tighten 2 cuffs"
+    ],
+    "bolts": 8
+   },
+   "moves": [],
+   "parts_per_unit": 111,
+   "mass_g_per_unit": 1287.4,
+   "units": 2,
+   "parts_total": 222,
+   "mass_kg_total": 2.575
+  },
+  {
+   "id": "OS-PELVIS",
+   "system": "OS",
+   "name_en": "PELVIS + HIP JOINTS",
+   "name_ko": "골반과 고관절",
+   "stage": 2,
+   "zone": "pelvis",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "pelvic arch, LPBF lattice + CFRP",
+     "qty": 1,
+     "material": "Ti64/CFRP",
+     "g_each": 320.0,
+     "note": ""
+    },
+    {
+     "name": "lateral hip arm",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 110.0,
+     "note": ""
+    },
+    {
+     "name": "crossed roller bearing (hip flexion axis)",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "hip output flange",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "hip housing",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 60.0,
+     "note": ""
+    },
+    {
+     "name": "abduction hinge yoke (passive)",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 35.0,
+     "note": ""
+    },
+    {
+     "name": "abduction bearing",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "abduction axle",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "abduction centring spring",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 10.0,
+     "note": ""
+    },
+    {
+     "name": "rotation ring bearing (passive, +/-25 deg)",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "hip encoder (flex, abd, rot)",
+     "qty": 6,
+     "material": "FR4",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "hip hard stop",
+     "qty": 6,
+     "material": "Ti/PU",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pelvic belt, padded",
+     "qty": 1,
+     "material": "PA/EPP",
+     "g_each": 140.0,
+     "note": ""
+    },
+    {
+     "name": "belt buckle",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "belt BOA dial",
+     "qty": 2,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "IMU node (pelvis)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "PDU / buffer bracket",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M4, Ti",
+     "qty": 44,
+     "material": "Ti64",
+     "g_each": 0.9,
+     "note": ""
+    }
+   ],
+   "principle_ko": "고관절은 세 축이다. 굽힘·폄은 EHA가 밀고, 벌림과 돌림은 스프링으로 가운데를 찾는 수동 축이라 사람이 다리를 벌리거나 돌릴 때 막지 않는다. 축마다 하드 스톱이 사람의 가동 범위 안에서 기계적으로 막는다.",
+   "specs": {
+    "hip_rom_deg": {
+     "flex": 110,
+     "ext": 20,
+     "abd": 35,
+     "rot": 25
+    }
+   },
+   "envelope_mm": [
+    360,
+    220,
+    120
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "pin both leg frames",
+     "close belt"
+    ],
+    "bolts": 12
+   },
+   "moves": [],
+   "parts_per_unit": 83,
+   "mass_g_per_unit": 1352.6,
+   "units": 1,
+   "parts_total": 83,
+   "mass_kg_total": 1.353
+  },
+  {
+   "id": "OS-SPINE",
+   "system": "OS",
+   "name_en": "SPINE + HARNESS",
+   "name_ko": "척추와 하네스",
+   "stage": 2,
+   "zone": "back",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "lumbar vertebra block, LPBF",
+     "qty": 5,
+     "material": "Ti64",
+     "g_each": 38.0,
+     "note": ""
+    },
+    {
+     "name": "lumbar leaf flexure 0.8 mm",
+     "qty": 6,
+     "material": "Ti64",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "flexure guide rail",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "flexure preload screw",
+     "qty": 6,
+     "material": "Ti64",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "thoracic frame, LPBF lattice",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 380.0,
+     "note": ""
+    },
+    {
+     "name": "chest harness shell",
+     "qty": 2,
+     "material": "CFRP",
+     "g_each": 65.0,
+     "note": ""
+    },
+    {
+     "name": "harness foam",
+     "qty": 3,
+     "material": "EPP",
+     "g_each": 15.0,
+     "note": ""
+    },
+    {
+     "name": "harness strap",
+     "qty": 4,
+     "material": "PA",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "harness buckle",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "harness BOA dial",
+     "qty": 2,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "scapular tracking rail",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "scapular carriage",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "carriage bearing",
+     "qty": 8,
+     "material": "steel",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "scapular linkage",
+     "qty": 6,
+     "material": "Ti64",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "linkage pin",
+     "qty": 12,
+     "material": "Ti64",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "scapular return spring",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "scapular encoder",
+     "qty": 4,
+     "material": "FR4",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "IMU node (thorax)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "harness channel clip",
+     "qty": 20,
+     "material": "PA",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M4, Ti",
+     "qty": 60,
+     "material": "Ti64",
+     "g_each": 0.9,
+     "note": ""
+    }
+   ],
+   "principle_ko": "허리는 티타늄 판스프링 6장이 쌓인 척추다. 앞으로 숙이면 판스프링이 에너지를 저장했다가 일어설 때 돌려준다(전원 불필요). 어깨뼈(견갑골)는 팔을 들 때 가슴 위를 미끄러지는데, 레일 위 캐리지가 그 움직임을 따라가 슈트 어깨 축이 사람 어깨 중심에서 벗어나지 않는다. 외골격의 가장 어려운 문제를 기구로 푼다.",
+   "specs": {
+    "lumbar_flex_deg": 60,
+    "scapular_travel_mm": 38
+   },
+   "envelope_mm": [
+    520,
+    330,
+    40
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "dock to pelvis",
+     "close harness"
+    ],
+    "bolts": 10
+   },
+   "moves": [],
+   "parts_per_unit": 152,
+   "mass_g_per_unit": 1373.0,
+   "units": 1,
+   "parts_total": 152,
+   "mass_kg_total": 1.373
+  },
+  {
+   "id": "OS-ARM",
+   "system": "OS",
+   "name_en": "ARM FRAME",
+   "name_ko": "팔 프레임",
+   "stage": 2,
+   "zone": "upper arm + forearm",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "upper arm strut, lateral",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 95.0,
+     "note": ""
+    },
+    {
+     "name": "shoulder linkage arm",
+     "qty": 3,
+     "material": "Ti64",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "shoulder linkage bearing",
+     "qty": 6,
+     "material": "steel",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "shoulder linkage pin",
+     "qty": 3,
+     "material": "Ti64",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "elbow yoke",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 24.0,
+     "note": ""
+    },
+    {
+     "name": "elbow bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "elbow axle",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 7.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "elbow hard stop",
+     "qty": 2,
+     "material": "Ti/PU",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "elbow encoder",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "encoder magnet",
+     "qty": 1,
+     "material": "NdFeB",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "forearm strut, radial",
+     "qty": 1,
+     "material": "CFRP/Ti",
+     "g_each": 80.0,
+     "note": ""
+    },
+    {
+     "name": "wrist gimbal ring",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "gimbal bearing",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "gimbal axle",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "upper arm cuff shell",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 50.0,
+     "note": ""
+    },
+    {
+     "name": "upper arm cuff liner (EPP + gel)",
+     "qty": 1,
+     "material": "EPP/silicone",
+     "g_each": 15.0,
+     "note": ""
+    },
+    {
+     "name": "upper arm cuff strap",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "upper arm cuff BOA dial",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "forearm cuff shell",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "forearm cuff liner (EPP + gel)",
+     "qty": 1,
+     "material": "EPP/silicone",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "forearm cuff strap",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "forearm cuff BOA dial",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "IMU node",
+     "qty": 2,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 28,
+     "material": "Ti64",
+     "g_each": 0.8,
+     "note": ""
+    }
+   ],
+   "principle_ko": "팔 바깥쪽 지주와 팔꿈치 경첩. 손목은 구동하지 않는 2축 짐벌이라 손은 완전히 자유롭다.",
+   "specs": {
+    "elbow_rom_deg": [
+     0,
+     135
+    ]
+   },
+   "envelope_mm": [
+    560,
+    90,
+    60
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "dock to scapular carriage",
+     "tighten 2 cuffs"
+    ],
+    "bolts": 6
+   },
+   "moves": [],
+   "parts_per_unit": 71,
+   "mass_g_per_unit": 612.2,
+   "units": 2,
+   "parts_total": 142,
+   "mass_kg_total": 1.224
+  },
+  {
+   "id": "MUS-EHA-HIP",
+   "system": "MUSCULUS",
+   "name_en": "HIP MUSCLE (EHA)",
+   "name_ko": "고관절 근육",
+   "stage": 3,
+   "zone": "gluteal / posterior pelvis",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "BLDC stator assembly, frameless 12-slot",
+     "qty": 1,
+     "material": "Cu/Si-steel",
+     "g_each": 142.31,
+     "note": ""
+    },
+    {
+     "name": "rotor assembly, 14-pole NdFeB",
+     "qty": 1,
+     "material": "NdFeB/steel",
+     "g_each": 77.62,
+     "note": ""
+    },
+    {
+     "name": "motor bearing, deep groove 6701",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "motor housing",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 44.57,
+     "note": ""
+    },
+    {
+     "name": "motor end cap",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 10.29,
+     "note": ""
+    },
+    {
+     "name": "hall + 17-bit absolute encoder PCB",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "pump gear, drive / idler (internal gear set)",
+     "qty": 2,
+     "material": "steel DLC",
+     "g_each": 7.71,
+     "note": ""
+    },
+    {
+     "name": "pump body",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 37.71,
+     "note": ""
+    },
+    {
+     "name": "pump side plate",
+     "qty": 2,
+     "material": "bronze",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "shaft seal",
+     "qty": 1,
+     "material": "PTFE",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "valve manifold, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 81.43,
+     "note": ""
+    },
+    {
+     "name": "pilot-operated check valve",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pressure relief valve 25 MPa",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 7.0,
+     "note": ""
+    },
+    {
+     "name": "free-swing bypass solenoid valve",
+     "qty": 1,
+     "material": "steel/Cu",
+     "g_each": 16.0,
+     "note": ""
+    },
+    {
+     "name": "pressure transducer",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "oil temperature sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "bootstrap accumulator body",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 29.14,
+     "note": ""
+    },
+    {
+     "name": "accumulator piston",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 4.29,
+     "note": ""
+    },
+    {
+     "name": "accumulator end cap",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 5.14,
+     "note": ""
+    },
+    {
+     "name": "cylinder barrel, bore 12 mm",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 35.27,
+     "note": ""
+    },
+    {
+     "name": "piston",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 6.86,
+     "note": ""
+    },
+    {
+     "name": "piston rod 6 mm, DLC",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 12.84,
+     "note": ""
+    },
+    {
+     "name": "piston seal",
+     "qty": 2,
+     "material": "PTFE/bronze",
+     "g_each": 0.8,
+     "note": ""
+    },
+    {
+     "name": "rod seal",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "wiper",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "rod gland",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 7.71,
+     "note": ""
+    },
+    {
+     "name": "rod eye",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 9.43,
+     "note": ""
+    },
+    {
+     "name": "magnetostrictive position sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "spherical plain bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "clevis pin",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 0.3,
+     "note": ""
+    },
+    {
+     "name": "motor driver + MCU, EtherCAT slave",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "thermal pad",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "driver cover",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector, power + bus",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "O-ring",
+     "qty": 8,
+     "material": "FKM",
+     "g_each": 0.2,
+     "note": ""
+    },
+    {
+     "name": "fill / bleed screw",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "hydraulic fluid, synthetic ester (ml)",
+     "qty": 1,
+     "material": "ester",
+     "g_each": 22.12,
+     "note": "counted as one fill"
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 16,
+     "material": "Ti64",
+     "g_each": 0.7,
+     "note": ""
+    }
+   ],
+   "principle_ko": "모터, 양방향 기어 펌프, 밸브 블록, 실린더를 하나로 밀봉한 전기유압 액추에이터(EHA). 중앙 유압 펌프와 긴 고압 배관이 없다. 모터가 정방향으로 돌면 펌프가 기름을 실린더 한쪽으로 밀어 늘어나고, 역방향이면 줄어든다. 밸브로 압력을 버리지 않고 모터 회전으로 직접 제어하니 효율이 높다. 다리를 흔드는 구간에서는 바이패스 밸브가 열려 저항 없이 따라온다(자유 스윙). 고장 나면 이 밸브가 기본으로 열려 사람을 가두지 않는다.",
+   "specs": {
+    "bore_mm": 12.0,
+    "rod_mm": 6.0,
+    "stroke_mm": 72.5,
+    "force_kN": 2.01,
+    "design_torque_Nm": 80.2,
+    "motor_W": 159.0,
+    "pressure_MPa": 21
+   },
+   "envelope_mm": [
+    215,
+    44,
+    18
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "pin rod eye",
+     "pin base clevis",
+     "circlips",
+     "plug bus + power",
+     "test stroke"
+    ],
+    "bolts": 2
+   },
+   "moves": [
+    "kinetic bulge of the covering panel as the cylinder extends"
+   ],
+   "parts_per_unit": 75,
+   "mass_g_per_unit": 694.4,
+   "units": 2,
+   "parts_total": 150,
+   "mass_kg_total": 1.389
+  },
+  {
+   "id": "MUS-EHA-KNEE",
+   "system": "MUSCULUS",
+   "name_en": "KNEE MUSCLE (EHA)",
+   "name_ko": "무릎 근육",
+   "stage": 3,
+   "zone": "anterior thigh",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "BLDC stator assembly, frameless 12-slot",
+     "qty": 1,
+     "material": "Cu/Si-steel",
+     "g_each": 141.62,
+     "note": ""
+    },
+    {
+     "name": "rotor assembly, 14-pole NdFeB",
+     "qty": 1,
+     "material": "NdFeB/steel",
+     "g_each": 77.25,
+     "note": ""
+    },
+    {
+     "name": "motor bearing, deep groove 6701",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "motor housing",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 52.0,
+     "note": ""
+    },
+    {
+     "name": "motor end cap",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "hall + 17-bit absolute encoder PCB",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "pump gear, drive / idler (internal gear set)",
+     "qty": 2,
+     "material": "steel DLC",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "pump body",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 44.0,
+     "note": ""
+    },
+    {
+     "name": "pump side plate",
+     "qty": 2,
+     "material": "bronze",
+     "g_each": 7.0,
+     "note": ""
+    },
+    {
+     "name": "shaft seal",
+     "qty": 1,
+     "material": "PTFE",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "valve manifold, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 95.0,
+     "note": ""
+    },
+    {
+     "name": "pilot-operated check valve",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pressure relief valve 25 MPa",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 7.0,
+     "note": ""
+    },
+    {
+     "name": "free-swing bypass solenoid valve",
+     "qty": 1,
+     "material": "steel/Cu",
+     "g_each": 16.0,
+     "note": ""
+    },
+    {
+     "name": "pressure transducer",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "oil temperature sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "bootstrap accumulator body",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 34.0,
+     "note": ""
+    },
+    {
+     "name": "accumulator piston",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "accumulator end cap",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "cylinder barrel, bore 14 mm",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 33.31,
+     "note": ""
+    },
+    {
+     "name": "piston",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "piston rod 7 mm, DLC",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 14.8,
+     "note": ""
+    },
+    {
+     "name": "piston seal",
+     "qty": 2,
+     "material": "PTFE/bronze",
+     "g_each": 0.8,
+     "note": ""
+    },
+    {
+     "name": "rod seal",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "wiper",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "rod gland",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "rod eye",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 11.0,
+     "note": ""
+    },
+    {
+     "name": "magnetostrictive position sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "spherical plain bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "clevis pin",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 0.3,
+     "note": ""
+    },
+    {
+     "name": "motor driver + MCU, EtherCAT slave",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "thermal pad",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "driver cover",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector, power + bus",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "O-ring",
+     "qty": 8,
+     "material": "FKM",
+     "g_each": 0.2,
+     "note": ""
+    },
+    {
+     "name": "fill / bleed screw",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "hydraulic fluid, synthetic ester (ml)",
+     "qty": 1,
+     "material": "ester",
+     "g_each": 23.22,
+     "note": "counted as one fill"
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 16,
+     "material": "Ti64",
+     "g_each": 0.7,
+     "note": ""
+    }
+   ],
+   "principle_ko": "모터, 양방향 기어 펌프, 밸브 블록, 실린더를 하나로 밀봉한 전기유압 액추에이터(EHA). 중앙 유압 펌프와 긴 고압 배관이 없다. 모터가 정방향으로 돌면 펌프가 기름을 실린더 한쪽으로 밀어 늘어나고, 역방향이면 줄어든다. 밸브로 압력을 버리지 않고 모터 회전으로 직접 제어하니 효율이 높다. 다리를 흔드는 구간에서는 바이패스 밸브가 열려 저항 없이 따라온다(자유 스윙). 고장 나면 이 밸브가 기본으로 열려 사람을 가두지 않는다.",
+   "specs": {
+    "bore_mm": 14.0,
+    "rod_mm": 7.0,
+    "stroke_mm": 56.8,
+    "force_kN": 2.49,
+    "design_torque_Nm": 79.8,
+    "motor_W": 158.0,
+    "pressure_MPa": 21
+   },
+   "envelope_mm": [
+    184,
+    44,
+    20
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "pin rod eye",
+     "pin base clevis",
+     "circlips",
+     "plug bus + power",
+     "test stroke"
+    ],
+    "bolts": 2
+   },
+   "moves": [
+    "kinetic bulge of the covering panel as the cylinder extends"
+   ],
+   "parts_per_unit": 75,
+   "mass_g_per_unit": 738.4,
+   "units": 2,
+   "parts_total": 150,
+   "mass_kg_total": 1.477
+  },
+  {
+   "id": "MUS-EHA-ANKLE",
+   "system": "MUSCULUS",
+   "name_en": "ANKLE MUSCLE (EHA)",
+   "name_ko": "발목 근육",
+   "stage": 3,
+   "zone": "posterior shank",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "BLDC stator assembly, frameless 12-slot",
+     "qty": 1,
+     "material": "Cu/Si-steel",
+     "g_each": 227.56,
+     "note": ""
+    },
+    {
+     "name": "rotor assembly, 14-pole NdFeB",
+     "qty": 1,
+     "material": "NdFeB/steel",
+     "g_each": 124.12,
+     "note": ""
+    },
+    {
+     "name": "motor bearing, deep groove 6701",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "motor housing",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 44.57,
+     "note": ""
+    },
+    {
+     "name": "motor end cap",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 10.29,
+     "note": ""
+    },
+    {
+     "name": "hall + 17-bit absolute encoder PCB",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "pump gear, drive / idler (internal gear set)",
+     "qty": 2,
+     "material": "steel DLC",
+     "g_each": 7.71,
+     "note": ""
+    },
+    {
+     "name": "pump body",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 37.71,
+     "note": ""
+    },
+    {
+     "name": "pump side plate",
+     "qty": 2,
+     "material": "bronze",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "shaft seal",
+     "qty": 1,
+     "material": "PTFE",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "valve manifold, LPBF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 81.43,
+     "note": ""
+    },
+    {
+     "name": "pilot-operated check valve",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pressure relief valve 25 MPa",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 7.0,
+     "note": ""
+    },
+    {
+     "name": "free-swing bypass solenoid valve",
+     "qty": 1,
+     "material": "steel/Cu",
+     "g_each": 16.0,
+     "note": ""
+    },
+    {
+     "name": "pressure transducer",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "oil temperature sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "bootstrap accumulator body",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 29.14,
+     "note": ""
+    },
+    {
+     "name": "accumulator piston",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 4.29,
+     "note": ""
+    },
+    {
+     "name": "accumulator end cap",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 5.14,
+     "note": ""
+    },
+    {
+     "name": "cylinder barrel, bore 12 mm",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 23.23,
+     "note": ""
+    },
+    {
+     "name": "piston",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 6.86,
+     "note": ""
+    },
+    {
+     "name": "piston rod 6 mm, DLC",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 8.97,
+     "note": ""
+    },
+    {
+     "name": "piston seal",
+     "qty": 2,
+     "material": "PTFE/bronze",
+     "g_each": 0.8,
+     "note": ""
+    },
+    {
+     "name": "rod seal",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.6,
+     "note": ""
+    },
+    {
+     "name": "wiper",
+     "qty": 1,
+     "material": "PU",
+     "g_each": 0.4,
+     "note": ""
+    },
+    {
+     "name": "rod gland",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 7.71,
+     "note": ""
+    },
+    {
+     "name": "rod eye",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 9.43,
+     "note": ""
+    },
+    {
+     "name": "magnetostrictive position sensor",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "spherical plain bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "clevis pin",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "circlip",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 0.3,
+     "note": ""
+    },
+    {
+     "name": "motor driver + MCU, EtherCAT slave",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "thermal pad",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "driver cover",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector, power + bus",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "O-ring",
+     "qty": 8,
+     "material": "FKM",
+     "g_each": 0.2,
+     "note": ""
+    },
+    {
+     "name": "fill / bleed screw",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "hydraulic fluid, synthetic ester (ml)",
+     "qty": 1,
+     "material": "ester",
+     "g_each": 15.04,
+     "note": "counted as one fill"
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 16,
+     "material": "Ti64",
+     "g_each": 0.7,
+     "note": ""
+    }
+   ],
+   "principle_ko": "모터, 양방향 기어 펌프, 밸브 블록, 실린더를 하나로 밀봉한 전기유압 액추에이터(EHA). 중앙 유압 펌프와 긴 고압 배관이 없다. 모터가 정방향으로 돌면 펌프가 기름을 실린더 한쪽으로 밀어 늘어나고, 역방향이면 줄어든다. 밸브로 압력을 버리지 않고 모터 회전으로 직접 제어하니 효율이 높다. 다리를 흔드는 구간에서는 바이패스 밸브가 열려 저항 없이 따라온다(자유 스윙). 고장 나면 이 밸브가 기본으로 열려 사람을 가두지 않는다.",
+   "specs": {
+    "bore_mm": 12.0,
+    "rod_mm": 6.0,
+    "stroke_mm": 41.6,
+    "force_kN": 2.12,
+    "design_torque_Nm": 95.2,
+    "motor_W": 283.0,
+    "pressure_MPa": 21
+   },
+   "envelope_mm": [
+    153,
+    44,
+    18
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "pin rod eye",
+     "pin base clevis",
+     "circlips",
+     "plug bus + power",
+     "test stroke"
+    ],
+    "bolts": 2
+   },
+   "moves": [
+    "kinetic bulge of the covering panel as the cylinder extends"
+   ],
+   "parts_per_unit": 75,
+   "mass_g_per_unit": 803.1,
+   "units": 2,
+   "parts_total": 150,
+   "mass_kg_total": 1.606
+  },
+  {
+   "id": "TEN-ELBOW",
+   "system": "TENDO",
+   "name_en": "ELBOW TENDON DRIVE",
+   "name_ko": "팔꿈치 힘줄 구동기",
+   "stage": 3,
+   "zone": "posterior upper arm",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "flat BLDC stator",
+     "qty": 1,
+     "material": "Cu/Si-steel",
+     "g_each": 48.0,
+     "note": ""
+    },
+    {
+     "name": "flat BLDC rotor",
+     "qty": 1,
+     "material": "NdFeB/steel",
+     "g_each": 26.0,
+     "note": ""
+    },
+    {
+     "name": "motor bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 2.5,
+     "note": ""
+    },
+    {
+     "name": "motor housing half",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "capstan drum",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "cable reduction pulley",
+     "qty": 3,
+     "material": "Al7075",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pulley bearing",
+     "qty": 6,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "pulley axle",
+     "qty": 3,
+     "material": "Ti64",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "UHMWPE tendon 2 mm",
+     "qty": 1,
+     "material": "Dyneema",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "PTFE-lined Bowden sheath",
+     "qty": 1,
+     "material": "PTFE/steel",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "sheath ferrule",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "tendon tensioner",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "elbow output pulley",
+     "qty": 1,
+     "material": "Al7075",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "output pulley bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 2.5,
+     "note": ""
+    },
+    {
+     "name": "tendon load cell",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "motor driver + MCU",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 14,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "사람 손가락을 움직이는 근육이 팔뚝에 있고 힘줄로 당기듯, 위팔 뒤의 납작한 모터가 초고분자량 폴리에틸렌 힘줄로 팔꿈치 앞의 풀리를 당긴다. 무거운 모터를 관절에서 멀리 두어 팔 끝이 가볍다.",
+   "specs": {
+    "design_torque_Nm": 5.0,
+    "tendon_N": 230.0,
+    "reduction": 23.8
+   },
+   "envelope_mm": [
+    90,
+    60,
+    16
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "clip to upper arm strut",
+     "route tendon",
+     "tension 120 N preload"
+    ],
+    "bolts": 3
+   },
+   "moves": [],
+   "parts_per_unit": 43,
+   "mass_g_per_unit": 217.0,
+   "units": 2,
+   "parts_total": 86,
+   "mass_kg_total": 0.434
+  },
+  {
+   "id": "TEN-SHOULDER",
+   "system": "TENDO",
+   "name_en": "SHOULDER SPRING CASSETTE",
+   "name_ko": "어깨 중력보상 스프링",
+   "stage": 3,
+   "zone": "shoulder top / upper back",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "coil spring",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 42.0,
+     "note": ""
+    },
+    {
+     "name": "cam (sin-profile)",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "spring cable",
+     "qty": 1,
+     "material": "Dyneema",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "pulley",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pulley bearing",
+     "qty": 4,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "trim worm",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "trim worm wheel",
+     "qty": 1,
+     "material": "PEEK",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "trim micro motor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "ratchet",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "pawl",
+     "qty": 1,
+     "material": "steel",
+     "g_each": 1.5,
+     "note": ""
+    },
+    {
+     "name": "cassette housing half",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 10,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "팔을 들고 있는 힘의 대부분은 팔 무게를 버티는 힘이다. 사인 곡선 캠이 스프링 힘을 팔 각도에 맞춰 바꿔 주어 어느 각도에서나 팔이 떠 있는 것처럼 가볍다. 전원 없이 작동하고, 작은 모터는 공구 무게가 바뀔 때 예압만 조정한다.",
+   "specs": {
+    "compensated_Nm_at_90deg": 13.9,
+    "spring_energy_J": 13.9
+   },
+   "envelope_mm": [
+    120,
+    70,
+    30
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "seat on thoracic frame",
+     "hook cable to upper arm strut"
+    ],
+    "bolts": 4
+   },
+   "moves": [],
+   "parts_per_unit": 27,
+   "mass_g_per_unit": 197.5,
+   "units": 2,
+   "parts_total": 54,
+   "mass_kg_total": 0.395
+  },
+  {
+   "id": "ENE-PDU",
+   "system": "ENERGIA",
+   "name_en": "POWER DISTRIBUTION",
+   "name_ko": "배전 장치",
+   "stage": 4,
+   "zone": "pelvis (posterior)",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "PDU board (eFuse array, 48 V bus)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 38.0,
+     "note": ""
+    },
+    {
+     "name": "PDU housing half",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "DC-DC converter 48/12, 48/5, 48/3.3 V",
+     "qty": 3,
+     "material": "mixed",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "sealed power connector",
+     "qty": 12,
+     "material": "mixed",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 8,
+     "material": "Ti64",
+     "g_each": 0.7,
+     "note": ""
+    }
+   ],
+   "principle_ko": "두 배터리 패널의 48 V를 받아 관절 18곳과 시스템 40여 곳에 나눠 준다. 회로마다 전자 퓨즈가 있어 한 곳이 단락돼도 나머지는 산다.",
+   "specs": {
+    "bus_V": 48
+   },
+   "envelope_mm": [
+    110,
+    80,
+    22
+   ],
+   "install": {
+    "by": "robot",
+    "bolts": 4
+   },
+   "moves": [],
+   "parts_per_unit": 26,
+   "mass_g_per_unit": 199.6,
+   "units": 1,
+   "parts_total": 26,
+   "mass_kg_total": 0.2
+  },
+  {
+   "id": "ENE-BUF",
+   "system": "ENERGIA",
+   "name_en": "HOT-SWAP BUFFER",
+   "name_ko": "교체 버퍼",
+   "stage": 4,
+   "zone": "pelvis (posterior)",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "hybrid capacitor cell",
+     "qty": 6,
+     "material": "mixed",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "buffer BMS",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "buffer housing half",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 12.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "배터리 패널 하나를 빼는 90초 동안 슈트가 꺼지지 않게 버틴다.",
+   "specs": {
+    "Wh": 6,
+    "hold_s": 90
+   },
+   "envelope_mm": [
+    90,
+    50,
+    18
+   ],
+   "install": {
+    "by": "robot",
+    "bolts": 2
+   },
+   "moves": [],
+   "parts_per_unit": 9,
+   "mass_g_per_unit": 114.0,
+   "units": 1,
+   "parts_total": 9,
+   "mass_kg_total": 0.114
+  },
+  {
+   "id": "ENE-HARN",
+   "system": "ENERGIA",
+   "name_en": "HARNESS",
+   "name_ko": "하네스",
+   "stage": 4,
+   "zone": "spine + limbs",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "harness trunk segment (power + EtherCAT)",
+     "qty": 24,
+     "material": "Cu/FEP",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector",
+     "qty": 48,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "P-clamp",
+     "qty": 60,
+     "material": "PA",
+     "g_each": 0.8,
+     "note": ""
+    },
+    {
+     "name": "spiral wrap",
+     "qty": 20,
+     "material": "PA",
+     "g_each": 2.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "척추를 따라 내려가는 주 간선과 사지 분기. 커넥터는 모두 방수 밀봉, 피복은 내마모 불소수지.",
+   "specs": {},
+   "envelope_mm": null,
+   "install": {
+    "by": "robot",
+    "ops": [
+     "route",
+     "clip",
+     "mate 48 connectors"
+    ]
+   },
+   "moves": [],
+   "parts_per_unit": 152,
+   "mass_g_per_unit": 664.0,
+   "units": 1,
+   "parts_total": 152,
+   "mass_kg_total": 0.664
+  },
+  {
+   "id": "BRA-GILL",
+   "system": "BRANCHIA",
+   "name_en": "MEMBRANE GILL",
+   "name_ko": "막 아가미 (증발 냉각기)",
+   "stage": 4,
+   "zone": "flank L/R, behind the abdominal side slots",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "hollow-fibre membrane module (PP, ~1,800 fibres, 0.25 m2)",
+     "qty": 2,
+     "material": "PP",
+     "g_each": 95.0,
+     "note": ""
+    },
+    {
+     "name": "gill module housing",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "evaporant bladder 0.6 L",
+     "qty": 1,
+     "material": "TPU",
+     "g_each": 35.0,
+     "note": ""
+    },
+    {
+     "name": "micro diaphragm dosing pump",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "evaporant solenoid valve",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "evaporant level sensor",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "air RH / temperature sensor (in, out)",
+     "qty": 4,
+     "material": "FR4",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "evaporant line",
+     "qty": 6,
+     "material": "PU",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "fill port quick disconnect",
+     "qty": 1,
+     "material": "PP",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "drain valve",
+     "qty": 1,
+     "material": "PP",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "wicking pre-filter",
+     "qty": 2,
+     "material": "PET",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 12,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "땀이 증발하며 몸을 식히듯, 냉각수가 속이 빈 섬유 1,800가닥 안을 흐르고 그 바깥으로 루버의 공기가 지나가면 물의 일부가 막을 통해 증발하면서 나머지 물을 습구온도 가까이 식힌다. 30 °C, 습도 40 %에서도 냉각수가 23 °C까지 내려간다. 압축기가 없어 얇고(14 mm) 전력은 팬 몫뿐이다. 시간당 물 0.22 L를 쓴다. 덥고 습해서 습구온도가 26 °C를 넘는 날에는 이 원리가 한계에 닿고, 그때만 도크의 냉각 라인(탯줄)을 꽂는다.",
+   "specs": {
+    "cooling_W": 150.0,
+    "water_out_C_at_30C_40RH": 23.4,
+    "evaporant_L_per_h": 0.222,
+    "reservoir_L": 0.6,
+    "limit": "ambient wet bulb > 26 C -> chill line"
+   },
+   "envelope_mm": [
+    160,
+    70,
+    14
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "seat behind flank louvres",
+     "mate coolant + evaporant lines"
+    ],
+    "bolts": 4
+   },
+   "moves": [],
+   "parts_per_unit": 35,
+   "mass_g_per_unit": 410.0,
+   "units": 1,
+   "parts_total": 35,
+   "mass_kg_total": 0.41
+  },
+  {
+   "id": "BRA-LOOP",
+   "system": "BRANCHIA",
+   "name_en": "COOLANT LOOP",
+   "name_ko": "냉각수 회로",
+   "stage": 4,
+   "zone": "back",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "maglev centrifugal pump",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "expansion bladder / reservoir",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 20.0,
+     "note": ""
+    },
+    {
+     "name": "loop manifold",
+     "qty": 1,
+     "material": "PEEK",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "flow sensor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "coolant temperature sensor",
+     "qty": 4,
+     "material": "FR4",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "coolant line",
+     "qty": 12,
+     "material": "PU",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "dry-break quick disconnect, suit half",
+     "qty": 4,
+     "material": "Ti64/FKM",
+     "g_each": 11.0,
+     "note": ""
+    },
+    {
+     "name": "phase-change pack (salt hydrate, 24 C)",
+     "qty": 6,
+     "material": "mixed",
+     "g_each": 70.0,
+     "note": ""
+    },
+    {
+     "name": "loop filter",
+     "qty": 1,
+     "material": "PP",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "spine core cold plate",
+     "qty": 1,
+     "material": "Al",
+     "g_each": 40.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "냉각수가 분당 1.4 L씩 막 아가미와 언더슈트 튜브 사이를 돈다. 상변화 팩(24 °C에서 녹는 염수화물)은 순간 발열이 클 때 열을 잠시 저장한다.",
+   "specs": {
+    "flow_L_min": 1.43,
+    "pcm_kJ": 84
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot",
+    "ops": [
+     "mate 4 QDs to undersuit"
+    ]
+   },
+   "moves": [],
+   "parts_per_unit": 32,
+   "mass_g_per_unit": 689.0,
+   "units": 1,
+   "parts_total": 32,
+   "mass_kg_total": 0.689
+  },
+  {
+   "id": "BRA-FAN",
+   "system": "BRANCHIA",
+   "name_en": "LOUVRE FAN UNIT",
+   "name_ko": "루버 팬 유닛",
+   "stage": 4,
+   "zone": "flank L/R (2 each) + upper back L/R",
+   "sides": "x6",
+   "parts": [
+    {
+     "name": "flat blower 50 mm",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 38.0,
+     "note": ""
+    },
+    {
+     "name": "blower shroud",
+     "qty": 1,
+     "material": "PA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "finger-proof mesh",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "louvre micro linear actuator",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "louvre link bar",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "link pin",
+     "qty": 4,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    },
+    {
+     "name": "air temperature sensor",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 4,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "도하가 그린 복부 옆 슬롯은 숨구멍이 됐다. 팬이 패널 안쪽 틈의 습한 공기를 빨아 막 아가미와 전자부를 지나 아래로 뿜고, 열이 쌓이면 작은 리니어 액추에이터가 링크 바 하나로 루버 슬랫 전체를 차례로 연다(패널의 독립적 움직임).",
+   "specs": {
+    "airflow_L_s_each": 4.5
+   },
+   "envelope_mm": [
+    60,
+    55,
+    14
+   ],
+   "install": {
+    "by": "robot",
+    "bolts": 2
+   },
+   "moves": [
+    "louvre slats open downward in sequence"
+   ],
+   "parts_per_unit": 14,
+   "mass_g_per_unit": 79.0,
+   "units": 6,
+   "parts_total": 84,
+   "mass_kg_total": 0.474
+  },
+  {
+   "id": "VIT-AER",
+   "system": "VITA",
+   "name_en": "HELMET AIR (PAPR)",
+   "name_ko": "헬멧 송풍 정화",
+   "stage": 6,
+   "zone": "helmet",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "helmet blower",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 28.0,
+     "note": ""
+    },
+    {
+     "name": "P3 + carbon filter cartridge (in temporal hub)",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 42.0,
+     "note": ""
+    },
+    {
+     "name": "intake check valve",
+     "qty": 2,
+     "material": "silicone",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "exhalation valve",
+     "qty": 2,
+     "material": "silicone",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "oro-nasal cup",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 35.0,
+     "note": ""
+    },
+    {
+     "name": "slit anti-fog air knife duct",
+     "qty": 2,
+     "material": "PA",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "CO2 sensor (NDIR)",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "O2 sensor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "temperature / humidity sensor",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "air board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "air tube",
+     "qty": 3,
+     "material": "silicone",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2, Ti",
+     "qty": 10,
+     "material": "Ti64",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "헬멧 안은 바깥보다 압력이 조금 높다. 송풍기가 측두 허브의 필터로 바깥 공기를 걸러 넣으니 먼지와 연기가 새어 들지 않고, 눈 슬릿 안쪽으로 공기 칼날이 흘러 김이 서리지 않는다. 날숨은 입 앞 컵에서 바로 배기 밸브로 나가 CO2가 쌓이지 않는다.",
+   "specs": {
+    "flow_L_min": 160,
+    "inspired_CO2_pct": 0.14,
+    "power_W": 3.0
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot (with helmet)"
+   },
+   "moves": [],
+   "parts_per_unit": 28,
+   "mass_g_per_unit": 236.0,
+   "units": 1,
+   "parts_total": 28,
+   "mass_kg_total": 0.236
+  },
+  {
+   "id": "VIT-HYDRA",
+   "system": "VITA",
+   "name_en": "HYDRATION",
+   "name_ko": "수분 공급",
+   "stage": 4,
+   "zone": "upper back",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "bladder 0.5 L",
+     "qty": 1,
+     "material": "TPU",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "drink tube",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 10.0,
+     "note": ""
+    },
+    {
+     "name": "bite valve",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "bladder pocket",
+     "qty": 1,
+     "material": "aramid",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "helmet pass-through QD",
+     "qty": 1,
+     "material": "PP",
+     "g_each": 6.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "헬멧을 벗지 않고 마신다. 냉각복이 땀을 줄여도 1시간에 0.3~0.5 L는 잃는다.",
+   "specs": {
+    "volume_L": 0.5
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot"
+   },
+   "moves": [],
+   "parts_per_unit": 5,
+   "mass_g_per_unit": 85.0,
+   "units": 1,
+   "parts_total": 5,
+   "mass_kg_total": 0.085
+  },
+  {
+   "id": "VIT-SALUS",
+   "system": "VITA",
+   "name_en": "EMERGENCY + VITALS",
+   "name_ko": "비상과 생체 감시",
+   "stage": 4,
+   "zone": "sternum + spine",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "emergency release handle",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "release Bowden cable",
+     "qty": 4,
+     "material": "steel/PTFE",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "latch release actuator",
+     "qty": 6,
+     "material": "mixed",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "SOS beacon (GNSS + satellite)",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "vitals hub board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "haptic alert motor",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 10,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "흉골 손잡이 하나를 당기면 헬멧과 가슴 셸, 다리 커프가 기계식으로 풀린다(전원 불필요). 심전도, 산소포화도, 심부체온 추정, 호흡을 계속 보고 열 스트레스가 오면 출력을 먼저 줄인다. 넘어짐을 감지하면 위치를 자동 송신한다.",
+   "specs": {
+    "core_temp_derate_C": 38.5
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot",
+    "bolts": 4
+   },
+   "moves": [],
+   "parts_per_unit": 25,
+   "mass_g_per_unit": 175.0,
+   "units": 1,
+   "parts_total": 25,
+   "mass_kg_total": 0.175
+  },
+  {
+   "id": "NER-CORE",
+   "system": "NERVUS",
+   "name_en": "SPINE CORE",
+   "name_ko": "척추 연산부",
+   "stage": 4,
+   "zone": "upper back, between scapulae",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "compute module (edge AI SoC)",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "carrier board (lockstep safety MCU, EtherCAT master)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "NVMe storage",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "core housing half",
+     "qty": 2,
+     "material": "Al7075",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "sealed connector",
+     "qty": 8,
+     "material": "mixed",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M3, Ti",
+     "qty": 10,
+     "material": "Ti64",
+     "g_each": 0.7,
+     "note": ""
+    }
+   ],
+   "principle_ko": "근전도 800채널과 뇌파 32채널을 실시간으로 해독하고, 도하의 근육 표(최대 힘, 섬유 길이, 깃각)로 만든 근골격 모델로 관절마다 필요한 토크를 계산해 1 kHz로 근육(EHA)에 보낸다. 근육 신호가 오고 힘이 나기까지 50~100 ms, 슈트는 40 ms 안에 답한다.",
+   "specs": {
+    "control_Hz": 1000,
+    "latency_ms": 43.2,
+    "power_W": 15
+   },
+   "envelope_mm": [
+    120,
+    90,
+    20
+   ],
+   "install": {
+    "by": "robot",
+    "bolts": 4
+   },
+   "moves": [],
+   "parts_per_unit": 23,
+   "mass_g_per_unit": 178.0,
+   "units": 1,
+   "parts_total": 23,
+   "mass_kg_total": 0.178
+  },
+  {
+   "id": "NER-NET",
+   "system": "NERVUS",
+   "name_en": "BUS HUBS",
+   "name_ko": "버스 허브",
+   "stage": 4,
+   "zone": "spine",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "EtherCAT junction hub",
+     "qty": 4,
+     "material": "FR4",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2.5, Ti",
+     "qty": 8,
+     "material": "Ti64",
+     "g_each": 0.5,
+     "note": ""
+    }
+   ],
+   "principle_ko": "관절, 센서 노드, 시스템을 하나의 결정론적 버스(250 µs 주기)로 묶는다.",
+   "specs": {},
+   "envelope_mm": null,
+   "install": {
+    "by": "robot"
+   },
+   "moves": [],
+   "parts_per_unit": 12,
+   "mass_g_per_unit": 52.0,
+   "units": 1,
+   "parts_total": 12,
+   "mass_kg_total": 0.052
+  },
+  {
+   "id": "NER-LUX",
+   "system": "NERVUS",
+   "name_en": "STATUS LIGHT PIPES",
+   "name_ko": "상태광",
+   "stage": 5,
+   "zone": "panel seams",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "light pipe segment (PC, frosted)",
+     "qty": 124,
+     "material": "PC",
+     "g_each": 1.2,
+     "note": ""
+    },
+    {
+     "name": "side-emitting LED strip",
+     "qty": 32,
+     "material": "FR4",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "LED driver",
+     "qty": 8,
+     "material": "FR4",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "light pipe clip",
+     "qty": 60,
+     "material": "PA",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "패널 이음선 홈 속의 광섬유처럼 빛나는 막대. 근섬유 방향으로 흐르며 부하가 클수록 빠르고 밝다.",
+   "specs": {},
+   "envelope_mm": null,
+   "install": {
+    "by": "robot (with panels)"
+   },
+   "moves": [],
+   "parts_per_unit": 224,
+   "mass_g_per_unit": 254.8,
+   "units": 1,
+   "parts_total": 224,
+   "mass_kg_total": 0.255
+  },
+  {
+   "id": "ENE-BATT",
+   "system": "ENERGIA",
+   "name_en": "BATTERY PANEL",
+   "name_ko": "배터리 패널",
+   "stage": 5,
+   "zone": "latissimus (back) L/R",
+   "sides": "LR",
+   "parts": [
+    {
+     "name": "solid-state pouch cell (2036 assumption)",
+     "qty": 14,
+     "material": "Li-metal SSB",
+     "g_each": 50.0,
+     "note": ""
+    },
+    {
+     "name": "structural cell carrier (Ti honeycomb)",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 60.0,
+     "note": ""
+    },
+    {
+     "name": "graphite heat spreader",
+     "qty": 4,
+     "material": "graphite",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "BMS board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "cell voltage tap flex",
+     "qty": 1,
+     "material": "PI/Cu",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "busbar",
+     "qty": 8,
+     "material": "Cu",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "thermistor",
+     "qty": 6,
+     "material": "FR4",
+     "g_each": 0.3,
+     "note": ""
+    },
+    {
+     "name": "pack fuse",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "solid-state contactor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 9.0,
+     "note": ""
+    },
+    {
+     "name": "blind-mate power / data connector",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "guide pin",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "quarter-turn latch",
+     "qty": 4,
+     "material": "Ti64",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "pack gasket",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "pressure relief vent",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "pack base housing",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 70.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "배터리를 따로 매달지 않는다. 등의 넓은등근 판 두 장이 곧 배터리 팩이다. 바깥은 청사진의 티타늄 판, 안쪽 9 mm에 셀이 들어 있다. 쿼터턴 래치 4개를 풀면 판째로 빠지고, 버퍼가 버티는 동안 새 판을 꽂는다(유일한 미래 가정: 셀 에너지 밀도).",
+   "specs": {
+    "kWh_each": 0.42,
+    "cells": 14,
+    "thickness_mm": 9,
+    "area_m2_each": 0.0674
+   },
+   "envelope_mm": [
+    328,
+    205,
+    9
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "slide on guide pins",
+     "4 quarter-turns"
+    ],
+    "bolts": 0
+   },
+   "moves": [
+    "panel releases and slides out (swap)"
+   ],
+   "parts_per_unit": 47,
+   "mass_g_per_unit": 948.8,
+   "units": 2,
+   "parts_total": 94,
+   "mass_kg_total": 1.898
+  },
+  {
+   "id": "FUN-TOOLBAY",
+   "system": "FUNCTIO",
+   "name_en": "TOOL BAY",
+   "name_ko": "툴 베이",
+   "stage": 5,
+   "zone": "right forearm, dorsal",
+   "sides": "R",
+   "parts": [
+    {
+     "name": "rail carriage",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 18.0,
+     "note": ""
+    },
+    {
+     "name": "slide rail",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 10.0,
+     "note": ""
+    },
+    {
+     "name": "pivot hinge",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "panel micro linear actuator",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 16.0,
+     "note": ""
+    },
+    {
+     "name": "cartridge tray",
+     "qty": 1,
+     "material": "PEEK",
+     "g_each": 20.0,
+     "note": ""
+    },
+    {
+     "name": "work light, high-CRI LED 2 W",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "articulating borescope camera 5.5 mm",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "1/4 in bit driver (micro gearmotor)",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "driver bit",
+     "qty": 6,
+     "material": "steel",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "tray latch",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "tool bay board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2, Ti",
+     "qty": 12,
+     "material": "Ti64",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "전완 판이 원위 방향으로 6 mm 미끄러진 뒤 피벗해 열린다. 작업등, 관절형 점검 카메라, 비트 드라이버.",
+   "specs": {
+    "stroke_mm": 6,
+    "open_deg": 38
+   },
+   "envelope_mm": [
+    180,
+    55,
+    28
+   ],
+   "install": {
+    "by": "robot (with forearm panels)"
+   },
+   "moves": [
+    "forearm panel slides 6 mm then pivots 38 deg"
+   ],
+   "parts_per_unit": 30,
+   "mass_g_per_unit": 191.6,
+   "units": 1,
+   "parts_total": 30,
+   "mass_kg_total": 0.192
+  },
+  {
+   "id": "FUN-HAND",
+   "system": "FUNCTIO",
+   "name_en": "ASSIST HAND",
+   "name_ko": "보조 손",
+   "stage": 5,
+   "zone": "right forearm, ventral",
+   "sides": "R",
+   "parts": [
+    {
+     "name": "palm base",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "finger link",
+     "qty": 6,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "thumb link",
+     "qty": 3,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "joint pin",
+     "qty": 12,
+     "material": "Ti64",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "finger tendon cable",
+     "qty": 3,
+     "material": "Dyneema",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "micro BLDC + reducer",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 35.0,
+     "note": ""
+    },
+    {
+     "name": "silicone pad",
+     "qty": 3,
+     "material": "silicone",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "telescoping rail",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 10.0,
+     "note": ""
+    },
+    {
+     "name": "pad rotation mechanism",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "pad force sensor",
+     "qty": 3,
+     "material": "FR4",
+     "g_each": 1.0,
+     "note": ""
+    },
+    {
+     "name": "hand board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2, Ti",
+     "qty": 14,
+     "material": "Ti64",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "전완 아래에 접혀 있다가 펼쳐지는 두 손가락 + 마주 보는 엄지 그리퍼. 정밀 모드는 M2 나사를, 와이드 모드는 파이프를 잡는다.",
+   "specs": {
+    "grip_N": 40
+   },
+   "envelope_mm": [
+    160,
+    50,
+    18
+   ],
+   "install": {
+    "by": "robot (with forearm panels)"
+   },
+   "moves": [
+    "unfolds from under the forearm"
+   ],
+   "parts_per_unit": 51,
+   "mass_g_per_unit": 251.2,
+   "units": 1,
+   "parts_total": 51,
+   "mass_kg_total": 0.251
+  },
+  {
+   "id": "FUN-PORT",
+   "system": "FUNCTIO",
+   "name_en": "SWAP PORT + SENSOR CARTRIDGE",
+   "name_ko": "교체 포트",
+   "stage": 5,
+   "zone": "left forearm, dorsal",
+   "sides": "L",
+   "parts": [
+    {
+     "name": "MYO-PORT socket (8 pogo pins + rails)",
+     "qty": 1,
+     "material": "Ti64/mixed",
+     "g_each": 25.0,
+     "note": ""
+    },
+    {
+     "name": "quarter-turn latch",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "cartridge housing",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 30.0,
+     "note": ""
+    },
+    {
+     "name": "thermal camera core",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "4-gas sensor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "cartridge board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2, Ti",
+     "qty": 8,
+     "material": "Ti64",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "공통 규격 포트. 지금은 열화상 카메라와 가스 센서 카트리지가 꽂혀 있다.",
+   "specs": {},
+   "envelope_mm": null,
+   "install": {
+    "by": "robot (with forearm panels)"
+   },
+   "moves": [],
+   "parts_per_unit": 15,
+   "mass_g_per_unit": 88.4,
+   "units": 1,
+   "parts_total": 15,
+   "mass_kg_total": 0.088
+  },
+  {
+   "id": "MYO-PANELS",
+   "system": "MYO",
+   "name_en": "BLUEPRINT PANELS",
+   "name_ko": "청사진 판",
+   "stage": 5,
+   "zone": "whole body",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "panel, torso + limbs front (blueprint front view) (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 208,
+     "material": "Ti64",
+     "g_each": 22.12,
+     "note": ""
+    },
+    {
+     "name": "panel, back (blueprint rear inset) (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 102,
+     "material": "Ti64",
+     "g_each": 27.65,
+     "note": ""
+    },
+    {
+     "name": "panel, limb backs (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 44,
+     "material": "Ti64",
+     "g_each": 33.18,
+     "note": ""
+    },
+    {
+     "name": "panel, helmet (PERSONA + side detail, both sides) (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 40,
+     "material": "Ti64",
+     "g_each": 9.95,
+     "note": ""
+    },
+    {
+     "name": "panel, hand plates (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 38,
+     "material": "Ti64",
+     "g_each": 4.87,
+     "note": ""
+    },
+    {
+     "name": "panel, louvre slats + neck lamellae (Ti-6Al-4V 0.6 mm, SPIF)",
+     "qty": 45,
+     "material": "Ti64",
+     "g_each": 6.64,
+     "note": ""
+    },
+    {
+     "name": "panel carrier (CFRP sub-frame)",
+     "qty": 36,
+     "material": "CFRP",
+     "g_each": 40.0,
+     "note": ""
+    },
+    {
+     "name": "sliding panel guide (PEEK)",
+     "qty": 48,
+     "material": "PEEK",
+     "g_each": 3.0,
+     "note": ""
+    }
+   ],
+   "principle_ko": "도하가 손으로 그린 판 그대로. 0.6 mm 티타늄 판을 점진 성형(SPIF)으로 곡면을 만들고 가장자리를 말아 강성을 낸다. 판은 몸에 닿지 않고 탄소섬유 캐리어 위에 방진 그로밋으로 떠 있어서, 관절이 움직일 때 겹치고 미끄러진다.",
+   "specs": {
+    "panels": 477,
+    "thickness_mm": 0.6,
+    "area_m2": 3.34,
+    "mount_points": 1352
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot",
+    "ops": [
+     "place",
+     "nutrunner"
+    ],
+    "picks": 168
+   },
+   "moves": [
+    "deltoid caps slide in layers",
+    "abdominal bands telescope",
+    "knee cop slides over the knee",
+    "neck lamellae fan"
+   ],
+   "parts_per_unit": 561,
+   "mass_g_per_unit": 11347.0,
+   "units": 1,
+   "parts_total": 561,
+   "mass_kg_total": 11.347
+  },
+  {
+   "id": "PER-HELMET",
+   "system": "PERSONA",
+   "name_en": "PERSONA HELMET",
+   "name_ko": "페르소나 헬멧",
+   "stage": 6,
+   "zone": "head",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "occipital shell, SPIF",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 180.0,
+     "note": ""
+    },
+    {
+     "name": "crown shell",
+     "qty": 1,
+     "material": "Ti64",
+     "g_each": 120.0,
+     "note": ""
+    },
+    {
+     "name": "face plate carrier",
+     "qty": 1,
+     "material": "CFRP",
+     "g_each": 60.0,
+     "note": ""
+    },
+    {
+     "name": "face plate hinge",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 8.0,
+     "note": ""
+    },
+    {
+     "name": "hinge pin",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 2.0,
+     "note": ""
+    },
+    {
+     "name": "face plate latch",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "latch actuator",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "eye slit window, laminated PC, smoked",
+     "qty": 2,
+     "material": "PC",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "global-shutter camera (behind slit)",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "ToF depth sensor",
+     "qty": 1,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "micro-OLED display",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "pancake optic",
+     "qty": 2,
+     "material": "PMMA",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "temporal hub ring",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 22.0,
+     "note": ""
+    },
+    {
+     "name": "temporal hub cap (TiN)",
+     "qty": 2,
+     "material": "Ti64",
+     "g_each": 14.0,
+     "note": ""
+    },
+    {
+     "name": "hub servo",
+     "qty": 2,
+     "material": "mixed",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "hub bearing",
+     "qty": 2,
+     "material": "steel",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "helmet liner",
+     "qty": 1,
+     "material": "EPP",
+     "g_each": 110.0,
+     "note": ""
+    },
+    {
+     "name": "comfort pad",
+     "qty": 6,
+     "material": "foam",
+     "g_each": 6.0,
+     "note": ""
+    },
+    {
+     "name": "EEG pressure pad (spring)",
+     "qty": 8,
+     "material": "mixed",
+     "g_each": 3.0,
+     "note": ""
+    },
+    {
+     "name": "neck seal",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 45.0,
+     "note": ""
+    },
+    {
+     "name": "chin cup",
+     "qty": 1,
+     "material": "silicone",
+     "g_each": 20.0,
+     "note": ""
+    },
+    {
+     "name": "helmet board",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 12.0,
+     "note": ""
+    },
+    {
+     "name": "IMU node (head)",
+     "qty": 1,
+     "material": "FR4",
+     "g_each": 4.0,
+     "note": ""
+    },
+    {
+     "name": "helmet cable",
+     "qty": 2,
+     "material": "Cu/FEP",
+     "g_each": 5.0,
+     "note": ""
+    },
+    {
+     "name": "internal screw M2, Ti",
+     "qty": 40,
+     "material": "Ti64",
+     "g_each": 0.3,
+     "note": ""
+    }
+   ],
+   "principle_ko": "눈 슬릿은 얇다(높이 7 mm). 대신 슬릿 뒤 두 카메라와 깊이 센서가 넓은 시야를 찍어 눈앞 디스플레이에 보여 준다. 슬릿으로 직접 보는 시야는 전원이 나가도 남는 예비 시야다. 귀 자리의 측두 허브는 송풍기 필터 캡이고, 돌아가며 흡기구를 연다.",
+   "specs": {
+    "slit_height_mm": 7,
+    "fov_deg_display": 110
+   },
+   "envelope_mm": [
+    250,
+    175,
+    270
+   ],
+   "install": {
+    "by": "robot",
+    "ops": [
+     "occipital shell",
+     "temporal hubs",
+     "face plate lowers",
+     "lock"
+    ]
+   },
+   "moves": [
+    "temporal hub rings rotate to open the intakes",
+    "face plate lowers and locks"
+   ],
+   "parts_per_unit": 88,
+   "mass_g_per_unit": 824.0,
+   "units": 1,
+   "parts_total": 88,
+   "mass_kg_total": 0.824
+  },
+  {
+   "id": "FIX-INSTALL",
+   "system": "FIX",
+   "name_en": "INSTALLATION HARDWARE",
+   "name_ko": "설치 체결구",
+   "stage": 5,
+   "zone": "whole body",
+   "sides": "C",
+   "parts": [
+    {
+     "name": "panel screw, Ti Torx M2.5 countersunk",
+     "qty": 1352,
+     "material": "Ti64",
+     "g_each": 0.35,
+     "note": ""
+    },
+    {
+     "name": "panel isolator grommet",
+     "qty": 1352,
+     "material": "EPDM",
+     "g_each": 0.15,
+     "note": ""
+    },
+    {
+     "name": "quarter-turn stud + receptacle",
+     "qty": 16,
+     "material": "Ti64",
+     "g_each": 2.2,
+     "note": ""
+    },
+    {
+     "name": "module bolt, Ti M4/M5",
+     "qty": 106,
+     "material": "Ti64",
+     "g_each": 2.4,
+     "note": ""
+    }
+   ],
+   "principle_ko": "나사 하나하나가 토크 사양을 가진다(M2.5 티타늄 0.45 N·m). 로봇 끝의 너트러너가 클러치가 끊기는 순간까지 조인다.",
+   "specs": {
+    "panel_screw_torque_Nm": 0.45,
+    "module_bolt_torque_Nm": 2.9
+   },
+   "envelope_mm": null,
+   "install": {
+    "by": "robot (nutrunner)"
+   },
+   "moves": [],
+   "parts_per_unit": 2826,
+   "mass_g_per_unit": 965.6,
+   "units": 1,
+   "parts_total": 2826,
+   "mass_kg_total": 0.966
+  }
+ ],
+ "total_parts": 5819,
+ "total_mass_kg": 35.13,
+ "worn_mass_kg": 1.92,
+ "robot_ops": {
+  "modules_installed": 41,
+  "panel_picks": 168,
+  "screws_driven": 1458,
+  "quarter_turns": 16,
+  "connectors_mated": 76
+ },
+ "pre_assembled_modules": 41
+}

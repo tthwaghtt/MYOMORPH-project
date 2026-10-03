@@ -149,10 +149,10 @@ def materials():
 def new_scene(res=(1920, 1080), samples=96, exposure=0.0):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     MATS.clear()                                  # the factory reset removed the cached datablocks
-    try:
-        import suit; suit.FIN.clear()
-    except Exception:
-        pass
+    import sys as _sys
+    for mod, attr in (('suit', 'FIN'), ('cell', 'MAT'), ('assembly', 'MATS')):     # caches of removed datablocks
+        if mod in _sys.modules:
+            getattr(_sys.modules[mod], attr).clear()
     sc = bpy.context.scene
     sc.unit_settings.system = 'METRIC'
     sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'
