@@ -16,7 +16,7 @@ Python venv (bpy + numpy, scipy, pandas, statsmodels, pillow, matplotlib).
 | **R2** `undersuit.py` | neural undersuit: SENIAM EMG sites from the muscle research, EEG 10-10, nodes, embroidered bus, cooling-garment runs, knit with seams, epaulettes, balaclava → `engineering/undersuit.json` + previs objects (`xray_left` for 03 NEURAL) |
 | **R2** `cell.py` | the assembly cell: ceiling grid, gantry rails, energy chains, trays, duct, scanner ring, umbilical; telescopic-mast ceiling robots (`robot_ceiling`, tools: nutrunner / gripper / vacuum); periphery (bench, carts, panel rack, blueprint light table, telemetry screens drawn from the JSON) |
 | **R2** `assembly.py` | build stages 0-6 on Doha: module blockouts from `packaging.json`, cuffs, harness, shell trimmed to the installed panels, kits on the carts |
-| **R2** `styleframes2.py` | F01-F11: `python styleframes2.py OUT [F01 F02 ...] [--draft]` |
+| **R2** `styleframes2.py` | F01-F11: `python styleframes2.py OUT [F01 F02 ...] [--draft] [--res=1600x900] [--spp=64]`; build and path-tracing seconds per frame → `OUT/render_times.json` (PLAN §8.8) |
 | **R2** `hud.py` | engineering-drawing overlay (the site's real-time layer, previewed): `python hud.py IN OUT` |
 | **R2** `render_slits.py` | PERSONA eye-slit variants A / B / C |
 | `props.py` | P1 floor robot arm, cables, beams |

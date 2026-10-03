@@ -47,7 +47,7 @@
 | **분량** | 프롤로그 + 16개 챕터, 기준 감상 속도로 **약 290초**(시스템 카드를 접으면 약 220초) |
 | **디자인 원천** | **정면 실루엣과 패널 = 도하의 청사진.** 얼굴(PERSONA, 얇은 눈 슬릿)만 내가 디자인한다. 근육 해부학은 센서 위치(SENIAM), 제어 모델(근육 표), 결 방향, CORPUS 서사에 쓴다 |
 | **밀도** | **부품 5,819개**(체결구 2,826 포함), 사전 조립 모듈 41개, 청사진 판 477장, 시스템 13개. 모든 수치는 `engineering/bom.json` |
-| **공학 요약** | 슈트 36.6 kg(사람이 입는 것은 1.92 kg) · EHA 근육 6개(무릎 64 N·m) · 배터리 = 등판 2장(0.84 kWh, 약 3.8시간) · 막 아가미 냉각(압축기 없음) · 근전도 784 ch + 뇌파 32 ch(지연 43 ms) |
+| **공학 요약** | 슈트 36.6 kg(사람이 입는 것은 1.92 kg) · EHA 근육 6개(무릎 64 N·m) · 배터리 = 등판 2장(0.84 kWh, 약 3.7시간) · 막 아가미 냉각(압축기 없음) · 근전도 784 ch + 뇌파 32 ch(지연 43 ms) |
 | **렌더링** | **하이브리드**(도하 결정 2026-10-03): 조립 장면은 경로추적으로 미리 렌더해 스크롤로 재생하고, 그 위에 실시간 레이어(호버, 콜아웃, 신호)를 얹는다. 시스템 카드, 움직임, 놀링, 자유 탐색은 three.js 실시간 |
 | **기술** | Blender 5.2.1(bpy, 파이프라인 전체를 코드로) → Cycles 프레임 시퀀스 + glTF(meshopt) → three.js WebGPU(WebGL2 폴백) + Web Audio(물리 모델링 합성) → **Vite 빌드 → 여러 파일짜리 Artifact로 발행** |
 | **색** | Blender AgX를 3D LUT로 구워 실시간 레이어에도 같은 변환을 적용(ΔE로 검증) |
@@ -519,7 +519,7 @@
   - 기계 일 83 W, EHA 효율 0.55
   - 연산 15 W, 센싱 3.5 W, 팬 7.2 W, 펌프 4.8 W, 헬멧 송풍 3 W
   - 최대 약 840 W(계단과 들기)
-- **배터리**: 셀 30 Wh(70 × 55 × 6 mm, 50 g) × 14 × 2 = **0.84 kWh** → **약 3.8시간**. 막 아가미 증발수(0.6 L)는 혼합 사용 약 3.9시간분이다. 셀 에너지 밀도만 2036년 가정이다.
+- **배터리**: 셀 30 Wh(70 × 55 × 6 mm, 50 g) × 14 × 2 = **0.84 kWh** → **약 3.7시간**. 막 아가미 증발수(0.6 L)는 혼합 사용 약 3.9시간분이다. 셀 에너지 밀도만 2036년 가정이다.
 - **열**:
   - 대사 약 330 W 중 냉각복이 150 W를 뺀다. 나머지는 패널 아래 틈을 팬으로 환기해서 땀 증발로 뺀다.
   - 막 아가미: 30 °C / 습도 40 %에서 습구 20.4 °C → 냉각수 23.4 °C, 증발 0.22 L/h.
@@ -573,7 +573,7 @@
 | ② 덥고 습한 날 | 습구 26 °C를 넘으면 막 아가미가 한계라 도크의 냉각 라인을 쓴다 |
 | ③ 셀 안에서의 기동과 진단 | 03에서 연결, 11에서 분리 |
 
-걷기, 들기, 공구 작업은 케이블 없이 약 3.8시간이다.
+걷기, 들기, 공구 작업은 케이블 없이 약 3.7시간이다.
 
 ### 5.13 공간 분석 (R2 신규: 슬림 실루엣 안에 들어가는가)
 
@@ -589,69 +589,71 @@
 
 | 부위 | 앞 | 옆 | 뒤 | 안쪽 |
 |---|---:|---:|---:|---:|
-| neck | 52 | 61 | 30 | - |
+| neck | 53 | 62 | 30 | - |
 | shoulder_top | - | - | - | - |
 | chest | 36 | - | - | - |
 | abdomen | 27 | - | - | - |
 | pelvis_front | 27 | - | - | - |
 | axilla_flank_hi | - | 26 | - | - |
 | flank | - | 30 | - | - |
-| hip_lateral | - | 40 | - | 28 |
-| upper_back | - | - | 32 | - |
+| hip_lateral | - | 40 | - | 27 |
+| upper_back | - | - | 31 | - |
 | lumbar | - | - | 36 | - |
 | sacrum_gluteal | - | - | 40 | - |
-| upper_arm | 31 | 49 | 30 | 19 |
-| elbow | 24 | 45 | 24 | 14 |
-| forearm | 32 | 56 | 28 | 15 |
-| hand | 15 | 13 | 13 | 13 |
-| thigh | 31 | 31 | 25 | 26 |
-| knee | 26 | 19 | 25 | 37 |
-| shank | 29 | 16 | 32 | 50 |
-| foot | 34 | 34 | 34 | 58 |
+| upper_arm | 33 | 49 | 31 | 19 |
+| elbow | 25 | 45 | 25 | 14 |
+| forearm | 31 | 56 | 29 | 15 |
+| hand | 15 | 14 | 13 | 13 |
+| thigh | 32 | 31 | 25 | 26 |
+| knee | 27 | 19 | 25 | 37 |
+| shank | 28 | 16 | 32 | 49 |
+| foot | 34 | 34 | 34 | 59 |
 
 **모듈 검사: 53/53 통과**
 
 | 모듈 | 두께 mm | 사용 가능 mm | 여유 mm | 판정 |
 |---|---:|---:|---:|---|
-| knee muscle EHA (MUS-EHA-KNEE) | 20 | 20.1 | +0.1 | ✅ |
-| ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.0 | +1.0 | ✅ |
-| hip muscle EHA (MUS-EHA-HIP) | 18 | 21.2 | +3.2 | ✅ |
-| elbow tendon drive (TEN-ELBOW) | 14 | 15.6 | +1.6 | ✅ |
-| shoulder spring (TEN-SHOULDER) | 30 | 41.5 | +11.5 | ✅ |
+| knee muscle EHA (MUS-EHA-KNEE) | 20 | 21.1 | +1.1 | ✅ |
+| ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.7 | +1.7 | ✅ |
+| hip muscle EHA (MUS-EHA-HIP) | 18 | 21.7 | +3.7 | ✅ |
+| elbow tendon drive (TEN-ELBOW) | 14 | 16.0 | +2.0 | ✅ |
+| shoulder spring (TEN-SHOULDER) | 30 | 41.8 | +11.8 | ✅ |
 | thigh strut lat. (OS-LEG) | 8 | 8.5 | +0.5 | ✅ |
-| thigh strut med. (OS-LEG) | 8 | 14.0 | +6.0 | ✅ |
-| knee four-bar lat. (OS-LEG) | 6 | 7.0 | +1.0 | ✅ |
-| knee four-bar med. (OS-LEG) | 10 | 21.1 | +11.1 | ✅ |
-| shank strut postero-lat. (OS-LEG) | 8 | 9.2 | +1.2 | ✅ |
-| shank strut med. (OS-LEG) | 7 | 32.8 | +25.8 | ✅ |
-| hip joint (3 axes) (OS-PELVIS) | 26 | 27.7 | +1.7 | ✅ |
-| scapular tracking rail (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
-| upper arm strut (OS-ARM) | 8 | 32.3 | +24.3 | ✅ |
-| forearm strut (OS-ARM) | 8 | 41.3 | +33.3 | ✅ |
-| battery panel (ENE-BATT) | 9 | 18.2 | +9.2 | ✅ |
-| membrane gill (BRA-GILL) | 12 | 13.3 | +1.3 | ✅ |
-| louvre fan (flank) (BRA-FAN) | 14 | 27.0 | +13.0 | ✅ |
-| louvre fan (trapezius box) (BRA-FAN) | 14 | 39.7 | +25.7 | ✅ |
-| louvre fan (back) (BRA-FAN) | 14 | 21.6 | +7.6 | ✅ |
-| pelvic arch (OS-PELVIS) | 14 | 26.1 | +12.1 | ✅ |
-| lumbar leaf spine (OS-SPINE) | 14 | 23.7 | +9.7 | ✅ |
-| thoracic frame (OS-SPINE) | 12 | 21.2 | +9.2 | ✅ |
-| spine core (NER-CORE) | 18 | 19.4 | +1.4 | ✅ |
-| power distribution (ENE-PDU) | 22 | 26.7 | +4.7 | ✅ |
-| hot-swap buffer (ENE-BUF) | 18 | 25.0 | +7.0 | ✅ |
-| pump + manifold (BRA-LOOP) | 15 | 25.3 | +10.3 | ✅ |
-| drink bladder (VIT-HYDRA) | 12 | 20.8 | +8.8 | ✅ |
-| evaporant bladder (BRA-GILL) | 12 | 21.0 | +9.0 | ✅ |
-| emergency handle (VIT-SALUS) | 12 | 26.4 | +14.4 | ✅ |
-| tool bay (FUN-TOOLBAY) | 28 | 40.0 | +12.0 | ✅ |
-| assist hand (folded) (FUN-HAND) | 16 | 17.9 | +1.9 | ✅ |
-| swap port (FUN-PORT) | 22 | 43.9 | +21.9 | ✅ |
+| thigh strut med. (OS-LEG) | 8 | 13.6 | +5.6 | ✅ |
+| knee four-bar lat. (OS-LEG) | 6 | 8.3 | +2.3 | ✅ |
+| knee four-bar med. (OS-LEG) | 10 | 22.3 | +12.3 | ✅ |
+| shank strut postero-lat. (OS-LEG) | 8 | 8.8 | +0.8 | ✅ |
+| shank strut med. (OS-LEG) | 7 | 34.7 | +27.7 | ✅ |
+| hip joint (3 axes) (OS-PELVIS) | 26 | 27.0 | +1.0 | ✅ |
+| scapular tracking rail (OS-SPINE) | 12 | 20.9 | +8.9 | ✅ |
+| upper arm strut (OS-ARM) | 8 | 33.8 | +25.8 | ✅ |
+| forearm strut (OS-ARM) | 8 | 42.5 | +34.5 | ✅ |
+| battery panel (ENE-BATT) | 9 | 18.4 | +9.4 | ✅ |
+| membrane gill (BRA-GILL) | 12 | 13.8 | +1.8 | ✅ |
+| louvre fan (flank) (BRA-FAN) | 14 | 27.3 | +13.3 | ✅ |
+| louvre fan (trapezius box) (BRA-FAN) | 14 | 38.9 | +24.9 | ✅ |
+| louvre fan (back) (BRA-FAN) | 14 | 20.9 | +6.9 | ✅ |
+| pelvic arch (OS-PELVIS) | 14 | 26.7 | +12.7 | ✅ |
+| lumbar leaf spine (OS-SPINE) | 14 | 22.9 | +8.9 | ✅ |
+| thoracic frame (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
+| spine core (NER-CORE) | 18 | 21.4 | +3.4 | ✅ |
+| power distribution (ENE-PDU) | 22 | 28.5 | +6.5 | ✅ |
+| hot-swap buffer (ENE-BUF) | 18 | 26.8 | +8.8 | ✅ |
+| pump + manifold (BRA-LOOP) | 15 | 27.0 | +12.0 | ✅ |
+| drink bladder (VIT-HYDRA) | 12 | 21.0 | +9.0 | ✅ |
+| evaporant bladder (BRA-GILL) | 12 | 21.2 | +9.2 | ✅ |
+| emergency handle (VIT-SALUS) | 12 | 25.6 | +13.6 | ✅ |
+| tool bay (FUN-TOOLBAY) | 28 | 39.6 | +11.6 | ✅ |
+| assist hand (folded) (FUN-HAND) | 16 | 17.2 | +1.2 | ✅ |
+| swap port (FUN-PORT) | 22 | 43.8 | +21.8 | ✅ |
 
 검사를 통과시키려고 한 일:
 - 정면에서 보이지 않는 깊이만 늘렸다: 대퇴 앞 +11, 위팔 뒤 +8, 전완 손바닥 쪽 +6 mm.
 - 모듈을 다시 설계했다: 무릎 링크 판 6 mm, 연산부 18 mm, 힘줄 구동기 14 mm, 아가미 12 mm.
 - 위쪽 팬은 청사진의 목 옆 사각 박스로 옮겼다.
 - 정면 실루엣이 바뀐 곳은 무릎 바깥 +5 mm뿐이다.
+
+가장 빠듯한 곳은 오른쪽 고관절 +0.3 mm, 허벅지 바깥 지주 +0.5 mm다(표는 왼쪽, 고밀도 메시 기준). P2의 정밀 모델에서 이 둘부터 다시 검사한다.
 
 ### 5.14 조립 순서와 로봇 작업 (R2 신규)
 
@@ -661,8 +663,8 @@
 | 1 | GROUND | 부츠에 발을 넣고 로봇이 바인딩을 조인다 | 102 |
 | 2 | SKELETON | 다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임 | 599 |
 | 3 | MUSCLE | EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력 | 590 |
-| 4 | SYSTEMS | 배전, 버퍼, 냉동기, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 |
-| 5 | PANELS | 청사진 판 480장(배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 |
+| 4 | SYSTEMS | 배전, 버퍼, 막 아가미, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 |
+| 5 | PANELS | 청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 |
 | 6 | PERSONA | 후두 셸 → 측두 허브 → 안면판 → 락 | 116 |
 | 7 | BRING-UP | 신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동 | 0 |
 
@@ -1397,7 +1399,7 @@ P0 ──G0──▶ P1(R1·R2) ──G1──▶ P2 ──G2──▶ P3 ──
 | G1-1 | **스토리 v2 구조** | 사람이 먼저, 3막, 정점 3개(POWER, PERSONA LOCK, RELEASE), 약 290초 |
 | G1-2 | **언더슈트와 바라클라바 룩** | 그라파이트 니트, 대비 스티치, 견장, 은사 배선, 점 무늬 근전도 패드, 눈 슬롯 메시(F02, F03) |
 | G1-3 | **눈 슬릿 안** | A(쌍 사선, 제안), B(코 위가 꺾인 단일), C(수평 쌍) |
-| G1-4 | **성능 축소 폭** | 보조 25 %, 공구 3 kg, 약 3.8시간, 슈트 36.6 kg |
+| G1-4 | **성능 축소 폭** | 보조 25 %, 공구 3 kg, 약 3.7시간, 슈트 36.6 kg |
 | G1-5 | **무릎 바깥 +5 mm** | 정면 실루엣이 청사진보다 커지는 유일한 곳(4절 링크) |
 | G1-6 | **배터리 패널** | 등의 넓은등근 판 4장씩 = 팩 2개, 쿼터턴 교체 |
 | G1-7 | **외부 연결 범위** | 충전, 습구 26 °C 이상의 냉각 라인, 셀 안 기동만 |

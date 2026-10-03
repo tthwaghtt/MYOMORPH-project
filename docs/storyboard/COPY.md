@@ -30,7 +30,7 @@
 | 08 | `MYOMORPH · 477 PANELS` · `PARTS 0000/5,819 · SCREWS 0000/1,458 · MASS 00.0/36.6 kg` | 477장. 하나도 빠짐없이 도하의 청사진에 있던 판이다. 등판 두 장은 배터리다. | bom.json, engineering.json |
 | 09 | `PERSONA` | 눈은 얇게. 넓은 시야는 슬릿 뒤의 카메라 두 대가 본다. 슬릿은 전원이 꺼져도 남는 예비 시야다. | bom.json `PER-HELMET` |
 | 10 | `NERVUS` · `MYOMORPH-MK. 1 · SN 0001` | 당신의 근육이 신호를 보내면, 기계의 근육이 답한다. | |
-| 11 | `UNTETHERED · 0.84 kWh · 3.8 h` | 이제 케이블 없이 선다. 충전할 때와 덥고 습한 날만 다시 연결한다. | engineering.json `battery`, `tether` |
+| 11 | `UNTETHERED · 0.84 kWh · 3.7 h` | 이제 케이블 없이 선다. 충전할 때와 덥고 습한 날만 다시 연결한다. | engineering.json `battery`, `tether` |
 | 12 | `MOTUS · KNEE 0–125° · ELBOW 0–135°` | 판은 몸에 닿지 않는다. 그래서 겹치고, 미끄러지고, 비켜 준다. | engineering.json `rom_deg` |
 | 13 | `FUNCTIO · TOOL BAY · ASSIST HAND · BATTERY SWAP · BRANCHIA` | 도하가 그린 옆구리의 슬롯은 처음부터 숨구멍이었다. | |
 | 14 | `KNOLL · 5,819 PARTS · 41 MODULES · 13 SYSTEMS` | 이 페이지의 모든 숫자는 하나의 계산서와 하나의 부품표에서 나온다. | bom.json |

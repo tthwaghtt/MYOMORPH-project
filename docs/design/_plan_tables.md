@@ -26,62 +26,62 @@
 <!-- PACK -->
 | 모듈 | 두께 mm | 사용 가능 mm | 여유 mm | 판정 |
 |---|---:|---:|---:|---|
-| knee muscle EHA (MUS-EHA-KNEE) | 20 | 20.1 | +0.1 | ✅ |
-| ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.0 | +1.0 | ✅ |
-| hip muscle EHA (MUS-EHA-HIP) | 18 | 21.2 | +3.2 | ✅ |
-| elbow tendon drive (TEN-ELBOW) | 14 | 15.6 | +1.6 | ✅ |
-| shoulder spring (TEN-SHOULDER) | 30 | 41.5 | +11.5 | ✅ |
+| knee muscle EHA (MUS-EHA-KNEE) | 20 | 21.1 | +1.1 | ✅ |
+| ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.7 | +1.7 | ✅ |
+| hip muscle EHA (MUS-EHA-HIP) | 18 | 21.7 | +3.7 | ✅ |
+| elbow tendon drive (TEN-ELBOW) | 14 | 16.0 | +2.0 | ✅ |
+| shoulder spring (TEN-SHOULDER) | 30 | 41.8 | +11.8 | ✅ |
 | thigh strut lat. (OS-LEG) | 8 | 8.5 | +0.5 | ✅ |
-| thigh strut med. (OS-LEG) | 8 | 14.0 | +6.0 | ✅ |
-| knee four-bar lat. (OS-LEG) | 6 | 7.0 | +1.0 | ✅ |
-| knee four-bar med. (OS-LEG) | 10 | 21.1 | +11.1 | ✅ |
-| shank strut postero-lat. (OS-LEG) | 8 | 9.2 | +1.2 | ✅ |
-| shank strut med. (OS-LEG) | 7 | 32.8 | +25.8 | ✅ |
-| hip joint (3 axes) (OS-PELVIS) | 26 | 27.7 | +1.7 | ✅ |
-| scapular tracking rail (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
-| upper arm strut (OS-ARM) | 8 | 32.3 | +24.3 | ✅ |
-| forearm strut (OS-ARM) | 8 | 41.3 | +33.3 | ✅ |
-| battery panel (ENE-BATT) | 9 | 18.2 | +9.2 | ✅ |
-| membrane gill (BRA-GILL) | 12 | 13.3 | +1.3 | ✅ |
-| louvre fan (flank) (BRA-FAN) | 14 | 27.0 | +13.0 | ✅ |
-| louvre fan (trapezius box) (BRA-FAN) | 14 | 39.7 | +25.7 | ✅ |
-| louvre fan (back) (BRA-FAN) | 14 | 21.6 | +7.6 | ✅ |
-| pelvic arch (OS-PELVIS) | 14 | 26.1 | +12.1 | ✅ |
-| lumbar leaf spine (OS-SPINE) | 14 | 23.7 | +9.7 | ✅ |
-| thoracic frame (OS-SPINE) | 12 | 21.2 | +9.2 | ✅ |
-| spine core (NER-CORE) | 18 | 19.4 | +1.4 | ✅ |
-| power distribution (ENE-PDU) | 22 | 26.7 | +4.7 | ✅ |
-| hot-swap buffer (ENE-BUF) | 18 | 25.0 | +7.0 | ✅ |
-| pump + manifold (BRA-LOOP) | 15 | 25.3 | +10.3 | ✅ |
-| drink bladder (VIT-HYDRA) | 12 | 20.8 | +8.8 | ✅ |
-| evaporant bladder (BRA-GILL) | 12 | 21.0 | +9.0 | ✅ |
-| emergency handle (VIT-SALUS) | 12 | 26.4 | +14.4 | ✅ |
-| tool bay (FUN-TOOLBAY) | 28 | 40.0 | +12.0 | ✅ |
-| assist hand (folded) (FUN-HAND) | 16 | 17.9 | +1.9 | ✅ |
-| swap port (FUN-PORT) | 22 | 43.9 | +21.9 | ✅ |
+| thigh strut med. (OS-LEG) | 8 | 13.6 | +5.6 | ✅ |
+| knee four-bar lat. (OS-LEG) | 6 | 8.3 | +2.3 | ✅ |
+| knee four-bar med. (OS-LEG) | 10 | 22.3 | +12.3 | ✅ |
+| shank strut postero-lat. (OS-LEG) | 8 | 8.8 | +0.8 | ✅ |
+| shank strut med. (OS-LEG) | 7 | 34.7 | +27.7 | ✅ |
+| hip joint (3 axes) (OS-PELVIS) | 26 | 27.0 | +1.0 | ✅ |
+| scapular tracking rail (OS-SPINE) | 12 | 20.9 | +8.9 | ✅ |
+| upper arm strut (OS-ARM) | 8 | 33.8 | +25.8 | ✅ |
+| forearm strut (OS-ARM) | 8 | 42.5 | +34.5 | ✅ |
+| battery panel (ENE-BATT) | 9 | 18.4 | +9.4 | ✅ |
+| membrane gill (BRA-GILL) | 12 | 13.8 | +1.8 | ✅ |
+| louvre fan (flank) (BRA-FAN) | 14 | 27.3 | +13.3 | ✅ |
+| louvre fan (trapezius box) (BRA-FAN) | 14 | 38.9 | +24.9 | ✅ |
+| louvre fan (back) (BRA-FAN) | 14 | 20.9 | +6.9 | ✅ |
+| pelvic arch (OS-PELVIS) | 14 | 26.7 | +12.7 | ✅ |
+| lumbar leaf spine (OS-SPINE) | 14 | 22.9 | +8.9 | ✅ |
+| thoracic frame (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
+| spine core (NER-CORE) | 18 | 21.4 | +3.4 | ✅ |
+| power distribution (ENE-PDU) | 22 | 28.5 | +6.5 | ✅ |
+| hot-swap buffer (ENE-BUF) | 18 | 26.8 | +8.8 | ✅ |
+| pump + manifold (BRA-LOOP) | 15 | 27.0 | +12.0 | ✅ |
+| drink bladder (VIT-HYDRA) | 12 | 21.0 | +9.0 | ✅ |
+| evaporant bladder (BRA-GILL) | 12 | 21.2 | +9.2 | ✅ |
+| emergency handle (VIT-SALUS) | 12 | 25.6 | +13.6 | ✅ |
+| tool bay (FUN-TOOLBAY) | 28 | 39.6 | +11.6 | ✅ |
+| assist hand (folded) (FUN-HAND) | 16 | 17.2 | +1.2 | ✅ |
+| swap port (FUN-PORT) | 22 | 43.8 | +21.8 | ✅ |
 
 <!-- ZONES -->
 | 부위 | 앞 | 옆 | 뒤 | 안쪽 |
 |---|---:|---:|---:|---:|
-| neck | 52 | 61 | 30 | - |
+| neck | 53 | 62 | 30 | - |
 | shoulder_top | - | - | - | - |
 | chest | 36 | - | - | - |
 | abdomen | 27 | - | - | - |
 | pelvis_front | 27 | - | - | - |
 | axilla_flank_hi | - | 26 | - | - |
 | flank | - | 30 | - | - |
-| hip_lateral | - | 40 | - | 28 |
-| upper_back | - | - | 32 | - |
+| hip_lateral | - | 40 | - | 27 |
+| upper_back | - | - | 31 | - |
 | lumbar | - | - | 36 | - |
 | sacrum_gluteal | - | - | 40 | - |
-| upper_arm | 31 | 49 | 30 | 19 |
-| elbow | 24 | 45 | 24 | 14 |
-| forearm | 32 | 56 | 28 | 15 |
-| hand | 15 | 13 | 13 | 13 |
-| thigh | 31 | 31 | 25 | 26 |
-| knee | 26 | 19 | 25 | 37 |
-| shank | 29 | 16 | 32 | 50 |
-| foot | 34 | 34 | 34 | 58 |
+| upper_arm | 33 | 49 | 31 | 19 |
+| elbow | 25 | 45 | 25 | 14 |
+| forearm | 31 | 56 | 29 | 15 |
+| hand | 15 | 14 | 13 | 13 |
+| thigh | 32 | 31 | 25 | 26 |
+| knee | 27 | 19 | 25 | 37 |
+| shank | 28 | 16 | 32 | 49 |
+| foot | 34 | 34 | 34 | 59 |
 
 <!-- SITES -->
 | 부위 | 근육 | 종류 | 부착 규칙 | 근육 표 (최대 힘 / 섬유 길이 / 깃각) |
@@ -114,7 +114,7 @@
 | 1 | GROUND | 부츠에 발을 넣고 로봇이 바인딩을 조인다 | 102 |
 | 2 | SKELETON | 다리 프레임 → 골반 → 척추와 하네스 → 팔 프레임, 커프 조임 | 599 |
 | 3 | MUSCLE | EHA 6개 핀 결합, 팔꿈치 힘줄 구동기, 어깨 스프링, 힘줄 장력 | 590 |
-| 4 | SYSTEMS | 배전, 버퍼, 냉동기, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 |
+| 4 | SYSTEMS | 배전, 버퍼, 막 아가미, 냉각수 회로, 팬, 연산부, 생명유지, 언더슈트 연결, 천장 탯줄 연결 | 403 |
 | 5 | PANELS | 청사진 판 477장(배터리 패널, 루버, 툴 베이 패널 포함) | 3,801 |
 | 6 | PERSONA | 후두 셸 → 측두 허브 → 안면판 → 락 | 116 |
 | 7 | BRING-UP | 신경 보정, 자가 진단, 탯줄 분리, 배터리 단독 구동 | 0 |
