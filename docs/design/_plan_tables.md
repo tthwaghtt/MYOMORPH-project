@@ -26,7 +26,7 @@
 <!-- PACK -->
 | 모듈 | 두께 mm | 사용 가능 mm | 여유 mm | 판정 |
 |---|---:|---:|---:|---|
-| knee muscle EHA (MUS-EHA-KNEE) | 20 | 21.1 | +1.1 | ✅ |
+| knee muscle EHA (MUS-EHA-KNEE) | 20 | 21.3 | +1.3 | ✅ |
 | ankle muscle EHA (MUS-EHA-ANKLE) | 18 | 19.7 | +1.7 | ✅ |
 | hip muscle EHA (MUS-EHA-HIP) | 18 | 21.7 | +3.7 | ✅ |
 | elbow tendon drive (TEN-ELBOW) | 14 | 16.0 | +2.0 | ✅ |
@@ -34,9 +34,9 @@
 | thigh strut lat. (OS-LEG) | 8 | 8.5 | +0.5 | ✅ |
 | thigh strut med. (OS-LEG) | 8 | 13.6 | +5.6 | ✅ |
 | knee four-bar lat. (OS-LEG) | 6 | 8.3 | +2.3 | ✅ |
-| knee four-bar med. (OS-LEG) | 10 | 22.3 | +12.3 | ✅ |
+| knee four-bar med. (OS-LEG) | 10 | 22.6 | +12.6 | ✅ |
 | shank strut postero-lat. (OS-LEG) | 8 | 8.8 | +0.8 | ✅ |
-| shank strut med. (OS-LEG) | 7 | 34.7 | +27.7 | ✅ |
+| shank strut med. (OS-LEG) | 7 | 34.9 | +27.9 | ✅ |
 | hip joint (3 axes) (OS-PELVIS) | 26 | 27.0 | +1.0 | ✅ |
 | scapular tracking rail (OS-SPINE) | 12 | 20.9 | +8.9 | ✅ |
 | upper arm strut (OS-ARM) | 8 | 33.8 | +25.8 | ✅ |
@@ -46,14 +46,14 @@
 | louvre fan (flank) (BRA-FAN) | 14 | 27.3 | +13.3 | ✅ |
 | louvre fan (trapezius box) (BRA-FAN) | 14 | 38.9 | +24.9 | ✅ |
 | louvre fan (back) (BRA-FAN) | 14 | 20.9 | +6.9 | ✅ |
-| pelvic arch (OS-PELVIS) | 14 | 26.7 | +12.7 | ✅ |
+| pelvic arch (OS-PELVIS) | 14 | 26.8 | +12.8 | ✅ |
 | lumbar leaf spine (OS-SPINE) | 14 | 22.9 | +8.9 | ✅ |
 | thoracic frame (OS-SPINE) | 12 | 21.4 | +9.4 | ✅ |
 | spine core (NER-CORE) | 18 | 21.4 | +3.4 | ✅ |
-| power distribution (ENE-PDU) | 22 | 28.5 | +6.5 | ✅ |
-| hot-swap buffer (ENE-BUF) | 18 | 26.8 | +8.8 | ✅ |
+| power distribution (ENE-PDU) | 22 | 28.6 | +6.6 | ✅ |
+| hot-swap buffer (ENE-BUF) | 18 | 26.9 | +8.9 | ✅ |
 | pump + manifold (BRA-LOOP) | 15 | 27.0 | +12.0 | ✅ |
-| drink bladder (VIT-HYDRA) | 12 | 21.0 | +9.0 | ✅ |
+| drink bladder (VIT-HYDRA) | 12 | 21.1 | +9.1 | ✅ |
 | evaporant bladder (BRA-GILL) | 12 | 21.2 | +9.2 | ✅ |
 | emergency handle (VIT-SALUS) | 12 | 25.6 | +13.6 | ✅ |
 | tool bay (FUN-TOOLBAY) | 28 | 39.6 | +11.6 | ✅ |
@@ -75,7 +75,7 @@
 | lumbar | - | - | 36 | - |
 | sacrum_gluteal | - | - | 40 | - |
 | upper_arm | 33 | 49 | 31 | 19 |
-| elbow | 25 | 45 | 25 | 14 |
+| elbow | 26 | 45 | 25 | 14 |
 | forearm | 31 | 56 | 29 | 15 |
 | hand | 15 | 14 | 13 | 13 |
 | thigh | 32 | 31 | 25 | 26 |
